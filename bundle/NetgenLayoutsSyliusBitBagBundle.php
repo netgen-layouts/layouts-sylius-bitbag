@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Bundle\LayoutsSyliusBundle;
+namespace Netgen\Bundle\LayoutsSyliusBitBagBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
