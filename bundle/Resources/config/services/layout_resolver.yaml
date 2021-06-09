@@ -14,3 +14,17 @@ services:
         tags:
             - { name: netgen_layouts.target_type.doctrine_handler, target_type: bitbag_page }
 
+    netgen_layouts.sylius.bitbag.layout_resolver.target_type.section:
+        class: Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\Section
+        tags:
+            - { name: netgen_layouts.target_type, priority: 180 }
+
+    netgen_layouts.sylius.bitbag.layout_resolver.target_type.form_mapper.section:
+        class: Netgen\Layouts\Sylius\BitBag\Layout\Resolver\Form\TargetType\Mapper\Section
+        tags:
+            - { name: netgen_layouts.target_type.form_mapper, target_type: bitbag_section }
+
+    netgen_layouts.sylius.bitbag.layout_resolver.target_handler.doctrine.bitbag_section:
+        class: Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetHandler\Doctrine\Section
+        tags:
+            - { name: netgen_layouts.target_type.doctrine_handler, target_type: bitbag_section }

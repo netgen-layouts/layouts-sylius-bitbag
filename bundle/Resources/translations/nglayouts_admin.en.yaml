@@ -1,1 +1,2 @@
 layout_resolver.rule.target_header.bitbag_page: 'BitBag page'
+layout_resolver.rule.target_header.bitbag_section: 'BitBag section'
