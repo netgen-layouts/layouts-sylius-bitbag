@@ -8,5 +8,6 @@ services:
         class: Netgen\Bundle\LayoutsSyliusBitBagBundle\Templating\Twig\Runtime\BitBagRuntime
         arguments:
             - "@netgen_layouts.sylius.bitbag.page_repository"
+            - "@netgen_layouts.sylius.bitbag.section_repository"
         tags:
             - { name: twig.runtime }

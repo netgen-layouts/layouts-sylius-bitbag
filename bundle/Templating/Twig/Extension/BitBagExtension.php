@@ -20,6 +20,10 @@ final class BitBagExtension extends AbstractExtension
                 'nglayouts_sylius_bitbag_page_name',
                 [BitBagRuntime::class, 'getPageName'],
             ),
+            new TwigFunction(
+                'nglayouts_sylius_bitbag_section_name',
+                [BitBagRuntime::class, 'getSectionName'],
+            ),
         ];
     }
 }
