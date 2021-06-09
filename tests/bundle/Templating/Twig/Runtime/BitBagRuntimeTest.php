@@ -6,22 +6,28 @@ namespace Netgen\Bundle\LayoutsSyliusBitBagBundle\Tests\Templating\Twig\Runtime;
 
 use Netgen\Bundle\LayoutsSyliusBitBagBundle\Templating\Twig\Runtime\BitBagRuntime;
 use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Page;
+use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Section;
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use Netgen\Layouts\Sylius\BitBag\Repository\PageRepositoryInterface;
+use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
 
 final class BitBagRuntimeTest extends TestCase
 {
     private MockObject $pageRepositoryMock;
+
+    private MockObject $sectionRepositoryMock;
 
     private BitBagRuntime $runtime;
 
     protected function setUp(): void
     {
         $this->pageRepositoryMock = $this->createMock(PageRepositoryInterface::class);
+        $this->sectionRepositoryMock = $this->createMock(SectionRepositoryInterface::class);
 
         $this->runtime = new BitBagRuntime(
-            $this->pageRepositoryMock
+            $this->pageRepositoryMock,
+            $this->sectionRepositoryMock,
         );
     }
 
@@ -42,5 +48,24 @@ final class BitBagRuntimeTest extends TestCase
             ->willReturn($page);
 
         self::assertSame('About us', $this->runtime->getPageName(15));
+    }
+
+    /**
+     * @covers \Netgen\Bundle\LayoutsSyliusBitBagBundle\Templating\Twig\Runtime\BitBagRuntime::__construct
+     * @covers \Netgen\Bundle\LayoutsSyliusBitBagBundle\Templating\Twig\Runtime\BitBagRuntime::getSectionName
+     */
+    public function testGetSectionName(): void
+    {
+        $section = new Section(5, 'articles');
+        $section->setCurrentLocale('en');
+        $section->setName('Articles');
+
+        $this->sectionRepositoryMock
+            ->expects(self::once())
+            ->method('find')
+            ->with(self::identicalTo(5))
+            ->willReturn($section);
+
+        self::assertSame('Articles', $this->runtime->getSectionName(5));
     }
 }
