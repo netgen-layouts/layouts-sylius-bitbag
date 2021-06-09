@@ -8,7 +8,7 @@ use Doctrine\DBAL\Query\QueryBuilder;
 use Doctrine\DBAL\Types\Types;
 use Netgen\Layouts\Persistence\Doctrine\QueryHandler\TargetHandlerInterface;
 
-class Section implements TargetHandlerInterface
+final class Section implements TargetHandlerInterface
 {
     public function handleQuery(QueryBuilder $query, $value): void
     {

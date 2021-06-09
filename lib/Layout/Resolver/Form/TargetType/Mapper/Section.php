@@ -7,7 +7,7 @@ namespace Netgen\Layouts\Sylius\BitBag\Layout\Resolver\Form\TargetType\Mapper;
 use Netgen\ContentBrowser\Form\Type\ContentBrowserType;
 use Netgen\Layouts\Layout\Resolver\Form\TargetType\Mapper;
 
-class Section extends Mapper
+final class Section extends Mapper
 {
     public function getFormType(): string
     {
