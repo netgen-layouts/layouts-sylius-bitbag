@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\BitBag\Tests\Layout\Resolver\TargetHandler\Doctrine;
 
-use Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetHandler\Doctrine\Page;
-use Netgen\Layouts\Tests\Layout\Resolver\TargetHandler\Doctrine\AbstractTargetHandlerTest;
+use Netgen\Layouts\Persistence\Doctrine\QueryHandler\TargetHandlerInterface;
 use Netgen\Layouts\Persistence\Values\LayoutResolver\RuleGroup;
 use Netgen\Layouts\Persistence\Values\Value;
-use Netgen\Layouts\Persistence\Doctrine\QueryHandler\TargetHandlerInterface;
+use Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetHandler\Doctrine\Page;
+use Netgen\Layouts\Tests\Layout\Resolver\TargetHandler\Doctrine\AbstractTargetHandlerTest;
 
 final class SectionTest extends AbstractTargetHandlerTest
 {

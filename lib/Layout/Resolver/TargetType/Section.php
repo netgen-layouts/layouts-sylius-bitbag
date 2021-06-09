@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType;
 
+use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 use Netgen\Layouts\Layout\Resolver\TargetType;
+use Netgen\Layouts\Sylius\BitBag\Validator\Constraint as SyliusBitBagConstraints;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints;
-use Netgen\Layouts\Sylius\BitBag\Validator\Constraint as SyliusBitBagConstraints;
-use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 
 final class Section extends TargetType
 {

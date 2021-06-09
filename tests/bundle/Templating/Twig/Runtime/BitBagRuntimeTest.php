@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Netgen\Bundle\LayoutsSyliusBitBagBundle\Tests\Templating\Twig\Runtime;
 
 use Netgen\Bundle\LayoutsSyliusBitBagBundle\Templating\Twig\Runtime\BitBagRuntime;
-use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Page;
-use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Section;
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\MockObject\MockObject;
 use Netgen\Layouts\Sylius\BitBag\Repository\PageRepositoryInterface;
 use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
+use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Page;
+use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Section;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 final class BitBagRuntimeTest extends TestCase
 {
