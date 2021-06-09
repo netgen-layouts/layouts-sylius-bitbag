@@ -1,0 +1,16 @@
+services:
+    netgen_layouts.sylius.bitbag.layout_resolver.target_type.page:
+        class: Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\Page
+        tags:
+            - { name: netgen_layouts.target_type, priority: 190 }
+
+    netgen_layouts.sylius.bitbag.layout_resolver.target_type.form_mapper.page:
+        class: Netgen\Layouts\Sylius\BitBag\Layout\Resolver\Form\TargetType\Mapper\Page
+        tags:
+            - { name: netgen_layouts.target_type.form_mapper, target_type: bitbag_page }
+
+    netgen_layouts.sylius.bitbag.layout_resolver.target_handler.doctrine.bitbag_page:
+        class: Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetHandler\Doctrine\Page
+        tags:
+            - { name: netgen_layouts.target_type.doctrine_handler, target_type: bitbag_page }
+

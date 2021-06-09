@@ -42,6 +42,7 @@ final class NetgenLayoutsSyliusBitBagExtension extends Extension implements Prep
     {
         $prependConfigs = [
             'value_types.yaml' => 'netgen_layouts',
+            'view/rule_target_view.yaml' => 'netgen_layouts',
         ];
 
         foreach ($prependConfigs as $configFile => $prependConfig) {
