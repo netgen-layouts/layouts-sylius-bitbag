@@ -1,0 +1,8 @@
+services:
+    netgen_layouts.sylius.bitbag.event_listener.bitbag.page_show:
+        class: Netgen\Bundle\LayoutsSyliusBitBagBundle\EventListener\BitBag\PageShowListener
+        arguments:
+            - "@request_stack"
+            - "@netgen_layouts.context"
+        tags:
+            - { name: kernel.event_subscriber }
