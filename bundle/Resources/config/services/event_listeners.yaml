@@ -6,3 +6,13 @@ services:
             - "@netgen_layouts.context"
         tags:
             - { name: kernel.event_subscriber }
+
+    netgen_layouts.sylius.bitbag.event_listener.bitbag.page_index:
+        class: Netgen\Bundle\LayoutsSyliusBitBagBundle\EventListener\BitBag\PageIndexListener
+        arguments:
+            - "@bitbag_sylius_cms_plugin.repository.section"
+            - "@sylius.context.locale"
+            - "@request_stack"
+            - "@netgen_layouts.context"
+        tags:
+            - { name: kernel.event_subscriber }
