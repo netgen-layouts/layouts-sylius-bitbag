@@ -28,3 +28,18 @@ services:
         class: Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetHandler\Doctrine\Section
         tags:
             - { name: netgen_layouts.target_type.doctrine_handler, target_type: bitbag_section }
+
+    netgen_layouts.sylius.bitbag.layout_resolver.target_type.section_page:
+        class: Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\SectionPage
+        tags:
+            - { name: netgen_layouts.target_type, priority: 180 }
+
+    netgen_layouts.sylius.bitbag.layout_resolver.target_type.form_mapper.section_page:
+        class: Netgen\Layouts\Sylius\BitBag\Layout\Resolver\Form\TargetType\Mapper\SectionPage
+        tags:
+            - { name: netgen_layouts.target_type.form_mapper, target_type: bitbag_section_page }
+
+    netgen_layouts.sylius.bitbag.layout_resolver.target_handler.doctrine.bitbag_section_page:
+        class: Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetHandler\Doctrine\SectionPage
+        tags:
+            - { name: netgen_layouts.target_type.doctrine_handler, target_type: bitbag_section_page }
