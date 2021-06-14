@@ -23,7 +23,7 @@ final class SectionTest extends AbstractTargetHandlerTest
             2,
         );
 
-        self::assertCount(2, $rules);
+        self::assertCount(1, $rules);
         self::assertSame(4, $rules[0]->id);
     }
 
