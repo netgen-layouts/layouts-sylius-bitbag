@@ -23,8 +23,7 @@ final class PageIndexListener implements EventSubscriberInterface
 
     private Context $context;
 
-    public function __construct
-    (
+    public function __construct(
         SectionRepositoryInterface $sectionRepository,
         LocaleContextInterface $localeContext,
         RequestStack $requestStack,
@@ -59,7 +58,7 @@ final class PageIndexListener implements EventSubscriberInterface
 
         $section = $this->sectionRepository->findOneByCode(
             $currentRequest->attributes->get('sectionCode'),
-            $this->localeContext->getLocaleCode()
+            $this->localeContext->getLocaleCode(),
         );
 
         if (!$section instanceof SectionInterface) {
