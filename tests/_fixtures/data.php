@@ -38,7 +38,9 @@ return [
         ['id' => 8, 'status' => 1, 'uuid' => '5151d29a-9a50-4a70-ad0c-6a08c7d0feb7', 'rule_id' => 4, 'type' => 'bitbag_section', 'value' => 43],
         ['id' => 9, 'status' => 1, 'uuid' => '69b5c0bd-3275-45dc-8d84-e389f511d1c4', 'rule_id' => 5, 'type' => 'bitbag_section', 'value' => 5],
         ['id' => 10, 'status' => 1, 'uuid' => '3364f6ab-2774-43bb-b837-3556f348ae34', 'rule_id' => 5, 'type' => 'bitbag_section', 'value' => 13],
-        ['id' => 11, 'status' => 1, 'uuid' => '88c3d400-c764-4614-844e-3142e4562596', 'rule_id' => 6, 'type' => 'bitbag_section', 'value' => 2],
-        ['id' => 12, 'status' => 1, 'uuid' => 'd2311434-2d52-4c69-b016-ec4d2a8ea073', 'rule_id' => 6, 'type' => 'bitbag_section', 'value' => 43],
+        ['id' => 11, 'status' => 1, 'uuid' => '88c3d400-c764-4614-844e-3142e4562596', 'rule_id' => 6, 'type' => 'bitbag_section_page', 'value' => 2],
+        ['id' => 12, 'status' => 1, 'uuid' => 'd2311434-2d52-4c69-b016-ec4d2a8ea073', 'rule_id' => 6, 'type' => 'bitbag_section_page', 'value' => 43],
+        ['id' => 13, 'status' => 1, 'uuid' => 'faad2665-8bba-4751-9ea6-a69a0d5db13f', 'rule_id' => 6, 'type' => 'bitbag_section_page', 'value' => 5],
+        ['id' => 14, 'status' => 1, 'uuid' => '40aadd7e-01ae-49ea-80e2-fa1187b8342e', 'rule_id' => 7, 'type' => 'bitbag_section_page', 'value' => 13],
     ],
 ];
