@@ -35,13 +35,26 @@ final class NetgenLayoutsSyliusBitBagExtension extends Extension implements Prep
         );
 
         $loader->load('services/**/*.yaml', 'glob');
-        $loader->load('default_settings.yaml');
     }
 
     public function prepend(ContainerBuilder $container): void
     {
+        $locator = new FileLocator(__DIR__ . '/../Resources/config');
+
+        $loader = new DelegatingLoader(
+            new LoaderResolver(
+                [
+                    new GlobFileLoader($container, $locator),
+                    new YamlFileLoader($container, $locator),
+                ],
+            ),
+        );
+
+        $loader->load('default_settings.yaml');
+
         $prependConfigs = [
             'value_types.yaml' => 'netgen_layouts',
+            'item_types.yaml' => 'netgen_content_browser',
             'view/rule_target_view.yaml' => 'netgen_layouts',
         ];
 
