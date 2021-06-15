@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Netgen\Layouts\Sylius\BitBag\Tests\Validator;
 
 use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
+use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Section as SectionStub;
 use Netgen\Layouts\Sylius\BitBag\Validator\Constraint\Section;
 use Netgen\Layouts\Sylius\BitBag\Validator\SectionValidator;
 use Netgen\Layouts\Tests\TestCase\ValidatorTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\ConstraintValidatorInterface;
-use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Section as SectionStub;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
 final class SectionValidatorTest extends ValidatorTestCase
