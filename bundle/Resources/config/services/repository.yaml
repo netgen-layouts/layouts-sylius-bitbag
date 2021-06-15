@@ -2,3 +2,7 @@ services:
     netgen_layouts.sylius.bitbag.page_repository:
         class: Netgen\Layouts\Sylius\BitBag\Repository\PageRepository
         parent: bitbag_sylius_cms_plugin.repository.page
+
+    netgen_layouts.sylius.bitbag.section_repository:
+        class: Netgen\Layouts\Sylius\BitBag\Repository\SectionRepository
+        parent: bitbag_sylius_cms_plugin.repository.section
