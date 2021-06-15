@@ -1,0 +1,7 @@
+services:
+    netgen_layouts.sylius.bitbag.validator.page:
+        class: Netgen\Layouts\Sylius\BitBag\Validator\PageValidator
+        arguments:
+            - "@netgen_layouts.sylius.bitbag.page_repository"
+        tags:
+            - { name: validator.constraint_validator, alias: nglayouts_sylius_bitbag_page }
