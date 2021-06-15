@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Netgen\Layouts\Sylius\BitBag\Tests\Validator;
 
 use Netgen\Layouts\Sylius\BitBag\Repository\PageRepositoryInterface;
+use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Page as PageStub;
 use Netgen\Layouts\Sylius\BitBag\Validator\Constraint\Page;
 use Netgen\Layouts\Sylius\BitBag\Validator\PageValidator;
 use Netgen\Layouts\Tests\TestCase\ValidatorTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\ConstraintValidatorInterface;
-use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Page as PageStub;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
 final class PageValidatorTest extends ValidatorTestCase
