@@ -1,0 +1,13 @@
+item_types:
+    bitbag_page:
+        name: item_types.bitbag_page
+        tree:
+            enabled: false
+        preview:
+            enabled: false
+        columns:
+            name:
+                name: columns.name
+                value_provider: name
+        default_columns:
+            - name
