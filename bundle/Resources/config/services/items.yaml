@@ -36,3 +36,22 @@ services:
             - "@router"
         tags:
             - { name: netgen_layouts.cms_value_url_generator, value_type: bitbag_section }
+
+    netgen_layouts.sylius.bitbag.item.value_converter.block:
+        class: Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\BlockValueConverter
+        tags:
+            - { name: netgen_layouts.cms_value_converter }
+
+    netgen_layouts.sylius.bitbag.item.value_loader.block:
+        class: Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\BlockValueLoader
+        arguments:
+            - "@netgen_layouts.sylius.bitbag.block_repository"
+        tags:
+            - { name: netgen_layouts.cms_value_loader, value_type: bitbag_block }
+
+    netgen_layouts.sylius.bitbag.item.value_url_generator.block:
+        class: Netgen\Layouts\Sylius\BitBag\Item\ValueUrlGenerator\BlockValueUrlGenerator
+        arguments:
+            - "@router"
+        tags:
+            - { name: netgen_layouts.cms_value_url_generator, value_type: bitbag_block }

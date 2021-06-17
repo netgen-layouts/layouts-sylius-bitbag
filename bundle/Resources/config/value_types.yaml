@@ -3,3 +3,5 @@ value_types:
         name: 'BitBag page'
     bitbag_section:
         name: 'BitBag section'
+    bitbag_block:
+        name: 'BitBag block'

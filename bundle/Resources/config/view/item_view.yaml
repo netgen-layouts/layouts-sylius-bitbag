@@ -9,6 +9,10 @@ view:
                 template: "@nglayouts/item/bitbag_section.html.twig"
                 match:
                     item\value_type: bitbag_section
+            bitbag_block:
+                template: "@nglayouts/item/bitbag_block.html.twig"
+                match:
+                    item\value_type: bitbag_block
         ajax:
             bitbag_page:
                 template: "@nglayouts/item/bitbag_page.html.twig"
@@ -18,6 +22,10 @@ view:
                 template: "@nglayouts/item/bitbag_section.html.twig"
                 match:
                     item\value_type: bitbag_section
+            bitbag_block:
+                template: "@nglayouts/item/bitbag_block.html.twig"
+                match:
+                    item\value_type: bitbag_block
         app:
             bitbag_page:
                 template: "@NetgenLayoutsSyliusBitBag/app/item/view/bitbag_page.html.twig"
@@ -27,3 +35,7 @@ view:
                 template: "@NetgenLayoutsSyliusBitBag/app/item/view/bitbag_section.html.twig"
                 match:
                     item\value_type: bitbag_section
+            bitbag_block:
+                template: "@NetgenLayoutsSyliusBitBag/app/item/view/bitbag_block.html.twig"
+                match:
+                    item\value_type: bitbag_block
