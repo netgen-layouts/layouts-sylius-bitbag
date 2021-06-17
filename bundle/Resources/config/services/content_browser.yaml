@@ -14,3 +14,11 @@ services:
             - "@sylius.context.locale"
         tags:
             - { name: netgen_content_browser.backend, item_type: bitbag_section }
+
+    netgen_layouts.sylius.bitbag.backend.bitbag_block:
+        class: Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\BlockBackend
+        arguments:
+            - "@netgen_layouts.sylius.bitbag.block_repository"
+            - "@sylius.context.locale"
+        tags:
+            - { name: netgen_content_browser.backend, item_type: bitbag_block }
