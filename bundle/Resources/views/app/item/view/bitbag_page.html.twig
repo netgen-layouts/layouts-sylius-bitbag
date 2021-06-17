@@ -1,0 +1,15 @@
+{% set page = item.object %}
+
+{% if page.image %}
+    <div class="image">
+        <img src="{{ page.image.path|imagine_filter('nglayouts_sylius_bitbag_page_app_preview') }}" />
+    </div>
+{% endif %}
+
+<div class="name">
+    <p><a href="{{ nglayouts_item_path(item) }}" target="_blank">{{ item.name }}</a></p>
+</div>
+
+<div class="value-type">
+    <p>{{ nglayouts_value_type_name(item) }}</p>
+</div>

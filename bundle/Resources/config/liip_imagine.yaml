@@ -1,0 +1,5 @@
+filter_sets:
+    nglayouts_sylius_bitbag_page_app_preview:
+        filters:
+            thumbnail: { size: [160, 90], mode: outbound }
+            strip: ~
