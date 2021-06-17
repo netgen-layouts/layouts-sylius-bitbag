@@ -35,3 +35,15 @@ item_types:
                 value_provider: name
         default_columns:
             - name
+    bitbag_media:
+        name: item_types.bitbag_media
+        tree:
+            enabled: false
+        preview:
+            enabled: false
+        columns:
+            name:
+                name: columns.name
+                value_provider: name
+        default_columns:
+            - name

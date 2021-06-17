@@ -10,3 +10,7 @@ services:
     netgen_layouts.sylius.bitbag.block_repository:
         class: Netgen\Layouts\Sylius\BitBag\Repository\BlockRepository
         parent: bitbag_sylius_cms_plugin.repository.block
+
+    netgen_layouts.sylius.bitbag.media_repository:
+        class: Netgen\Layouts\Sylius\BitBag\Repository\MediaRepository
+        parent: bitbag_sylius_cms_plugin.repository.media
