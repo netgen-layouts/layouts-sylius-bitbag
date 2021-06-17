@@ -17,3 +17,22 @@ services:
             - "@router"
         tags:
             - { name: netgen_layouts.cms_value_url_generator, value_type: bitbag_page }
+
+    netgen_layouts.sylius.bitbag.item.value_converter.section:
+        class: Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\SectionValueConverter
+        tags:
+            - { name: netgen_layouts.cms_value_converter }
+
+    netgen_layouts.sylius.bitbag.item.value_loader.section:
+        class: Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\SectionValueLoader
+        arguments:
+            - "@netgen_layouts.sylius.bitbag.section_repository"
+        tags:
+            - { name: netgen_layouts.cms_value_loader, value_type: bitbag_section }
+
+    netgen_layouts.sylius.bitbag.item.value_url_generator.section:
+        class: Netgen\Layouts\Sylius\BitBag\Item\ValueUrlGenerator\SectionValueUrlGenerator
+        arguments:
+            - "@router"
+        tags:
+            - { name: netgen_layouts.cms_value_url_generator, value_type: bitbag_section }
