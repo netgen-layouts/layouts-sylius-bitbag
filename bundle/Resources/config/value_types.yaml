@@ -5,3 +5,5 @@ value_types:
         name: 'BitBag section'
     bitbag_block:
         name: 'BitBag block'
+    bitbag_media:
+        name: 'BitBag media'

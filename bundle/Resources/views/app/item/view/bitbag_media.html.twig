@@ -1,0 +1,15 @@
+{% set media = item.object %}
+
+{% if media.type == 'image' %}
+    <div class="image">
+        <img src="{{ media.path|imagine_filter('nglayouts_sylius_bitbag_media_app_preview') }}" />
+    </div>
+{% endif %}
+
+<div class="name">
+    <p><a href="{{ nglayouts_item_path(item) }}" target="_blank">{{ item.name }}</a></p>
+</div>
+
+<div class="value-type">
+    <p>{{ nglayouts_value_type_name(item) }} / {{ media.type }}</p>
+</div>
