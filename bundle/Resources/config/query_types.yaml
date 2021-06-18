@@ -1,0 +1,3 @@
+query_types:
+    bitbag_search:
+        name: 'BitBag CMS'

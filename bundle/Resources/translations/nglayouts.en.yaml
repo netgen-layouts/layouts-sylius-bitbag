@@ -1,3 +1,5 @@
 layout_resolver.target.bitbag_page: 'BitBag page'
 layout_resolver.target.bitbag_section: 'BitBag section'
 layout_resolver.target.bitbag_section_page: 'BitBag section page'
+
+query.bitbag_search.bitbag_item_type: 'BitBag item type'

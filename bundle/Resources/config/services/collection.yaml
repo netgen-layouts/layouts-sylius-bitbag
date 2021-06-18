@@ -1,0 +1,10 @@
+services:
+    netgen_layouts.sylius.bitbag.collection.query_type_handler.bitbag:
+        class: Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\BitBagSearchHandler
+        arguments:
+            - "@netgen_layouts.sylius.bitbag.page_repository"
+            - "@netgen_layouts.sylius.bitbag.block_repository"
+            - "@netgen_layouts.sylius.bitbag.media_repository"
+            - "@sylius.context.locale"
+        tags:
+            - { name: netgen_layouts.query_type_handler, type: bitbag_search }
