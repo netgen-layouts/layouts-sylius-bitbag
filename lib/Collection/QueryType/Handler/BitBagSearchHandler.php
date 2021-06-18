@@ -97,10 +97,13 @@ final class BitBagSearchHandler implements QueryTypeHandlerInterface
         switch ($bitBagItemType) {
             case 'page':
                 return $this->pageRepository;
+
             case 'block':
                 return $this->blockRepository;
+
             case 'media':
                 return $this->mediaRepository;
+
             default:
                 return null;
         }
