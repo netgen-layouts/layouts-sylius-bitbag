@@ -1,3 +1,9 @@
 query_types:
-    bitbag_search:
-        name: 'BitBag CMS'
+    bitbag_page:
+        name: 'BitBag page'
+    bitbag_block:
+        name: 'BitBag block'
+    bitbag_media:
+        name: 'BitBag media'
+    bitbag_section:
+        name: 'BitBag section'

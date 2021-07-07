@@ -1,10 +1,32 @@
 services:
-    netgen_layouts.sylius.bitbag.collection.query_type_handler.bitbag:
-        class: Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\BitBagSearchHandler
+    netgen_layouts.sylius.bitbag.collection.query_type_handler.page:
+        class: Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\PageHandler
         arguments:
             - "@netgen_layouts.sylius.bitbag.page_repository"
+            - "@sylius.context.locale"
+        tags:
+            - { name: netgen_layouts.query_type_handler, type: bitbag_page }
+
+    netgen_layouts.sylius.bitbag.collection.query_type_handler.block:
+        class: Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\BlockHandler
+        arguments:
             - "@netgen_layouts.sylius.bitbag.block_repository"
+            - "@sylius.context.locale"
+        tags:
+            - { name: netgen_layouts.query_type_handler, type: bitbag_block }
+
+    netgen_layouts.sylius.bitbag.collection.query_type_handler.media:
+        class: Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\MediaHandler
+        arguments:
             - "@netgen_layouts.sylius.bitbag.media_repository"
             - "@sylius.context.locale"
         tags:
-            - { name: netgen_layouts.query_type_handler, type: bitbag_search }
+            - { name: netgen_layouts.query_type_handler, type: bitbag_media }
+
+    netgen_layouts.sylius.bitbag.collection.query_type_handler.section:
+        class: Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\SectionHandler
+        arguments:
+            - "@netgen_layouts.sylius.bitbag.section_repository"
+            - "@sylius.context.locale"
+        tags:
+            - { name: netgen_layouts.query_type_handler, type: bitbag_section }
