@@ -18,6 +18,7 @@ final class BlockHandler implements QueryTypeHandlerInterface
 {
     use SyliusProductTrait;
     use SyliusTaxonTrait;
+    use SyliusChannelFilterTrait;
 
     private BlockRepositoryInterface $blockRepository;
 
@@ -33,8 +34,11 @@ final class BlockHandler implements QueryTypeHandlerInterface
 
     public function buildParameters(ParameterBuilderInterface $builder): void
     {
+        $advancedGroup = [self::GROUP_ADVANCED];
+
         $this->buildSyliusProductParameters($builder);
         $this->buildSyliusTaxonParameters($builder);
+        $this->buildSyliusChannelFilterParameters($builder, $advancedGroup);
     }
 
     public function getValues(Query $query, int $offset = 0, ?int $limit = null): iterable
@@ -45,6 +49,7 @@ final class BlockHandler implements QueryTypeHandlerInterface
 
         $this->addSyliusProductCriterion($query, $queryBuilder);
         $this->addSyliusTaxonCriterion($query, $queryBuilder);
+        $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
 
         $paginator = $this->blockRepository->createFilterPaginator($queryBuilder);
         $paginator->setMaxPerPage($limit);
@@ -61,6 +66,7 @@ final class BlockHandler implements QueryTypeHandlerInterface
 
         $this->addSyliusProductCriterion($query, $queryBuilder);
         $this->addSyliusTaxonCriterion($query, $queryBuilder);
+        $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
 
         $paginator = $this->blockRepository->createFilterPaginator($queryBuilder);
 

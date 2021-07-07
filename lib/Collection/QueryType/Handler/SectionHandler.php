@@ -14,6 +14,8 @@ use Sylius\Component\Locale\Context\LocaleContextInterface;
 
 final class SectionHandler implements QueryTypeHandlerInterface
 {
+    use SyliusChannelFilterTrait;
+
     private SectionRepositoryInterface $sectionRepository;
 
     private LocaleContextInterface $localeContext;
@@ -28,6 +30,9 @@ final class SectionHandler implements QueryTypeHandlerInterface
 
     public function buildParameters(ParameterBuilderInterface $builder): void
     {
+        $advancedGroup = [self::GROUP_ADVANCED];
+
+        $this->buildSyliusChannelFilterParameters($builder, $advancedGroup);
     }
 
     public function getValues(Query $query, int $offset = 0, ?int $limit = null): iterable
@@ -35,6 +40,8 @@ final class SectionHandler implements QueryTypeHandlerInterface
         $queryBuilder = $this->sectionRepository->createListQueryBuilder(
             $this->localeContext->getLocaleCode(),
         );
+
+        $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
 
         $paginator = $this->sectionRepository->createFilterPaginator($queryBuilder);
         $paginator->setMaxPerPage($limit);
@@ -48,6 +55,8 @@ final class SectionHandler implements QueryTypeHandlerInterface
         $queryBuilder = $this->sectionRepository->createListQueryBuilder(
             $this->localeContext->getLocaleCode(),
         );
+
+        $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
 
         $paginator = $this->sectionRepository->createFilterPaginator($queryBuilder);
 

@@ -16,6 +16,7 @@ use Sylius\Component\Locale\Context\LocaleContextInterface;
 final class MediaHandler implements QueryTypeHandlerInterface
 {
     use SyliusProductTrait;
+    use SyliusChannelFilterTrait;
 
     private MediaRepositoryInterface $mediaRepository;
 
@@ -31,7 +32,10 @@ final class MediaHandler implements QueryTypeHandlerInterface
 
     public function buildParameters(ParameterBuilderInterface $builder): void
     {
+        $advancedGroup = [self::GROUP_ADVANCED];
+
         $this->buildSyliusProductParameters($builder, $advancedGroup);
+        $this->buildSyliusChannelFilterParameters($builder, $advancedGroup);
     }
 
     public function getValues(Query $query, int $offset = 0, ?int $limit = null): iterable
@@ -41,6 +45,7 @@ final class MediaHandler implements QueryTypeHandlerInterface
         );
 
         $this->addSyliusProductCriterion($query, $queryBuilder);
+        $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
 
         $paginator = $this->mediaRepository->createFilterPaginator($queryBuilder);
         $paginator->setMaxPerPage($limit);
@@ -56,6 +61,7 @@ final class MediaHandler implements QueryTypeHandlerInterface
         );
 
         $this->addSyliusProductCriterion($query, $queryBuilder);
+        $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
 
         $paginator = $this->mediaRepository->createFilterPaginator($queryBuilder);
 
