@@ -15,6 +15,8 @@ use Sylius\Component\Locale\Context\LocaleContextInterface;
 
 final class PageHandler implements QueryTypeHandlerInterface
 {
+    use SyliusProductTrait;
+
     private PageRepositoryInterface $pageRepository;
 
     private LocaleContextInterface $localeContext;
@@ -29,6 +31,7 @@ final class PageHandler implements QueryTypeHandlerInterface
 
     public function buildParameters(ParameterBuilderInterface $builder): void
     {
+        $this->buildSyliusProductParameters($builder);
     }
 
     public function getValues(Query $query, int $offset = 0, ?int $limit = null): iterable
@@ -36,6 +39,8 @@ final class PageHandler implements QueryTypeHandlerInterface
         $queryBuilder = $this->pageRepository->createListQueryBuilder(
             $this->localeContext->getLocaleCode(),
         );
+
+        $this->addSyliusProductCriterion($query, $queryBuilder);
 
         $paginator = $this->pageRepository->createFilterPaginator($queryBuilder);
         $paginator->setMaxPerPage($limit);
@@ -50,6 +55,8 @@ final class PageHandler implements QueryTypeHandlerInterface
             $this->localeContext->getLocaleCode(),
         );
 
+        $this->addSyliusProductCriterion($query, $queryBuilder);
+
         $paginator = $this->pageRepository->createFilterPaginator($queryBuilder);
 
         return $paginator->getNbResults();
@@ -57,5 +64,6 @@ final class PageHandler implements QueryTypeHandlerInterface
 
     public function isContextual(Query $query): bool
     {
+        return $this->isSyliusProductContextual($query);
     }
 }

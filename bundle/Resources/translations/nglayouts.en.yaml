@@ -2,3 +2,11 @@ layout_resolver.target.bitbag_page: 'BitBag page'
 layout_resolver.target.bitbag_section: 'BitBag section'
 layout_resolver.target.bitbag_section_page: 'BitBag pages by section'
 
+query.bitbag_page.use_current_product: 'Use current product'
+query.bitbag_page.sylius_product_id: 'Sylius product'
+
+query.bitbag_block.use_current_product: 'Use current product'
+query.bitbag_block.sylius_product_id: 'Sylius product'
+
+query.bitbag_media.use_current_product: 'Use current product'
+query.bitbag_media.sylius_product_id: 'Sylius product'
