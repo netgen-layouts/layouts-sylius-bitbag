@@ -7,6 +7,8 @@ query.bitbag_page.sylius_product_id: 'Sylius product'
 
 query.bitbag_block.use_current_product: 'Use current product'
 query.bitbag_block.sylius_product_id: 'Sylius product'
+query.bitbag_block.use_current_taxon: 'Use current taxon'
+query.bitbag_block.sylius_taxon_id: 'Sylius taxon'
 
 query.bitbag_media.use_current_product: 'Use current product'
 query.bitbag_media.sylius_product_id: 'Sylius product'
