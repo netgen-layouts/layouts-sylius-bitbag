@@ -7,6 +7,7 @@ namespace Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler;
 use Netgen\Layouts\API\Values\Collection\Query;
 use Netgen\Layouts\Collection\QueryType\QueryTypeHandlerInterface;
 use Netgen\Layouts\Parameters\ParameterBuilderInterface;
+use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\BitBagSectionTrait;
 use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\SyliusChannelFilterTrait;
 use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\SyliusProductTrait;
 use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\SyliusTaxonTrait;
@@ -17,6 +18,7 @@ use const PHP_INT_MAX;
 
 final class BlockHandler implements QueryTypeHandlerInterface
 {
+    use BitBagSectionTrait;
     use SyliusChannelFilterTrait;
     use SyliusProductTrait;
     use SyliusTaxonTrait;
@@ -43,6 +45,7 @@ final class BlockHandler implements QueryTypeHandlerInterface
 
         $this->buildSyliusProductParameters($builder);
         $this->buildSyliusTaxonParameters($builder);
+        $this->buildBitBagSectionParameters($builder);
         $this->buildSyliusChannelFilterParameters($builder, $advancedGroup);
     }
 
@@ -56,6 +59,7 @@ final class BlockHandler implements QueryTypeHandlerInterface
 
         $this->addSyliusProductCriterion($query, $queryBuilder, $request);
         $this->addSyliusTaxonCriterion($query, $queryBuilder, $request);
+        $this->addBitBagSectionCriterion($query, $queryBuilder, $request);
         $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
 
         $paginator = $this->blockRepository->createFilterPaginator($queryBuilder);
@@ -78,6 +82,7 @@ final class BlockHandler implements QueryTypeHandlerInterface
 
         $this->addSyliusProductCriterion($query, $queryBuilder, $request);
         $this->addSyliusTaxonCriterion($query, $queryBuilder, $request);
+        $this->addBitBagSectionCriterion($query, $queryBuilder, $request);
         $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
 
         $paginator = $this->blockRepository->createFilterPaginator($queryBuilder);
@@ -88,6 +93,7 @@ final class BlockHandler implements QueryTypeHandlerInterface
     public function isContextual(Query $query): bool
     {
         return $this->isSyliusProductContextual($query)
-            || $this->isSyliusTaxonContextual($query);
+            || $this->isSyliusTaxonContextual($query)
+            || $this->isBitBagSectionContextual($query);
     }
 }

@@ -11,6 +11,8 @@ use Netgen\Layouts\Parameters\ParameterType;
 use Netgen\Layouts\Sylius\Parameters\ParameterType as SyliusParameterType;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
 use Symfony\Component\HttpFoundation\Request;
+use function count;
+use function in_array;
 
 trait SyliusTaxonTrait
 {
@@ -63,7 +65,14 @@ trait SyliusTaxonTrait
             return;
         }
 
-        $queryBuilder->innerJoin('o.taxonomies', 'taxonomies');
+        if (!in_array('taxonomies', $queryBuilder->getAllAliases(), true)) {
+            $rootAliases = $queryBuilder->getRootAliases();
+
+            $join = count($rootAliases) === 0 ? 'taxonomies' : $rootAliases[0] . '.taxonomies';
+
+            $queryBuilder->innerJoin($join, 'taxonomies');
+        }
+
         $queryBuilder->andWhere($queryBuilder->expr()->eq('taxonomies.id', ':taxonId'));
         $queryBuilder->setParameter(':taxonId', (int) $syliusTaxonId);
     }

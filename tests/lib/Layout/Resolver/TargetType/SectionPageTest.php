@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\BitBag\Tests\Layout\Resolver\TargetType;
 
-use Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\SectionPage;
 use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
+use Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\SectionPage;
 use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Page as PageStub;
 use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Section as SectionStub;
 use Netgen\Layouts\Sylius\BitBag\Tests\Validator\RepositoryValidatorFactory;

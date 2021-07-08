@@ -7,6 +7,7 @@ namespace Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler;
 use Netgen\Layouts\API\Values\Collection\Query;
 use Netgen\Layouts\Collection\QueryType\QueryTypeHandlerInterface;
 use Netgen\Layouts\Parameters\ParameterBuilderInterface;
+use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\BitBagSectionTrait;
 use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\SyliusChannelFilterTrait;
 use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\SyliusProductTrait;
 use Netgen\Layouts\Sylius\BitBag\Repository\PageRepositoryInterface;
@@ -16,6 +17,7 @@ use const PHP_INT_MAX;
 
 final class PageHandler implements QueryTypeHandlerInterface
 {
+    use BitBagSectionTrait;
     use SyliusChannelFilterTrait;
     use SyliusProductTrait;
 
@@ -40,6 +42,7 @@ final class PageHandler implements QueryTypeHandlerInterface
         $advancedGroup = [self::GROUP_ADVANCED];
 
         $this->buildSyliusProductParameters($builder);
+        $this->buildBitBagSectionParameters($builder);
         $this->buildSyliusChannelFilterParameters($builder, $advancedGroup);
     }
 
@@ -52,6 +55,7 @@ final class PageHandler implements QueryTypeHandlerInterface
         $request = $this->requestStack->getCurrentRequest();
 
         $this->addSyliusProductCriterion($query, $queryBuilder, $request);
+        $this->addBitBagSectionCriterion($query, $queryBuilder, $request);
         $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
 
         $paginator = $this->pageRepository->createFilterPaginator($queryBuilder);
@@ -73,6 +77,7 @@ final class PageHandler implements QueryTypeHandlerInterface
         $request = $this->requestStack->getCurrentRequest();
 
         $this->addSyliusProductCriterion($query, $queryBuilder, $request);
+        $this->addBitBagSectionCriterion($query, $queryBuilder, $request);
         $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
 
         $paginator = $this->pageRepository->createFilterPaginator($queryBuilder);
@@ -82,6 +87,7 @@ final class PageHandler implements QueryTypeHandlerInterface
 
     public function isContextual(Query $query): bool
     {
-        return $this->isSyliusProductContextual($query);
+        return $this->isSyliusProductContextual($query)
+            || $this->isBitBagSectionContextual($query);
     }
 }

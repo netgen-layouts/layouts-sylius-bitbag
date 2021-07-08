@@ -11,6 +11,8 @@ use Netgen\Layouts\Parameters\ParameterType;
 use Netgen\Layouts\Sylius\Parameters\ParameterType as SyliusParameterType;
 use Sylius\Component\Product\Model\ProductInterface;
 use Symfony\Component\HttpFoundation\Request;
+use function count;
+use function in_array;
 
 trait SyliusProductTrait
 {
@@ -63,7 +65,14 @@ trait SyliusProductTrait
             return;
         }
 
-        $queryBuilder->innerJoin('o.products', 'products');
+        if (!in_array('products', $queryBuilder->getAllAliases(), true)) {
+            $rootAliases = $queryBuilder->getRootAliases();
+
+            $join = count($rootAliases) === 0 ? 'products' : $rootAliases[0] . '.products';
+
+            $queryBuilder->innerJoin($join, 'products');
+        }
+
         $queryBuilder->andWhere($queryBuilder->expr()->eq('products.id', ':productId'));
         $queryBuilder->setParameter(':productId', (int) $syliusProductId);
     }

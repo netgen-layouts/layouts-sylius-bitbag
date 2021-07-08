@@ -66,7 +66,13 @@ trait SyliusChannelFilterTrait
 
         $reverse = $parameterCollection->getParameter('channels_filter')->getValue() !== 'include';
 
-        $queryBuilder->innerJoin('o.channels', 'channels');
+        if (!in_array('channels', $queryBuilder->getAllAliases())) {
+            $rootAliases = $queryBuilder->getRootAliases();
+
+            $join = count($rootAliases) === 0 ? 'channels' : $rootAliases[0].'.channels';
+
+            $queryBuilder->innerJoin($join, 'channels');
+        }
 
         $reverse
             ? $queryBuilder->andWhere($queryBuilder->expr()->notIn('channels.id', ':channels'))
