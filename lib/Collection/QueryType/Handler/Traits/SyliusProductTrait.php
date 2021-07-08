@@ -47,8 +47,7 @@ trait SyliusProductTrait
     /**
      * Builds the criteria for filtering by Sylius product.
      */
-    private function addSyliusProductCriterion
-    (
+    private function addSyliusProductCriterion(
         ParameterCollectionInterface $parameterCollection,
         QueryBuilder $queryBuilder,
         ?Request $request

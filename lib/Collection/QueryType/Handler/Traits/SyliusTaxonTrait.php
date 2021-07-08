@@ -47,8 +47,7 @@ trait SyliusTaxonTrait
     /**
      * Builds the criteria for filtering by Sylius taxon.
      */
-    private function addSyliusTaxonCriterion
-    (
+    private function addSyliusTaxonCriterion(
         ParameterCollectionInterface $parameterCollection,
         QueryBuilder $queryBuilder,
         ?Request $request

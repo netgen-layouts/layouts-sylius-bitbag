@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Netgen\Layouts\Sylius\BitBag\Tests\Layout\Resolver\TargetType;
 
 use Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\SectionPage;
-use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
+use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
 use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Page as PageStub;
 use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Section as SectionStub;
 use Netgen\Layouts\Sylius\BitBag\Tests\Validator\RepositoryValidatorFactory;
@@ -17,7 +17,7 @@ use Symfony\Component\Validator\Validation;
 final class SectionPageTest extends TestCase
 {
     /**
-     * @var \PHPUnit\Framework\MockObject\MockObject&\Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface
+     * @var \PHPUnit\Framework\MockObject\MockObject&\BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface
      */
     private MockObject $repositoryMock;
 
