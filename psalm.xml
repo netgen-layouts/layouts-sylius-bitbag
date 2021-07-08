@@ -12,4 +12,34 @@
             <directory name="vendor" />
         </ignoreFiles>
     </projectFiles>
+
+    <issueHandlers>
+        <!-- Symfony -->
+
+        <PropertyNotSetInConstructor>
+            <errorLevel type="suppress">
+                <referencedProperty name="Symfony\Component\Validator\ConstraintValidator::$context" />
+            </errorLevel>
+        </PropertyNotSetInConstructor>
+
+        <!-- Doctrine ORM -->
+
+        <MoreSpecificReturnType>
+            <errorLevel type="suppress">
+                <directory name="lib/Collection/QueryType/Handler" />
+            </errorLevel>
+        </MoreSpecificReturnType>
+
+        <LessSpecificReturnStatement>
+            <errorLevel type="suppress">
+                <directory name="lib/Collection/QueryType/Handler" />
+            </errorLevel>
+        </LessSpecificReturnStatement>
+
+        <TooManyArguments>
+            <errorLevel type="suppress">
+                <directory name="lib/Repository" />
+            </errorLevel>
+        </TooManyArguments>
+    </issueHandlers>
 </psalm>
