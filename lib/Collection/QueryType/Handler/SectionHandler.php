@@ -7,6 +7,7 @@ namespace Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler;
 use Netgen\Layouts\API\Values\Collection\Query;
 use Netgen\Layouts\Collection\QueryType\QueryTypeHandlerInterface;
 use Netgen\Layouts\Parameters\ParameterBuilderInterface;
+use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\BitBagSortingTrait;
 use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\SyliusChannelFilterTrait;
 use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
@@ -15,10 +16,16 @@ use const PHP_INT_MAX;
 final class SectionHandler implements QueryTypeHandlerInterface
 {
     use SyliusChannelFilterTrait;
+    use BitBagSortingTrait;
 
     private SectionRepositoryInterface $sectionRepository;
 
     private LocaleContextInterface $localeContext;
+
+    private array $sortingOptions = [
+        'Name' => 'translations.name',
+        'Code' => 'code',
+    ];
 
     public function __construct(
         SectionRepositoryInterface $sectionRepository,
@@ -33,6 +40,7 @@ final class SectionHandler implements QueryTypeHandlerInterface
         $advancedGroup = [self::GROUP_ADVANCED];
 
         $this->buildSyliusChannelFilterParameters($builder, $advancedGroup);
+        $this->buildBitBagSortingParameters($builder, $this->sortingOptions);
     }
 
     public function getValues(Query $query, int $offset = 0, ?int $limit = null): iterable
@@ -42,6 +50,7 @@ final class SectionHandler implements QueryTypeHandlerInterface
         );
 
         $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
+        $this->addBitBagSortingClause($query, $queryBuilder);
 
         $paginator = $this->sectionRepository->createFilterPaginator($queryBuilder);
 

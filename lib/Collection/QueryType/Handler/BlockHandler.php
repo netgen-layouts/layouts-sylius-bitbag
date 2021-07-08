@@ -8,6 +8,7 @@ use Netgen\Layouts\API\Values\Collection\Query;
 use Netgen\Layouts\Collection\QueryType\QueryTypeHandlerInterface;
 use Netgen\Layouts\Parameters\ParameterBuilderInterface;
 use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\BitBagSectionTrait;
+use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\BitBagSortingTrait;
 use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\SyliusChannelFilterTrait;
 use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\SyliusProductTrait;
 use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\SyliusTaxonTrait;
@@ -22,12 +23,18 @@ final class BlockHandler implements QueryTypeHandlerInterface
     use SyliusChannelFilterTrait;
     use SyliusProductTrait;
     use SyliusTaxonTrait;
+    use BitBagSortingTrait;
 
     private BlockRepositoryInterface $blockRepository;
 
     private LocaleContextInterface $localeContext;
 
     private RequestStack $requestStack;
+
+    private array $sortingOptions = [
+        'Name' => 'translations.name',
+        'Code' => 'code',
+    ];
 
     public function __construct(
         BlockRepositoryInterface $blockRepository,
@@ -47,6 +54,7 @@ final class BlockHandler implements QueryTypeHandlerInterface
         $this->buildSyliusTaxonParameters($builder);
         $this->buildBitBagSectionParameters($builder);
         $this->buildSyliusChannelFilterParameters($builder, $advancedGroup);
+        $this->buildBitBagSortingParameters($builder, $this->sortingOptions);
     }
 
     public function getValues(Query $query, int $offset = 0, ?int $limit = null): iterable
@@ -61,6 +69,7 @@ final class BlockHandler implements QueryTypeHandlerInterface
         $this->addSyliusTaxonCriterion($query, $queryBuilder, $request);
         $this->addBitBagSectionCriterion($query, $queryBuilder, $request);
         $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
+        $this->addBitBagSortingClause($query, $queryBuilder);
 
         $paginator = $this->blockRepository->createFilterPaginator($queryBuilder);
 

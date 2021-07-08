@@ -8,6 +8,7 @@ use Netgen\Layouts\API\Values\Collection\Query;
 use Netgen\Layouts\Collection\QueryType\QueryTypeHandlerInterface;
 use Netgen\Layouts\Parameters\ParameterBuilderInterface;
 use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\BitBagSectionTrait;
+use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\BitBagSortingTrait;
 use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\SyliusChannelFilterTrait;
 use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\SyliusProductTrait;
 use Netgen\Layouts\Sylius\BitBag\Repository\MediaRepositoryInterface;
@@ -20,12 +21,18 @@ final class MediaHandler implements QueryTypeHandlerInterface
     use BitBagSectionTrait;
     use SyliusChannelFilterTrait;
     use SyliusProductTrait;
+    use BitBagSortingTrait;
 
     private MediaRepositoryInterface $mediaRepository;
 
     private LocaleContextInterface $localeContext;
 
     private RequestStack $requestStack;
+
+    private array $sortingOptions = [
+        'Name' => 'translations.name',
+        'Code' => 'code',
+    ];
 
     public function __construct(
         MediaRepositoryInterface $mediaRepository,
@@ -44,6 +51,7 @@ final class MediaHandler implements QueryTypeHandlerInterface
         $this->buildSyliusProductParameters($builder);
         $this->buildBitBagSectionParameters($builder);
         $this->buildSyliusChannelFilterParameters($builder, $advancedGroup);
+        $this->buildBitBagSortingParameters($builder, $this->sortingOptions);
     }
 
     public function getValues(Query $query, int $offset = 0, ?int $limit = null): iterable
@@ -57,6 +65,7 @@ final class MediaHandler implements QueryTypeHandlerInterface
         $this->addSyliusProductCriterion($query, $queryBuilder, $request);
         $this->addBitBagSectionCriterion($query, $queryBuilder, $request);
         $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
+        $this->addBitBagSortingClause($query, $queryBuilder);
 
         $paginator = $this->mediaRepository->createFilterPaginator($queryBuilder);
 
