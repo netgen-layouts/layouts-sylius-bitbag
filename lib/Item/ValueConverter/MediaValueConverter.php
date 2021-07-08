@@ -7,6 +7,9 @@ namespace Netgen\Layouts\Sylius\BitBag\Item\ValueConverter;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use Netgen\Layouts\Item\ValueConverterInterface;
 
+/**
+ * @implements \Netgen\Layouts\Item\ValueConverterInterface<\BitBag\SyliusCmsPlugin\Entity\MediaInterface>
+ */
 final class MediaValueConverter implements ValueConverterInterface
 {
     public function supports(object $object): bool

@@ -10,12 +10,10 @@ use Netgen\Layouts\Parameters\ParameterCollectionInterface;
 use Netgen\Layouts\Parameters\ParameterType;
 use Netgen\Layouts\Sylius\Parameters\ParameterType as SyliusParameterType;
 use Sylius\Component\Product\Model\ProductInterface;
-use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpFoundation\Request;
 
 trait SyliusProductTrait
 {
-    private RequestStack $requestStack;
-
     /**
      * Builds the parameters for filtering by specific or contextual Sylius product.
      *
@@ -49,26 +47,40 @@ trait SyliusProductTrait
     /**
      * Builds the criteria for filtering by Sylius product.
      */
-    private function addSyliusProductCriterion(ParameterCollectionInterface $parameterCollection, QueryBuilder $queryBuilder): void
-    {
-        $useCurrentProduct = $parameterCollection->getParameter('use_current_product')->getValue();
+    private function addSyliusProductCriterion
+    (
+        ParameterCollectionInterface $parameterCollection,
+        QueryBuilder $queryBuilder,
+        ?Request $request
+    ): void {
+        $useCurrentProduct = $parameterCollection->getParameter('use_current_product')->getValue() === true;
         $syliusProductId = $parameterCollection->getParameter('sylius_product_id')->getValue();
 
-        if ($useCurrentProduct !== true && $syliusProductId === null) {
-            return;
+        if ($useCurrentProduct === true) {
+            $syliusProductId = $this->getCurrentProductId($request);
         }
 
-        if ($useCurrentProduct) {
-            $request = $this->requestStack->getCurrentRequest();
-            $product = $request->attributes->get('nglayouts_sylius_product');
-
-            $syliusProductId = $product instanceof ProductInterface
-                ? $product->getId()
-                : $syliusProductId;
+        if ($syliusProductId === null) {
+            return;
         }
 
         $queryBuilder->innerJoin('o.products', 'products');
         $queryBuilder->andWhere($queryBuilder->expr()->eq('products.id', ':productId'));
         $queryBuilder->setParameter(':productId', (int) $syliusProductId);
+    }
+
+    private function getCurrentProductId(?Request $request): ?int
+    {
+        if (!$request instanceof Request) {
+            return null;
+        }
+
+        $product = $request->attributes->get('nglayouts_sylius_product');
+
+        if (!$product instanceof ProductInterface) {
+            return null;
+        }
+
+        return $product->getId();
     }
 }

@@ -10,6 +10,7 @@ use Netgen\Layouts\Parameters\ParameterBuilderInterface;
 use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\SyliusChannelFilterTrait;
 use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
+use const PHP_INT_MAX;
 
 final class SectionHandler implements QueryTypeHandlerInterface
 {
@@ -43,6 +44,9 @@ final class SectionHandler implements QueryTypeHandlerInterface
         $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
 
         $paginator = $this->sectionRepository->createFilterPaginator($queryBuilder);
+
+        $limit = $limit ?? PHP_INT_MAX;
+
         $paginator->setMaxPerPage($limit);
         $paginator->setCurrentPage((int) ($offset / $limit) + 1);
 

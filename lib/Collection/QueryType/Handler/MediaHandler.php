@@ -11,6 +11,8 @@ use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\SyliusChann
 use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\SyliusProductTrait;
 use Netgen\Layouts\Sylius\BitBag\Repository\MediaRepositoryInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
+use const PHP_INT_MAX;
 
 final class MediaHandler implements QueryTypeHandlerInterface
 {
@@ -21,12 +23,16 @@ final class MediaHandler implements QueryTypeHandlerInterface
 
     private LocaleContextInterface $localeContext;
 
+    private RequestStack $requestStack;
+
     public function __construct(
         MediaRepositoryInterface $mediaRepository,
-        LocaleContextInterface $localeContext
+        LocaleContextInterface $localeContext,
+        RequestStack $requestStack
     ) {
         $this->mediaRepository = $mediaRepository;
         $this->localeContext = $localeContext;
+        $this->requestStack = $requestStack;
     }
 
     public function buildParameters(ParameterBuilderInterface $builder): void
@@ -43,10 +49,15 @@ final class MediaHandler implements QueryTypeHandlerInterface
             $this->localeContext->getLocaleCode(),
         );
 
-        $this->addSyliusProductCriterion($query, $queryBuilder);
+        $request = $this->requestStack->getCurrentRequest();
+
+        $this->addSyliusProductCriterion($query, $queryBuilder, $request);
         $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
 
         $paginator = $this->mediaRepository->createFilterPaginator($queryBuilder);
+
+        $limit = $limit ?? PHP_INT_MAX;
+
         $paginator->setMaxPerPage($limit);
         $paginator->setCurrentPage((int) ($offset / $limit) + 1);
 
@@ -59,7 +70,9 @@ final class MediaHandler implements QueryTypeHandlerInterface
             $this->localeContext->getLocaleCode(),
         );
 
-        $this->addSyliusProductCriterion($query, $queryBuilder);
+        $request = $this->requestStack->getCurrentRequest();
+
+        $this->addSyliusProductCriterion($query, $queryBuilder, $request);
         $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
 
         $paginator = $this->mediaRepository->createFilterPaginator($queryBuilder);

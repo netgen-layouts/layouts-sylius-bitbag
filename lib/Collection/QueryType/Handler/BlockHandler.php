@@ -12,6 +12,8 @@ use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\SyliusProdu
 use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\SyliusTaxonTrait;
 use Netgen\Layouts\Sylius\BitBag\Repository\BlockRepositoryInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
+use const PHP_INT_MAX;
 
 final class BlockHandler implements QueryTypeHandlerInterface
 {
@@ -23,12 +25,16 @@ final class BlockHandler implements QueryTypeHandlerInterface
 
     private LocaleContextInterface $localeContext;
 
+    private RequestStack $requestStack;
+
     public function __construct(
         BlockRepositoryInterface $blockRepository,
-        LocaleContextInterface $localeContext
+        LocaleContextInterface $localeContext,
+        RequestStack $requestStack
     ) {
         $this->blockRepository = $blockRepository;
         $this->localeContext = $localeContext;
+        $this->requestStack = $requestStack;
     }
 
     public function buildParameters(ParameterBuilderInterface $builder): void
@@ -46,11 +52,16 @@ final class BlockHandler implements QueryTypeHandlerInterface
             $this->localeContext->getLocaleCode(),
         );
 
-        $this->addSyliusProductCriterion($query, $queryBuilder);
-        $this->addSyliusTaxonCriterion($query, $queryBuilder);
+        $request = $this->requestStack->getCurrentRequest();
+
+        $this->addSyliusProductCriterion($query, $queryBuilder, $request);
+        $this->addSyliusTaxonCriterion($query, $queryBuilder, $request);
         $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
 
         $paginator = $this->blockRepository->createFilterPaginator($queryBuilder);
+
+        $limit = $limit ?? PHP_INT_MAX;
+
         $paginator->setMaxPerPage($limit);
         $paginator->setCurrentPage((int) ($offset / $limit) + 1);
 
@@ -63,8 +74,10 @@ final class BlockHandler implements QueryTypeHandlerInterface
             $this->localeContext->getLocaleCode(),
         );
 
-        $this->addSyliusProductCriterion($query, $queryBuilder);
-        $this->addSyliusTaxonCriterion($query, $queryBuilder);
+        $request = $this->requestStack->getCurrentRequest();
+
+        $this->addSyliusProductCriterion($query, $queryBuilder, $request);
+        $this->addSyliusTaxonCriterion($query, $queryBuilder, $request);
         $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
 
         $paginator = $this->blockRepository->createFilterPaginator($queryBuilder);

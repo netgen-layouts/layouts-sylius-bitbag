@@ -7,6 +7,9 @@ namespace Netgen\Layouts\Sylius\BitBag\Item\ValueConverter;
 use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use Netgen\Layouts\Item\ValueConverterInterface;
 
+/**
+ * @implements \Netgen\Layouts\Item\ValueConverterInterface<\BitBag\SyliusCmsPlugin\Entity\BlockInterface>
+ */
 final class BlockValueConverter implements ValueConverterInterface
 {
     public function supports(object $object): bool

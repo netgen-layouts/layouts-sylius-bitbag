@@ -10,12 +10,10 @@ use Netgen\Layouts\Parameters\ParameterCollectionInterface;
 use Netgen\Layouts\Parameters\ParameterType;
 use Netgen\Layouts\Sylius\Parameters\ParameterType as SyliusParameterType;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
-use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpFoundation\Request;
 
 trait SyliusTaxonTrait
 {
-    private RequestStack $requestStack;
-
     /**
      * Builds the parameters for filtering by specific or contextual Sylius taxon.
      *
@@ -49,26 +47,40 @@ trait SyliusTaxonTrait
     /**
      * Builds the criteria for filtering by Sylius taxon.
      */
-    private function addSyliusTaxonCriterion(ParameterCollectionInterface $parameterCollection, QueryBuilder $queryBuilder): void
-    {
+    private function addSyliusTaxonCriterion
+    (
+        ParameterCollectionInterface $parameterCollection,
+        QueryBuilder $queryBuilder,
+        ?Request $request
+    ): void {
         $useCurrentTaxon = $parameterCollection->getParameter('use_current_taxon')->getValue();
         $syliusTaxonId = $parameterCollection->getParameter('sylius_taxon_id')->getValue();
 
-        if ($useCurrentTaxon !== true && $syliusTaxonId === null) {
-            return;
+        if ($useCurrentTaxon === true) {
+            $syliusTaxonId = $this->getCurrentTaxonId($request);
         }
 
-        if ($useCurrentTaxon) {
-            $request = $this->requestStack->getCurrentRequest();
-            $taxon = $request->attributes->get('nglayouts_sylius_taxon');
-
-            $syliusTaxonId = $taxon instanceof TaxonInterface
-                ? $taxon->getId()
-                : $syliusTaxonId;
+        if ($syliusTaxonId === null) {
+            return;
         }
 
         $queryBuilder->innerJoin('o.taxonomies', 'taxonomies');
         $queryBuilder->andWhere($queryBuilder->expr()->eq('taxonomies.id', ':taxonId'));
         $queryBuilder->setParameter(':taxonId', (int) $syliusTaxonId);
+    }
+
+    private function getCurrentTaxonId(?Request $request): ?int
+    {
+        if (!$request instanceof Request) {
+            return null;
+        }
+
+        $taxon = $request->attributes->get('nglayouts_sylius_taxon');
+
+        if (!$taxon instanceof TaxonInterface) {
+            return null;
+        }
+
+        return $taxon->getId();
     }
 }

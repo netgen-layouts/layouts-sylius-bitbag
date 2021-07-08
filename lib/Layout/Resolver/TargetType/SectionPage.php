@@ -6,6 +6,7 @@ namespace Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType;
 
 use BitBag\SyliusCmsPlugin\Entity\PageInterface;
 use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
+use Doctrine\Common\Collections\Collection;
 use Netgen\Layouts\Layout\Resolver\TargetType;
 use Netgen\Layouts\Sylius\BitBag\Validator\Constraint as SyliusBitBagConstraints;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,6 +30,9 @@ final class SectionPage extends TargetType
         ];
     }
 
+    /**
+     * @return int[]
+     */
     public function provideValue(Request $request): ?array
     {
         $page = $request->attributes->get('nglayouts_sylius_bitbag_page');
@@ -37,9 +41,14 @@ final class SectionPage extends TargetType
             return null;
         }
 
+        $sections = $page->getSections();
+        if (!$sections instanceof Collection) {
+            return [];
+        }
+
         return array_map(
             static fn (SectionInterface $section): int => $section->getId(),
-            $page->getSections()->getValues(),
+            $sections->getValues(),
         );
     }
 }

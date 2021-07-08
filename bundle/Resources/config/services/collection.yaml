@@ -4,6 +4,7 @@ services:
         arguments:
             - "@netgen_layouts.sylius.bitbag.page_repository"
             - "@sylius.context.locale"
+            - "@request_stack"
         tags:
             - { name: netgen_layouts.query_type_handler, type: bitbag_page }
 
@@ -12,6 +13,7 @@ services:
         arguments:
             - "@netgen_layouts.sylius.bitbag.block_repository"
             - "@sylius.context.locale"
+            - "@request_stack"
         tags:
             - { name: netgen_layouts.query_type_handler, type: bitbag_block }
 
@@ -20,6 +22,7 @@ services:
         arguments:
             - "@netgen_layouts.sylius.bitbag.media_repository"
             - "@sylius.context.locale"
+            - "@request_stack"
         tags:
             - { name: netgen_layouts.query_type_handler, type: bitbag_media }
 

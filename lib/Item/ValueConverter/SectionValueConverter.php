@@ -7,6 +7,9 @@ namespace Netgen\Layouts\Sylius\BitBag\Item\ValueConverter;
 use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 use Netgen\Layouts\Item\ValueConverterInterface;
 
+/**
+ * @implements \Netgen\Layouts\Item\ValueConverterInterface<\BitBag\SyliusCmsPlugin\Entity\SectionInterface>
+ */
 final class SectionValueConverter implements ValueConverterInterface
 {
     public function supports(object $object): bool

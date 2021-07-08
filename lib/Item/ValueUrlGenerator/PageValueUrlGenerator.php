@@ -7,6 +7,9 @@ namespace Netgen\Layouts\Sylius\BitBag\Item\ValueUrlGenerator;
 use Netgen\Layouts\Item\ValueUrlGeneratorInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
+/**
+ * @implements \Netgen\Layouts\Item\ValueUrlGeneratorInterface<\BitBag\SyliusCmsPlugin\Entity\PageInterface>
+ */
 final class PageValueUrlGenerator implements ValueUrlGeneratorInterface
 {
     private UrlGeneratorInterface $urlGenerator;
