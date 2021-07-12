@@ -9,12 +9,12 @@ use Netgen\Layouts\Block\DynamicParameters;
 use Netgen\Layouts\Parameters\Parameter;
 use Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\BitBagEntityField;
 use Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\EntityFieldHandler;
+use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Page as PageStub;
+use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Section as SectionStub;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Page as PageStub;
-use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Section as SectionStub;
 
 final class EntityFieldHandlerTest extends TestCase
 {
@@ -39,8 +39,8 @@ final class EntityFieldHandlerTest extends TestCase
 
     /**
      * @covers \Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\EntityFieldHandler::__construct
-     * @covers \Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\EntityFieldHandler::getDynamicParameters
      * @covers \Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\EntityFieldHandler::getCurrentBitBagEntity
+     * @covers \Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\EntityFieldHandler::getDynamicParameters
      */
     public function testGetDynamicParametersWithPage(): void
     {
@@ -63,8 +63,8 @@ final class EntityFieldHandlerTest extends TestCase
                 'field_identifier' => Parameter::fromArray([
                     'name' => 'field_identifier',
                     'value' => 'name',
-                ])
-            ]
+                ]),
+            ],
         ]));
 
         self::assertArrayHasKey('field', $params);
@@ -78,8 +78,8 @@ final class EntityFieldHandlerTest extends TestCase
 
     /**
      * @covers \Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\EntityFieldHandler::__construct
-     * @covers \Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\EntityFieldHandler::getDynamicParameters
      * @covers \Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\EntityFieldHandler::getCurrentBitBagEntity
+     * @covers \Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\EntityFieldHandler::getDynamicParameters
      */
     public function testGetDynamicParametersWithSection(): void
     {
@@ -100,8 +100,8 @@ final class EntityFieldHandlerTest extends TestCase
                 'field_identifier' => Parameter::fromArray([
                     'name' => 'field_identifier',
                     'value' => 'code',
-                ])
-            ]
+                ]),
+            ],
         ]));
 
         self::assertArrayHasKey('field', $params);
@@ -115,8 +115,8 @@ final class EntityFieldHandlerTest extends TestCase
 
     /**
      * @covers \Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\EntityFieldHandler::__construct
-     * @covers \Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\EntityFieldHandler::getDynamicParameters
      * @covers \Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\EntityFieldHandler::getCurrentBitBagEntity
+     * @covers \Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\EntityFieldHandler::getDynamicParameters
      */
     public function testGetDynamicParametersWithoutRequest(): void
     {
@@ -132,8 +132,8 @@ final class EntityFieldHandlerTest extends TestCase
                 'field_identifier' => Parameter::fromArray([
                     'name' => 'field_identifier',
                     'value' => 'code',
-                ])
-            ]
+                ]),
+            ],
         ]));
 
         self::assertArrayHasKey('field', $params);

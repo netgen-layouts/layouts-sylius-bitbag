@@ -7,6 +7,7 @@ namespace Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use DateTimeInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
+use function is_bool;
 use function is_numeric;
 use function is_string;
 use function method_exists;
