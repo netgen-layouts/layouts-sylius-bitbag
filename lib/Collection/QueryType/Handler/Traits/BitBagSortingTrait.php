@@ -8,12 +8,17 @@ use Doctrine\ORM\QueryBuilder;
 use Netgen\Layouts\Parameters\ParameterBuilderInterface;
 use Netgen\Layouts\Parameters\ParameterCollectionInterface;
 use Netgen\Layouts\Parameters\ParameterType;
+use function count;
+use function in_array;
+use function mb_strlen;
+use function mb_substr;
 
 trait BitBagSortingTrait
 {
     /**
      * Builds the parameters for sorting options.
      *
+     * @param array<string, string> $sortingOptions
      * @param string[] $groups
      */
     private function buildBitBagSortingParameters(ParameterBuilderInterface $builder, array $sortingOptions, array $groups = []): void
@@ -51,14 +56,14 @@ trait BitBagSortingTrait
         $sortDirection = $parameterCollection->getParameter('sort_direction')->getValue();
         $rootAliases = $queryBuilder->getRootAliases();
 
-        if (!in_array('translations', $queryBuilder->getAllAliases())) {
-            $join = count($rootAliases) === 0 ? 'translations' : $rootAliases[0].'.translations';
+        if (!in_array('translations', $queryBuilder->getAllAliases(), true)) {
+            $join = count($rootAliases) === 0 ? 'translations' : $rootAliases[0] . '.translations';
 
             $queryBuilder->innerJoin($join, 'translations');
         }
 
-        if (substr($sortField, 0, strlen('translations.')) !== "translations." && count($rootAliases) !== 0) {
-            $sortField = $rootAliases[0].'.'.$sortField;
+        if (mb_substr($sortField, 0, mb_strlen('translations.')) !== 'translations.' && count($rootAliases) !== 0) {
+            $sortField = $rootAliases[0] . '.' . $sortField;
         }
 
         $queryBuilder->orderBy($sortField, $sortDirection);

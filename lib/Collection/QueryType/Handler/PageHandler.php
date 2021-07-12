@@ -19,9 +19,9 @@ use const PHP_INT_MAX;
 final class PageHandler implements QueryTypeHandlerInterface
 {
     use BitBagSectionTrait;
+    use BitBagSortingTrait;
     use SyliusChannelFilterTrait;
     use SyliusProductTrait;
-    use BitBagSortingTrait;
 
     private PageRepositoryInterface $pageRepository;
 
@@ -29,6 +29,7 @@ final class PageHandler implements QueryTypeHandlerInterface
 
     private RequestStack $requestStack;
 
+    /** @var array<string, string> */
     private array $sortingOptions = [
         'Name' => 'translations.name',
         'Code' => 'code',

@@ -15,13 +15,14 @@ use const PHP_INT_MAX;
 
 final class SectionHandler implements QueryTypeHandlerInterface
 {
-    use SyliusChannelFilterTrait;
     use BitBagSortingTrait;
+    use SyliusChannelFilterTrait;
 
     private SectionRepositoryInterface $sectionRepository;
 
     private LocaleContextInterface $localeContext;
 
+    /** @var array<string, string> */
     private array $sortingOptions = [
         'Name' => 'translations.name',
         'Code' => 'code',

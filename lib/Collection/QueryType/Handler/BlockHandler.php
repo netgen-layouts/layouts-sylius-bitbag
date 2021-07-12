@@ -20,10 +20,10 @@ use const PHP_INT_MAX;
 final class BlockHandler implements QueryTypeHandlerInterface
 {
     use BitBagSectionTrait;
+    use BitBagSortingTrait;
     use SyliusChannelFilterTrait;
     use SyliusProductTrait;
     use SyliusTaxonTrait;
-    use BitBagSortingTrait;
 
     private BlockRepositoryInterface $blockRepository;
 
@@ -31,6 +31,7 @@ final class BlockHandler implements QueryTypeHandlerInterface
 
     private RequestStack $requestStack;
 
+    /** @var array<string, string> */
     private array $sortingOptions = [
         'Name' => 'translations.name',
         'Code' => 'code',
