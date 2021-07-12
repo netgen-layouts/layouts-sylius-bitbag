@@ -41,7 +41,5 @@ query.bitbag_section.sort_type: 'Sort type'
 query.bitbag_section.sort_direction: 'Sort direction'
 
 block.bitbag_entity_field.field_identifier: 'Field identifier'
-block.bitbag_entity_field.width: 'Width'
-block.bitbag_entity_field.height: 'Height'
 block.bitbag_entity_field.html_element: 'HTML element'
 block.bitbag_entity_field.datetime_format: 'Date & time format'

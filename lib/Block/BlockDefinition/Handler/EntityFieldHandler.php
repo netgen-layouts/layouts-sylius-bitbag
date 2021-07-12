@@ -32,28 +32,6 @@ class EntityFieldHandler extends BlockDefinitionHandler
         );
 
         $builder->add(
-            'width',
-            ParameterType\NumberType::class,
-            [
-                'required' => true,
-                'default_value' => 0,
-                'min' => 0,
-                'max' => 4096,
-            ],
-        );
-
-        $builder->add(
-            'height',
-            ParameterType\NumberType::class,
-            [
-                'required' => true,
-                'default_value' => 0,
-                'min' => 0,
-                'max' => 4096,
-            ],
-        );
-
-        $builder->add(
             'html_element',
             ParameterType\ChoiceType::class,
             [

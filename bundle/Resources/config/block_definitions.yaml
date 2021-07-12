@@ -38,8 +38,6 @@ block_definitions:
                 name: 'Media'
                 valid_parameters:
                     - 'field_identifier'
-                    - 'width'
-                    - 'height'
                     - 'css_id'
                     - 'css_class'
                     - 'set_container'
