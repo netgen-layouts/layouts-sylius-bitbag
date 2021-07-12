@@ -54,17 +54,6 @@ final class SectionBackendTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::buildLocation
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::loadLocation
-     */
-    public function testLoadLocation(): void
-    {
-        $location = $this->backend->loadLocation(1);
-
-        self::assertInstanceOf(RootLocation::class, $location);
-    }
-
-    /**
      * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::buildItem
      * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::loadItem
      */
