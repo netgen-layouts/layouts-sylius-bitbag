@@ -50,11 +50,9 @@ final class PageHandler implements QueryTypeHandlerInterface
 
     public function buildParameters(ParameterBuilderInterface $builder): void
     {
-        $advancedGroup = [self::GROUP_ADVANCED];
-
         $this->buildSyliusProductParameters($builder);
         $this->buildBitBagSectionParameters($builder);
-        $this->buildSyliusChannelFilterParameters($builder, $advancedGroup);
+        $this->buildSyliusChannelFilterParameters($builder);
         $this->buildBitBagSortingParameters($builder, $this->sortingOptions);
     }
 

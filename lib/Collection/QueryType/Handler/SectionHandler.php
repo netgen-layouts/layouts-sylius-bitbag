@@ -38,9 +38,7 @@ final class SectionHandler implements QueryTypeHandlerInterface
 
     public function buildParameters(ParameterBuilderInterface $builder): void
     {
-        $advancedGroup = [self::GROUP_ADVANCED];
-
-        $this->buildSyliusChannelFilterParameters($builder, $advancedGroup);
+        $this->buildSyliusChannelFilterParameters($builder);
         $this->buildBitBagSortingParameters($builder, $this->sortingOptions);
     }
 
