@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler;
 
+use BitBag\SyliusCmsPlugin\Entity\ContentableInterface;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use DateTimeInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
@@ -21,6 +22,8 @@ class BitBagEntityField
     public const TYPE_DATETIME = 'datetime';
     public const TYPE_BOOLEAN = 'boolean';
     public const TYPE_OTHER = 'other';
+    public const TYPE_CONTENT = 'content';
+    private const CONTENT_FIELD_IDENTIFIER = 'content';
 
     private string $type;
 
@@ -66,11 +69,21 @@ class BitBagEntityField
             return;
         }
 
+        if ($value instanceof ContentableInterface) {
+            $this->type = self::TYPE_CONTENT;
+
+            return;
+        }
+
         $this->type = self::TYPE_OTHER;
     }
 
     public static function fromBitBagEntity(ResourceInterface $resource, string $fieldIdentifier): self
     {
+        if ($resource instanceof ContentableInterface && $fieldIdentifier === self::CONTENT_FIELD_IDENTIFIER) {
+            return new self($resource);
+        }
+
         $methodName = 'get' . ucfirst($fieldIdentifier);
 
         if (method_exists($resource, $methodName)) {

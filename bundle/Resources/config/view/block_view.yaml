@@ -6,6 +6,11 @@ view:
                 match:
                     block\definition: bitbag_entity_field
                     block\view_type: string
+            bitbag_entity_field\content:
+                template: "@nglayouts/block/bitbag_entity_field/content.html.twig"
+                match:
+                    block\definition: bitbag_entity_field
+                    block\view_type: content
             bitbag_entity_field\number:
                 template: "@nglayouts/block/bitbag_entity_field/number.html.twig"
                 match:

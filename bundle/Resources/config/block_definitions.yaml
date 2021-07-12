@@ -10,6 +10,13 @@ block_definitions:
                     - 'css_id'
                     - 'css_class'
                     - 'set_container'
+            content:
+                name: 'Content'
+                valid_parameters:
+                    - 'field_identifier'
+                    - 'css_id'
+                    - 'css_class'
+                    - 'set_container'
             number:
                 name: 'Number'
                 valid_parameters:
