@@ -54,9 +54,11 @@ final class NetgenLayoutsSyliusBitBagExtension extends Extension implements Prep
 
         $prependConfigs = [
             'liip_imagine.yaml' => 'liip_imagine',
+            'block_definitions.yaml' => 'netgen_layouts',
             'value_types.yaml' => 'netgen_layouts',
             'query_types.yaml' => 'netgen_layouts',
             'item_types.yaml' => 'netgen_content_browser',
+            'view/block_view.yaml' => 'netgen_layouts',
             'view/item_view.yaml' => 'netgen_layouts',
             'view/rule_target_view.yaml' => 'netgen_layouts',
         ];

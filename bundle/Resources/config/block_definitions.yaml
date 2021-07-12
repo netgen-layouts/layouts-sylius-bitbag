@@ -1,0 +1,38 @@
+block_definitions:
+    bitbag_entity_field:
+        name: 'BitBag entity field'
+        view_types:
+            string:
+                name: 'String'
+                valid_parameters:
+                    - 'field_identifier'
+                    - 'html_element'
+                    - 'css_id'
+                    - 'css_class'
+                    - 'set_container'
+            number:
+                name: 'Number'
+                valid_parameters:
+                    - 'field_identifier'
+                    - 'html_element'
+                    - 'css_id'
+                    - 'css_class'
+                    - 'set_container'
+            datetime:
+                name: 'Date & time'
+                valid_parameters:
+                    - 'field_identifier'
+                    - 'html_element'
+                    - 'datetime_format'
+                    - 'css_id'
+                    - 'css_class'
+                    - 'set_container'
+            media:
+                name: 'Media'
+                valid_parameters:
+                    - 'field_identifier'
+                    - 'width'
+                    - 'height'
+                    - 'css_id'
+                    - 'css_class'
+                    - 'set_container'

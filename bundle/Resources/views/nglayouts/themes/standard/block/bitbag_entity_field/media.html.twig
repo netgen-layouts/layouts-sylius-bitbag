@@ -1,0 +1,26 @@
+{% extends '@nglayouts/block/block.html.twig' %}
+
+{% block content %}
+    {% set field_identifier = block.parameter('field_identifier').value %}
+    {% set field = block.dynamicParameter('field') %}
+
+    {% block bitbag_entity_field %}
+        {% if field is not empty %}
+            {% if field.type is constant('TYPE_MEDIA', field) %}
+                <div class="field field-{{ field.type }} field-{{ field_identifier }}">
+                    {% set media = field.value %}
+
+                    {% if media.type == 'file' %}
+                        {% include '@BitBagSyliusCmsPlugin/Shop/Media/Show/file.html.twig' %}
+                    {% elseif media.type == 'image' %}
+                        {% include '@BitBagSyliusCmsPlugin/Shop/Media/Show/image.html.twig' %}
+                    {% elseif media.type == 'video' %}
+                        {% include '@BitBagSyliusCmsPlugin/Shop/Media/Show/video.html.twig' %}
+                    {% endif %}
+                </div>
+            {% else %}
+                {{ 'bitbag.field_not_compatible'|trans({'%field_identifier%': field_identifier}, 'bitbag') }}
+            {% endif %}
+        {% endif %}
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends '@nglayouts/block/block.html.twig' %}
+
+{% block content %}
+    {% set field_identifier = block.parameter('field_identifier').value %}
+    {% set html_element =  block.parameter('html_element').value %}
+    {% set field = block.dynamicParameter('field') %}
+
+    {% block bitbag_entity_field %}
+        {% if field is not empty %}
+            {% if field.type is constant('TYPE_STRING', field) %}
+                <{{ html_element }} class="field field-{{ field.type }} field-{{ field_identifier }}">
+                    {{ field.value|raw }}
+                </{{ html_element }}>
+            {% else %}
+                {{ 'bitbag.field_not_compatible'|trans({'%field_identifier%': field_identifier}, 'bitbag') }}
+            {% endif %}
+        {% endif %}
+    {% endblock %}
+{% endblock %}

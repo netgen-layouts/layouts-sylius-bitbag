@@ -1,0 +1,15 @@
+{% extends '@NetgenLayoutsAdmin/app/block/block.html.twig' %}
+
+{% import '@NetgenLayoutsAdmin/app/parts/macros.html.twig' as macros %}
+
+{% trans_default_domain 'nglayouts_app' %}
+
+{% block content %}
+    {% set field_identifier = block.parameter('field_identifier') %}
+
+    {% if not field_identifier.empty %}
+        {{ macros.info('block.info.bitbag_entity_field'|trans({ '%field%': field_identifier.value }), 'icon-twig_block') }}
+    {% else %}
+        {{ macros.notice('block.notice.empty_bitbag_entity_field'|trans) }}
+    {% endif %}
+{% endblock %}
