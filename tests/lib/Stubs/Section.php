@@ -6,7 +6,7 @@ namespace Netgen\Layouts\Sylius\BitBag\Tests\Stubs;
 
 use BitBag\SyliusCmsPlugin\Entity\Section as BaseSection;
 
-class Section extends BaseSection
+final class Section extends BaseSection
 {
     public function __construct(int $id, string $code)
     {

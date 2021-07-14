@@ -6,7 +6,7 @@ namespace Netgen\Layouts\Sylius\BitBag\Validator\Constraint;
 
 use Symfony\Component\Validator\Constraint;
 
-class Section extends Constraint
+final class Section extends Constraint
 {
     public string $message = 'netgen_layouts.sylius.bitbag.section.section_not_found';
 

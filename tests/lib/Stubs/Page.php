@@ -6,7 +6,7 @@ namespace Netgen\Layouts\Sylius\BitBag\Tests\Stubs;
 
 use BitBag\SyliusCmsPlugin\Entity\Page as BasePage;
 
-class Page extends BasePage
+final class Page extends BasePage
 {
     public function __construct(int $id, string $code)
     {

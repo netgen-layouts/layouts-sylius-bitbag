@@ -6,7 +6,7 @@ namespace Netgen\Layouts\Sylius\BitBag\Tests\Stubs;
 
 use BitBag\SyliusCmsPlugin\Entity\Block as BaseBlock;
 
-class Block extends BaseBlock
+final class Block extends BaseBlock
 {
     public function __construct(int $id, string $code)
     {

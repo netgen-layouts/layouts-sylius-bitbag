@@ -15,7 +15,7 @@ use Sylius\Component\Resource\Model\ResourceInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-class EntityFieldHandler extends BlockDefinitionHandler
+final class EntityFieldHandler extends BlockDefinitionHandler
 {
     private RequestStack $requestStack;
 

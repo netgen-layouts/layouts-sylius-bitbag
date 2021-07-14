@@ -14,7 +14,7 @@ use function is_string;
 use function method_exists;
 use function ucfirst;
 
-class BitBagEntityField
+final class BitBagEntityField
 {
     public const TYPE_STRING = 'string';
     public const TYPE_NUMBER = 'number';

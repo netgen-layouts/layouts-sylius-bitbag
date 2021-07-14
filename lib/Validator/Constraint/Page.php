@@ -6,7 +6,7 @@ namespace Netgen\Layouts\Sylius\BitBag\Validator\Constraint;
 
 use Symfony\Component\Validator\Constraint;
 
-class Page extends Constraint
+final class Page extends Constraint
 {
     public string $message = 'netgen_layouts.sylius.bitbag.page.page_not_found';
 
