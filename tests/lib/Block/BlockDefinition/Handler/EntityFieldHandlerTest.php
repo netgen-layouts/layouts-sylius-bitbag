@@ -67,8 +67,6 @@ final class EntityFieldHandlerTest extends TestCase
             ],
         ]));
 
-        self::assertArrayHasKey('field', $params);
-
         $field = BitBagEntityField::fromBitBagEntity($page, 'name');
 
         self::assertSame($field->isEmpty(), $params['field']->isEmpty());
@@ -104,8 +102,6 @@ final class EntityFieldHandlerTest extends TestCase
             ],
         ]));
 
-        self::assertArrayHasKey('field', $params);
-
         $field = BitBagEntityField::fromBitBagEntity($section, 'code');
 
         self::assertSame($field->isEmpty(), $params['field']->isEmpty());
@@ -136,7 +132,6 @@ final class EntityFieldHandlerTest extends TestCase
             ],
         ]));
 
-        self::assertArrayHasKey('field', $params);
         self::assertNull($params['field']);
     }
 }
