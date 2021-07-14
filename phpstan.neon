@@ -7,4 +7,4 @@ includes:
 
 parameters:
     ignoreErrors:
-        - '#Variable method call on Sylius\\Component\\Resource\\Model\\ResourceInterface.#'
+        - '#Variable method call on Sylius\\Component\\Resource\\Model\\ResourceInterface#'
