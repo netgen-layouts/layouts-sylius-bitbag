@@ -9,6 +9,8 @@ use Netgen\Layouts\Parameters\ParameterBuilderInterface;
 use Netgen\Layouts\Parameters\ParameterCollectionInterface;
 use Netgen\Layouts\Parameters\ParameterType;
 use Netgen\Layouts\Sylius\Parameters\ParameterType as SyliusParameterType;
+use function count;
+use function in_array;
 
 trait SyliusChannelFilterTrait
 {
@@ -66,10 +68,10 @@ trait SyliusChannelFilterTrait
 
         $reverse = $parameterCollection->getParameter('channels_filter')->getValue() !== 'include';
 
-        if (!in_array('channels', $queryBuilder->getAllAliases())) {
+        if (!in_array('channels', $queryBuilder->getAllAliases(), true)) {
             $rootAliases = $queryBuilder->getRootAliases();
 
-            $join = count($rootAliases) === 0 ? 'channels' : $rootAliases[0].'.channels';
+            $join = count($rootAliases) === 0 ? 'channels' : $rootAliases[0] . '.channels';
 
             $queryBuilder->innerJoin($join, 'channels');
         }
