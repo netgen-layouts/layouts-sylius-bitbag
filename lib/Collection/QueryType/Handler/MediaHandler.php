@@ -63,6 +63,7 @@ final class MediaHandler implements QueryTypeHandlerInterface
 
         $this->addSyliusProductCriterion($query, $queryBuilder, $request);
         $this->addBitBagSectionCriterion($query, $queryBuilder, $request);
+        $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
         $this->addBitBagSortingClause($query, $queryBuilder);
 
         $paginator = $this->mediaRepository->createFilterPaginator($queryBuilder);
@@ -85,6 +86,7 @@ final class MediaHandler implements QueryTypeHandlerInterface
 
         $this->addSyliusProductCriterion($query, $queryBuilder, $request);
         $this->addBitBagSectionCriterion($query, $queryBuilder, $request);
+        $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
 
         $paginator = $this->mediaRepository->createFilterPaginator($queryBuilder);
 

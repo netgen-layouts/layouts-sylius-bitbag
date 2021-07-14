@@ -66,6 +66,7 @@ final class PageHandler implements QueryTypeHandlerInterface
 
         $this->addSyliusProductCriterion($query, $queryBuilder, $request);
         $this->addBitBagSectionCriterion($query, $queryBuilder, $request);
+        $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
         $this->addBitBagSortingClause($query, $queryBuilder);
 
         $paginator = $this->pageRepository->createFilterPaginator($queryBuilder);
@@ -88,6 +89,7 @@ final class PageHandler implements QueryTypeHandlerInterface
 
         $this->addSyliusProductCriterion($query, $queryBuilder, $request);
         $this->addBitBagSectionCriterion($query, $queryBuilder, $request);
+        $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
 
         $paginator = $this->pageRepository->createFilterPaginator($queryBuilder);
 

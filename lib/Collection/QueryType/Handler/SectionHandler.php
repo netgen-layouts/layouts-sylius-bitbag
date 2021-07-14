@@ -48,6 +48,7 @@ final class SectionHandler implements QueryTypeHandlerInterface
             $this->localeContext->getLocaleCode(),
         );
 
+        $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
         $this->addBitBagSortingClause($query, $queryBuilder);
 
         $paginator = $this->sectionRepository->createFilterPaginator($queryBuilder);
@@ -65,6 +66,8 @@ final class SectionHandler implements QueryTypeHandlerInterface
         $queryBuilder = $this->sectionRepository->createListQueryBuilder(
             $this->localeContext->getLocaleCode(),
         );
+
+        $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
 
         $paginator = $this->sectionRepository->createFilterPaginator($queryBuilder);
 
