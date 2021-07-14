@@ -67,7 +67,6 @@ final class BlockHandler implements QueryTypeHandlerInterface
         $this->addSyliusProductCriterion($query, $queryBuilder, $request);
         $this->addSyliusTaxonCriterion($query, $queryBuilder, $request);
         $this->addBitBagSectionCriterion($query, $queryBuilder, $request);
-        $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
         $this->addBitBagSortingClause($query, $queryBuilder);
 
         $paginator = $this->blockRepository->createFilterPaginator($queryBuilder);
@@ -91,7 +90,6 @@ final class BlockHandler implements QueryTypeHandlerInterface
         $this->addSyliusProductCriterion($query, $queryBuilder, $request);
         $this->addSyliusTaxonCriterion($query, $queryBuilder, $request);
         $this->addBitBagSectionCriterion($query, $queryBuilder, $request);
-        $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
 
         $paginator = $this->blockRepository->createFilterPaginator($queryBuilder);
 

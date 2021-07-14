@@ -4,11 +4,8 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits;
 
-use Doctrine\ORM\QueryBuilder;
 use Netgen\Layouts\Parameters\ParameterBuilderInterface;
-use Netgen\Layouts\Parameters\ParameterCollectionInterface;
 use Netgen\Layouts\Parameters\ParameterType;
-use Netgen\Layouts\Sylius\Parameters\ParameterType as SyliusParameterType;
 
 trait SyliusChannelFilterTrait
 {
@@ -27,15 +24,6 @@ trait SyliusChannelFilterTrait
             ],
         );
 
-        /*$builder->get('filter_by_channel')->add(
-            'channels',
-            SyliusParameterType\ChannelType::class,
-            [
-                'multiple' => true,
-                'groups' => $groups,
-            ],
-        );*/
-
         $builder->get('filter_by_channel')->add(
             'channels_filter',
             ParameterType\ChoiceType::class,
@@ -48,36 +36,5 @@ trait SyliusChannelFilterTrait
                 'groups' => $groups,
             ],
         );
-    }
-
-    /**
-     * Builds the criteria for filtering by Sylius channel.
-     */
-    private function addSyliusChannelFilterCriterion(ParameterCollectionInterface $parameterCollection, QueryBuilder $queryBuilder): void
-    {
-        /*if ($parameterCollection->getParameter('filter_by_channel')->getValue() !== true) {
-            return;
-        }
-
-        $channels = $parameterCollection->getParameter('channels')->getValue() ?? [];
-        if (count($channels) === 0) {
-            return;
-        }
-
-        $reverse = $parameterCollection->getParameter('channels_filter')->getValue() !== 'include';
-
-        if (!in_array('channels', $queryBuilder->getAllAliases())) {
-            $rootAliases = $queryBuilder->getRootAliases();
-
-            $join = count($rootAliases) === 0 ? 'channels' : $rootAliases[0].'.channels';
-
-            $queryBuilder->innerJoin($join, 'channels');
-        }
-
-        $reverse
-            ? $queryBuilder->andWhere($queryBuilder->expr()->notIn('channels.id', ':channels'))
-            : $queryBuilder->andWhere($queryBuilder->expr()->in('channels.id', ':channels'));
-
-        $queryBuilder->setParameter(':channels', $channels);*/
     }
 }
