@@ -10,8 +10,7 @@ use Netgen\Layouts\Parameters\ParameterCollectionInterface;
 use Netgen\Layouts\Parameters\ParameterType;
 use function count;
 use function in_array;
-use function mb_strlen;
-use function mb_substr;
+use function mb_strpos;
 
 trait BitBagSortingTrait
 {
@@ -62,7 +61,7 @@ trait BitBagSortingTrait
             $queryBuilder->innerJoin($join, 'translations');
         }
 
-        if (mb_substr($sortField, 0, mb_strlen('translations.')) !== 'translations.' && count($rootAliases) !== 0) {
+        if (mb_strpos($sortField, 'translations.') !== 0 && count($rootAliases) !== 0) {
             $sortField = $rootAliases[0] . '.' . $sortField;
         }
 
