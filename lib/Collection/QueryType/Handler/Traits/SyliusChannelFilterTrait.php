@@ -27,14 +27,14 @@ trait SyliusChannelFilterTrait
             ],
         );
 
-        /*$builder->get('filter_by_channel')->add(
+        $builder->get('filter_by_channel')->add(
             'channels',
             SyliusParameterType\ChannelType::class,
             [
                 'multiple' => true,
                 'groups' => $groups,
             ],
-        );*/
+        );
 
         $builder->get('filter_by_channel')->add(
             'channels_filter',
@@ -55,7 +55,7 @@ trait SyliusChannelFilterTrait
      */
     private function addSyliusChannelFilterCriterion(ParameterCollectionInterface $parameterCollection, QueryBuilder $queryBuilder): void
     {
-        /*if ($parameterCollection->getParameter('filter_by_channel')->getValue() !== true) {
+        if ($parameterCollection->getParameter('filter_by_channel')->getValue() !== true) {
             return;
         }
 
@@ -78,6 +78,6 @@ trait SyliusChannelFilterTrait
             ? $queryBuilder->andWhere($queryBuilder->expr()->notIn('channels.id', ':channels'))
             : $queryBuilder->andWhere($queryBuilder->expr()->in('channels.id', ':channels'));
 
-        $queryBuilder->setParameter(':channels', $channels);*/
+        $queryBuilder->setParameter(':channels', $channels);
     }
 }
