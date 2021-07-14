@@ -39,19 +39,6 @@ final class NetgenLayoutsSyliusBitBagExtension extends Extension implements Prep
 
     public function prepend(ContainerBuilder $container): void
     {
-        $locator = new FileLocator(__DIR__ . '/../Resources/config');
-
-        $loader = new DelegatingLoader(
-            new LoaderResolver(
-                [
-                    new GlobFileLoader($container, $locator),
-                    new YamlFileLoader($container, $locator),
-                ],
-            ),
-        );
-
-        $loader->load('default_settings.yaml');
-
         $prependConfigs = [
             'liip_imagine.yaml' => 'liip_imagine',
             'block_definitions.yaml' => 'netgen_layouts',
