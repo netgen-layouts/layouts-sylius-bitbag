@@ -40,7 +40,7 @@ item_types:
         tree:
             enabled: false
         preview:
-            enabled: false
+            template: '@NetgenLayoutsSyliusBitBag/app/ngcb/bitbag_media.html.twig'
         columns:
             name:
                 name: columns.name
