@@ -11,7 +11,8 @@ final class Media extends BaseMedia
     public function __construct(
         int $id,
         string $code,
-        string $name
+        string $name,
+        string $type = 'file'
     ) {
         parent::__construct();
 
@@ -20,5 +21,6 @@ final class Media extends BaseMedia
 
         $this->currentLocale = 'en';
         $this->setName($name);
+        $this->setType($type);
     }
 }
