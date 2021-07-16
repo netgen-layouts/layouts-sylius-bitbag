@@ -9,7 +9,7 @@ use Netgen\Layouts\Sylius\BitBag\Item\ColumnProvider\Media\Type;
 use Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs\Media as MediaStub;
 use PHPUnit\Framework\TestCase;
 
-class TypeTest extends TestCase
+final class TypeTest extends TestCase
 {
     private Type $typeColumn;
 

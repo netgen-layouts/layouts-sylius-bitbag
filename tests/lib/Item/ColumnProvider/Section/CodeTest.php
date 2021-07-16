@@ -9,7 +9,7 @@ use Netgen\Layouts\Sylius\BitBag\Item\ColumnProvider\Section\Code;
 use Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs\Section as SectionStub;
 use PHPUnit\Framework\TestCase;
 
-class CodeTest extends TestCase
+final class CodeTest extends TestCase
 {
     private Code $codeColumn;
 

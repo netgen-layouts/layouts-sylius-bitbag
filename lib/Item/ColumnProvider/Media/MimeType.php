@@ -8,7 +8,7 @@ use Netgen\ContentBrowser\Item\ColumnProvider\ColumnValueProviderInterface;
 use Netgen\ContentBrowser\Item\ItemInterface;
 use Netgen\Layouts\Sylius\BitBag\ContentBrowser\Item\Media\MediaInterface;
 
-class MimeType implements ColumnValueProviderInterface
+final class MimeType implements ColumnValueProviderInterface
 {
     public function getValue(Iteminterface $item): ?string
     {

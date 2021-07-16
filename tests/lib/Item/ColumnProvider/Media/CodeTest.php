@@ -9,7 +9,7 @@ use Netgen\Layouts\Sylius\BitBag\Item\ColumnProvider\Media\Code;
 use Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs\Media as MediaStub;
 use PHPUnit\Framework\TestCase;
 
-class CodeTest extends TestCase
+final class CodeTest extends TestCase
 {
     private Code $codeColumn;
 

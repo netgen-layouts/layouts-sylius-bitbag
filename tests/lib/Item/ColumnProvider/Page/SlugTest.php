@@ -9,7 +9,7 @@ use Netgen\Layouts\Sylius\BitBag\Item\ColumnProvider\Page\Slug;
 use Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs\Page as PageStub;
 use PHPUnit\Framework\TestCase;
 
-class SlugTest extends TestCase
+final class SlugTest extends TestCase
 {
     private Slug $slugColumn;
 
