@@ -7,3 +7,5 @@ query_types:
         name: 'BitBag media'
     bitbag_section:
         name: 'BitBag section'
+    bitbag_frequently_asked_question:
+        name: 'BitBag frequently asked question'
