@@ -109,3 +109,23 @@ services:
         class: Netgen\Layouts\Sylius\BitBag\Item\ColumnProvider\Media\MimeType
         tags:
             - { name: netgen_content_browser.column_value_provider, identifier: bitbag_media\mime_type }
+
+    netgen_layouts.sylius.bitbag.item.value_converter.frequently_asked_question:
+        class: Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\FrequentlyAskedQuestionValueConverter
+        tags:
+            - { name: netgen_layouts.cms_value_converter }
+
+    netgen_layouts.sylius.bitbag.item.value_loader.frequently_asked_question:
+        class: Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\FrequentlyAskedQuestionValueLoader
+        arguments:
+            - "@netgen_layouts.sylius.bitbag.frequently_asked_question_repository"
+        tags:
+            - { name: netgen_layouts.cms_value_loader, value_type: bitbag_frequently_asked_question }
+
+    netgen_layouts.sylius.bitbag.item.value_url_generator.frequently_asked_question:
+        class: Netgen\Layouts\Sylius\BitBag\Item\ValueUrlGenerator\FrequentlyAskedQuestionValueUrlGenerator
+        arguments:
+            - "@router"
+        tags:
+            - { name: netgen_layouts.cms_value_url_generator, value_type: bitbag_frequently_asked_question }
+
