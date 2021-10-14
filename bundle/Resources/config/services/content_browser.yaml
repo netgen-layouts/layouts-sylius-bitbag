@@ -30,3 +30,11 @@ services:
             - "@sylius.context.locale"
         tags:
             - { name: netgen_content_browser.backend, item_type: bitbag_media }
+
+    netgen_layouts.sylius.bitbag.backend.frequently_asked_question:
+        class: Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\FrequentlyAskedQuestionBackend
+        arguments:
+            - "@netgen_layouts.sylius.bitbag.frequently_asked_question_repository"
+            - "@sylius.context.locale"
+        tags:
+            - { name: netgen_content_browser.backend, item_type: bitbag_frequently_asked_question }

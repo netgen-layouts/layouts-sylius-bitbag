@@ -129,3 +129,7 @@ services:
         tags:
             - { name: netgen_layouts.cms_value_url_generator, value_type: bitbag_frequently_asked_question }
 
+    netgen_layouts.sylius.bitbag.content_browser.template_value_provider.bitbag_frequently_asked_question.code:
+        class: Netgen\Layouts\Sylius\BitBag\Item\ColumnProvider\FrequentlyAskedQuestion\Code
+        tags:
+            - { name: netgen_content_browser.column_value_provider, identifier: bitbag_frequently_asked_question\code }
