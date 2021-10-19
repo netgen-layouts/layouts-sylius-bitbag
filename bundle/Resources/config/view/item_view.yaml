@@ -17,6 +17,10 @@ view:
                 template: "@nglayouts/item/bitbag_media.html.twig"
                 match:
                     item\value_type: bitbag_media
+            bitbag_frequently_asked_question:
+                template: "@nglayouts/item/bitbag_frequently_asked_question.html.twig"
+                match:
+                    item\value_type: bitbag_frequently_asked_question
         ajax:
             bitbag_page:
                 template: "@nglayouts/item/bitbag_page.html.twig"
@@ -34,6 +38,10 @@ view:
                 template: "@nglayouts/item/bitbag_media.html.twig"
                 match:
                     item\value_type: bitbag_media
+            bitbag_frequently_asked_question:
+                template: "@nglayouts/item/bitbag_frequently_asked_question.html.twig"
+                match:
+                    item\value_type: bitbag_frequently_asked_question
         app:
             bitbag_page:
                 template: "@NetgenLayoutsSyliusBitBag/app/item/view/bitbag_page.html.twig"
@@ -51,3 +59,7 @@ view:
                 template: "@NetgenLayoutsSyliusBitBag/app/item/view/bitbag_media.html.twig"
                 match:
                     item\value_type: bitbag_media
+            bitbag_frequently_asked_question:
+                template: "@NetgenLayoutsSyliusBitBag/app/item/view/bitbag_frequently_asked_question.html.twig"
+                match:
+                    item\value_type: bitbag_frequently_asked_question

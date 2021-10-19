@@ -75,3 +75,19 @@ item_types:
             - code
             - type
             - mime_type
+    bitbag_frequently_asked_question:
+        name: item_types.bitbag_frequently_asked_question
+        tree:
+            enabled: false
+        preview:
+            enabled: false
+        columns:
+            name:
+                name: columns.name
+                value_provider: name
+            code:
+                name: columns.bitbag_frequently_asked_question.code
+                value_provider: bitbag_frequently_asked_question\code
+        default_columns:
+            - name
+            - code
