@@ -42,7 +42,6 @@ final class SectionBackendTest extends TestCase
 
     /**
      * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::__construct
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::buildLocations
      * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::getSections
      */
     public function testGetSections(): void

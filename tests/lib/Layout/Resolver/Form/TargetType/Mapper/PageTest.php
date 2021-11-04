@@ -18,7 +18,7 @@ final class PageTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Tests\Layout\Resolver\Form\TargetType\Mapper\Page::getFormType
+     * @covers \Netgen\Layouts\Sylius\BitBag\Layout\Resolver\Form\TargetType\Mapper\Page::getFormType
      */
     public function testGetFormType(): void
     {
@@ -26,7 +26,7 @@ final class PageTest extends TestCase
     }
 
     /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Tests\Layout\Resolver\Form\TargetType\Mapper\Page::getFormOptions
+     * @covers \Netgen\Layouts\Sylius\BitBag\Layout\Resolver\Form\TargetType\Mapper\Page::getFormOptions
      */
     public function testGetFormOptions(): void
     {

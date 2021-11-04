@@ -42,7 +42,6 @@ final class PageBackendTest extends TestCase
 
     /**
      * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\PageBackend::__construct
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\PageBackend::buildLocations
      * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\PageBackend::getSections
      */
     public function testGetSections(): void

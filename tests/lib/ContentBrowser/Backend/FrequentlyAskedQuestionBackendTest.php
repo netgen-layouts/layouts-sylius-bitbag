@@ -42,7 +42,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
 
     /**
      * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\FrequentlyAskedQuestionBackend::__construct
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\FrequentlyAskedQuestionBackend::buildLocations
      * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\FrequentlyAskedQuestionBackend::getSections
      */
     public function testGetSections(): void
