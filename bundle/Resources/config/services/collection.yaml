@@ -33,3 +33,11 @@ services:
             - "@sylius.context.locale"
         tags:
             - { name: netgen_layouts.query_type_handler, type: bitbag_section }
+
+    netgen_layouts.sylius.bitbag.collection.query_type_handler.frequently_asked_question:
+        class: Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\FrequentlyAskedQuestionHandler
+        arguments:
+            - "@netgen_layouts.sylius.bitbag.frequently_asked_question_repository"
+            - "@sylius.context.locale"
+        tags:
+            - { name: netgen_layouts.query_type_handler, type: bitbag_frequently_asked_question }
