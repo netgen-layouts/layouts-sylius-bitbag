@@ -19,6 +19,8 @@
         <PropertyNotSetInConstructor>
             <errorLevel type="suppress">
                 <referencedProperty name="Symfony\Component\Validator\ConstraintValidator::$context" />
+                <referencedProperty name="Netgen\Layouts\Sylius\BitBag\Validator\Constraint\Page::$groups" />
+                <referencedProperty name="Netgen\Layouts\Sylius\BitBag\Validator\Constraint\Section::$groups" />
             </errorLevel>
         </PropertyNotSetInConstructor>
 
