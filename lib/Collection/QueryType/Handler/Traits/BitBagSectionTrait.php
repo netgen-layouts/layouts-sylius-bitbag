@@ -11,6 +11,7 @@ use Netgen\Layouts\Parameters\ParameterCollectionInterface;
 use Netgen\Layouts\Parameters\ParameterType;
 use Netgen\Layouts\Sylius\BitBag\Parameters\ParameterType as BitBagParameterType;
 use Symfony\Component\HttpFoundation\Request;
+
 use function count;
 use function in_array;
 

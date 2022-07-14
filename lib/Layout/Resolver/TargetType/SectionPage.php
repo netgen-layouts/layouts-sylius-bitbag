@@ -11,6 +11,7 @@ use Netgen\Layouts\Layout\Resolver\TargetType;
 use Netgen\Layouts\Sylius\BitBag\Validator\Constraint as SyliusBitBagConstraints;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints;
+
 use function array_map;
 
 final class SectionPage extends TargetType

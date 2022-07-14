@@ -14,6 +14,7 @@ use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\SyliusProdu
 use Netgen\Layouts\Sylius\BitBag\Repository\MediaRepositoryInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
+
 use const PHP_INT_MAX;
 
 final class MediaHandler implements QueryTypeHandlerInterface

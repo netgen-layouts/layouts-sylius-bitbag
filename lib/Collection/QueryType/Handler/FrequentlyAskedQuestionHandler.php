@@ -11,6 +11,7 @@ use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\BitBagSorti
 use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\SyliusChannelFilterTrait;
 use Netgen\Layouts\Sylius\BitBag\Repository\FrequentlyAskedQuestionRepositoryInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
+
 use const PHP_INT_MAX;
 
 final class FrequentlyAskedQuestionHandler implements QueryTypeHandlerInterface
