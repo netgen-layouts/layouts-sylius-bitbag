@@ -15,10 +15,10 @@ trait BitBagEnabledTrait
      */
     private function addBitBagEnabledCriterion(QueryBuilder $queryBuilder): void
     {
-        $x = count($queryBuilder->getRootAliases()) > 0
+        $field = count($queryBuilder->getRootAliases()) > 0
             ? $queryBuilder->getRootAliases()[0] . '.enabled'
             : 'enabled';
 
-        $queryBuilder->andWhere($queryBuilder->expr()->eq($x, true));
+        $queryBuilder->andWhere($queryBuilder->expr()->eq($field, true));
     }
 }
