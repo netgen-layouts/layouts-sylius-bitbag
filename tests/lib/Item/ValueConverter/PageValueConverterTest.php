@@ -90,6 +90,12 @@ final class PageValueConverterTest extends TestCase
                 new PageStub(42, 'about-us', 'About us'),
             ),
         );
+
+        self::assertFalse(
+            $this->valueConverter->getIsVisible(
+                new PageStub(42, 'about-us', 'About us', null, false),
+            ),
+        );
     }
 
     /**

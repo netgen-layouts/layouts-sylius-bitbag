@@ -90,6 +90,12 @@ final class MediaValueConverterTest extends TestCase
                 new MediaStub(42, 'logo-image', 'Logo image'),
             ),
         );
+
+        self::assertFalse(
+            $this->valueConverter->getIsVisible(
+                new MediaStub(42, 'logo-image', 'Logo image', 'file', false),
+            ),
+        );
     }
 
     /**

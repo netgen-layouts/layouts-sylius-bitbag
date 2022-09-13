@@ -90,6 +90,12 @@ final class BlockValueConverterTest extends TestCase
                 new BlockStub(42, 'header', 'Header'),
             ),
         );
+
+        self::assertFalse(
+            $this->valueConverter->getIsVisible(
+                new BlockStub(42, 'header', 'Header', false),
+            ),
+        );
     }
 
     /**
