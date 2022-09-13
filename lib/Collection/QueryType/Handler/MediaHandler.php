@@ -7,6 +7,7 @@ namespace Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler;
 use Netgen\Layouts\API\Values\Collection\Query;
 use Netgen\Layouts\Collection\QueryType\QueryTypeHandlerInterface;
 use Netgen\Layouts\Parameters\ParameterBuilderInterface;
+use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\BitBagEnabledTrait;
 use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\BitBagSectionTrait;
 use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\BitBagSortingTrait;
 use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\SyliusChannelFilterTrait;
@@ -19,6 +20,7 @@ use const PHP_INT_MAX;
 
 final class MediaHandler implements QueryTypeHandlerInterface
 {
+    use BitBagEnabledTrait;
     use BitBagSectionTrait;
     use BitBagSortingTrait;
     use SyliusChannelFilterTrait;
@@ -65,6 +67,7 @@ final class MediaHandler implements QueryTypeHandlerInterface
         $this->addSyliusProductCriterion($query, $queryBuilder, $request);
         $this->addBitBagSectionCriterion($query, $queryBuilder, $request);
         $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
+        $this->addBitBagEnabledCriterion($queryBuilder);
         $this->addBitBagSortingClause($query, $queryBuilder);
 
         $paginator = $this->mediaRepository->createFilterPaginator($queryBuilder);
@@ -88,6 +91,7 @@ final class MediaHandler implements QueryTypeHandlerInterface
         $this->addSyliusProductCriterion($query, $queryBuilder, $request);
         $this->addBitBagSectionCriterion($query, $queryBuilder, $request);
         $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
+        $this->addBitBagEnabledCriterion($queryBuilder);
 
         $paginator = $this->mediaRepository->createFilterPaginator($queryBuilder);
 

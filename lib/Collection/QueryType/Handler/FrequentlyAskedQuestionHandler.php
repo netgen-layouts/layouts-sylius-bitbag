@@ -7,6 +7,7 @@ namespace Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler;
 use Netgen\Layouts\API\Values\Collection\Query;
 use Netgen\Layouts\Collection\QueryType\QueryTypeHandlerInterface;
 use Netgen\Layouts\Parameters\ParameterBuilderInterface;
+use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\BitBagEnabledTrait;
 use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\BitBagSortingTrait;
 use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\SyliusChannelFilterTrait;
 use Netgen\Layouts\Sylius\BitBag\Repository\FrequentlyAskedQuestionRepositoryInterface;
@@ -16,6 +17,7 @@ use const PHP_INT_MAX;
 
 final class FrequentlyAskedQuestionHandler implements QueryTypeHandlerInterface
 {
+    use BitBagEnabledTrait;
     use BitBagSortingTrait;
     use SyliusChannelFilterTrait;
 
@@ -52,6 +54,7 @@ final class FrequentlyAskedQuestionHandler implements QueryTypeHandlerInterface
         );
 
         $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
+        $this->addBitBagEnabledCriterion($queryBuilder);
         $this->addBitBagSortingClause($query, $queryBuilder);
 
         $paginator = $this->frequentlyAskedQuestionRepository->createFilterPaginator($queryBuilder);
@@ -71,6 +74,7 @@ final class FrequentlyAskedQuestionHandler implements QueryTypeHandlerInterface
         );
 
         $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
+        $this->addBitBagEnabledCriterion($queryBuilder);
 
         $paginator = $this->frequentlyAskedQuestionRepository->createFilterPaginator($queryBuilder);
 
