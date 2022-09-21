@@ -90,6 +90,12 @@ final class FrequentlyAskedQuestionValueConverterTest extends TestCase
                 new FrequentlyAskedQuestionStub(42, 'TEST_QUESTION'),
             ),
         );
+
+        self::assertFalse(
+            $this->valueConverter->getIsVisible(
+                new FrequentlyAskedQuestionStub(42, 'TEST_QUESTION', null, null, false),
+            ),
+        );
     }
 
     /**

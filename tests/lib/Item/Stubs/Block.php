@@ -11,12 +11,14 @@ final class Block extends BaseBlock
     public function __construct(
         int $id,
         string $code,
-        string $name
+        string $name,
+        bool $enabled = true
     ) {
         parent::__construct();
 
         $this->id = $id;
         $this->code = $code;
+        $this->enabled = $enabled;
 
         $this->currentLocale = 'en';
         $this->setName($name);
