@@ -10,6 +10,7 @@ use Netgen\Layouts\Sylius\BitBag\Validator\Constraint\Page;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
+
 use function is_scalar;
 
 final class PageValidator extends ConstraintValidator

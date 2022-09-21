@@ -15,6 +15,7 @@ use Netgen\Layouts\Browser\Item\Layout\RootLocation;
 use Netgen\Layouts\Sylius\BitBag\ContentBrowser\Item\FrequentlyAskedQuestion\Item;
 use Netgen\Layouts\Sylius\BitBag\Repository\FrequentlyAskedQuestionRepositoryInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
+
 use function sprintf;
 
 final class FrequentlyAskedQuestionBackend implements BackendInterface

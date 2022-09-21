@@ -15,6 +15,7 @@ use Netgen\Layouts\Browser\Item\Layout\RootLocation;
 use Netgen\Layouts\Sylius\BitBag\ContentBrowser\Item\Block\Item;
 use Netgen\Layouts\Sylius\BitBag\Repository\BlockRepositoryInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
+
 use function sprintf;
 
 final class BlockBackend implements BackendInterface

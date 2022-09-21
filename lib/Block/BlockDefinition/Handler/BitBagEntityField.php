@@ -8,6 +8,7 @@ use BitBag\SyliusCmsPlugin\Entity\ContentableInterface;
 use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use DateTimeInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
+
 use function is_bool;
 use function is_numeric;
 use function is_string;
