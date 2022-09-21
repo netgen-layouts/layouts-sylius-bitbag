@@ -39,7 +39,7 @@ final class FrequentlyAskedQuestionValueConverter implements ValueConverterInter
 
     public function getIsVisible(object $object): bool
     {
-        return true;
+        return $object->isEnabled();
     }
 
     public function getObject(object $object): FrequentlyAskedQuestionInterface

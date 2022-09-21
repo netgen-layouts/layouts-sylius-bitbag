@@ -12,12 +12,14 @@ final class Media extends BaseMedia
         int $id,
         string $code,
         string $name,
-        string $type = 'file'
+        string $type = 'file',
+        bool $enabled = true
     ) {
         parent::__construct();
 
         $this->id = $id;
         $this->code = $code;
+        $this->enabled = $enabled;
 
         $this->currentLocale = 'en';
         $this->setName($name);

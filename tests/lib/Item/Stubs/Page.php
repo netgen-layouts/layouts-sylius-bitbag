@@ -12,12 +12,14 @@ final class Page extends BasePage
         int $id,
         string $code,
         string $name,
-        ?string $slug = null
+        ?string $slug = null,
+        bool $enabled = true
     ) {
         parent::__construct();
 
         $this->id = $id;
         $this->code = $code;
+        $this->enabled = $enabled;
 
         $this->currentLocale = 'en';
         $this->setName($name);
