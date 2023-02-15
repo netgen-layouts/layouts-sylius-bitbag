@@ -12,16 +12,22 @@ interface MediaRepositoryInterface extends BaseMediaRepositoryInterface
 {
     /**
      * Creates a paginator which is used to list medias.
+     *
+     * @return \Pagerfanta\PagerfantaInterface<\BitBag\SyliusCmsPlugin\Entity\Media>
      */
     public function createListPaginator(string $localeCode): PagerfantaInterface;
 
     /**
      * Creates a paginator which is used to filter media.
+     *
+     * @return \Pagerfanta\PagerfantaInterface<\BitBag\SyliusCmsPlugin\Entity\Media>
      */
     public function createFilterPaginator(QueryBuilder $queryBuilder): PagerfantaInterface;
 
     /**
      * Creates a paginator which is used to search for medias.
+     *
+     * @return \Pagerfanta\PagerfantaInterface<\BitBag\SyliusCmsPlugin\Entity\Media>
      */
     public function createSearchPaginator(string $searchText, string $localeCode): PagerfantaInterface;
 }
