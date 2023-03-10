@@ -20,16 +20,10 @@ use function sprintf;
 
 final class BlockBackend implements BackendInterface
 {
-    private BlockRepositoryInterface $blockRepository;
-
-    private LocaleContextInterface $localeContext;
-
     public function __construct(
-        BlockRepositoryInterface $blockRepository,
-        LocaleContextInterface $localeContext
+        private BlockRepositoryInterface $blockRepository,
+        private LocaleContextInterface $localeContext,
     ) {
-        $this->blockRepository = $blockRepository;
-        $this->localeContext = $localeContext;
     }
 
     public function getSections(): iterable

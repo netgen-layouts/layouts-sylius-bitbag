@@ -15,11 +15,8 @@ use function is_scalar;
 
 final class SectionValidator extends ConstraintValidator
 {
-    private SectionRepositoryInterface $sectionRepository;
-
-    public function __construct(SectionRepositoryInterface $sectionRepository)
+    public function __construct(private SectionRepositoryInterface $sectionRepository)
     {
-        $this->sectionRepository = $sectionRepository;
     }
 
     public function validate($value, Constraint $constraint): void

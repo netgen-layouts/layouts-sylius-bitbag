@@ -15,10 +15,7 @@ use Symfony\Component\Validator\Validation;
 
 final class SectionTest extends TestCase
 {
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject&\BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface
-     */
-    private MockObject $repositoryMock;
+    private MockObject&SectionRepositoryInterface $repositoryMock;
 
     private Section $targetType;
 

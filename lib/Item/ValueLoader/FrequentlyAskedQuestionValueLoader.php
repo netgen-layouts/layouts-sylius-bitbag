@@ -11,18 +11,15 @@ use Throwable;
 
 final class FrequentlyAskedQuestionValueLoader implements ValueLoaderInterface
 {
-    private FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository;
-
-    public function __construct(FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository)
+    public function __construct(private FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository)
     {
-        $this->frequentlyAskedQuestionRepository = $frequentlyAskedQuestionRepository;
     }
 
     public function load($id): ?FrequentlyAskedQuestionInterface
     {
         try {
             $frequentlyAskedQuestion = $this->frequentlyAskedQuestionRepository->find($id);
-        } catch (Throwable $t) {
+        } catch (Throwable) {
             return null;
         }
 

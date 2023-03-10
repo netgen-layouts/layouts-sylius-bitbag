@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 
 final class FrequentlyAskedQuestionValueLoaderTest extends TestCase
 {
-    private MockObject $frequentlyAskedQuestionRepositoryMock;
+    private MockObject&FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepositoryMock;
 
     private FrequentlyAskedQuestionValueLoader $valueLoader;
 

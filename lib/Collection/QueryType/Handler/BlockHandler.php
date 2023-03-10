@@ -28,12 +28,6 @@ final class BlockHandler implements QueryTypeHandlerInterface
     use SyliusProductTrait;
     use SyliusTaxonTrait;
 
-    private BlockRepositoryInterface $blockRepository;
-
-    private LocaleContextInterface $localeContext;
-
-    private RequestStack $requestStack;
-
     /** @var array<string, string> */
     private array $sortingOptions = [
         'Name' => 'translations.name',
@@ -41,13 +35,10 @@ final class BlockHandler implements QueryTypeHandlerInterface
     ];
 
     public function __construct(
-        BlockRepositoryInterface $blockRepository,
-        LocaleContextInterface $localeContext,
-        RequestStack $requestStack
+        private BlockRepositoryInterface $blockRepository,
+        private LocaleContextInterface $localeContext,
+        private RequestStack $requestStack,
     ) {
-        $this->blockRepository = $blockRepository;
-        $this->localeContext = $localeContext;
-        $this->requestStack = $requestStack;
     }
 
     public function buildParameters(ParameterBuilderInterface $builder): void

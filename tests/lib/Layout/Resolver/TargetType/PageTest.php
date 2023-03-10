@@ -15,10 +15,7 @@ use Symfony\Component\Validator\Validation;
 
 final class PageTest extends TestCase
 {
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject&\BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface
-     */
-    private MockObject $repositoryMock;
+    private MockObject&PageRepositoryInterface $repositoryMock;
 
     private Page $targetType;
 

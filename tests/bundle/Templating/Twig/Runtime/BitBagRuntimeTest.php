@@ -14,9 +14,9 @@ use PHPUnit\Framework\TestCase;
 
 final class BitBagRuntimeTest extends TestCase
 {
-    private MockObject $pageRepositoryMock;
+    private MockObject&PageRepositoryInterface $pageRepositoryMock;
 
-    private MockObject $sectionRepositoryMock;
+    private MockObject&SectionRepositoryInterface $sectionRepositoryMock;
 
     private BitBagRuntime $runtime;
 

@@ -13,7 +13,7 @@ final class Page extends BasePage
         string $code,
         string $name,
         ?string $slug = null,
-        bool $enabled = true
+        bool $enabled = true,
     ) {
         parent::__construct();
 

@@ -11,18 +11,15 @@ use Throwable;
 
 final class PageValueLoader implements ValueLoaderInterface
 {
-    private PageRepositoryInterface $pageRepository;
-
-    public function __construct(PageRepositoryInterface $pageRepository)
+    public function __construct(private PageRepositoryInterface $pageRepository)
     {
-        $this->pageRepository = $pageRepository;
     }
 
     public function load($id): ?PageInterface
     {
         try {
             $page = $this->pageRepository->find($id);
-        } catch (Throwable $t) {
+        } catch (Throwable) {
             return null;
         }
 

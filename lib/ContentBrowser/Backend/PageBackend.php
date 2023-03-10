@@ -20,16 +20,10 @@ use function sprintf;
 
 final class PageBackend implements BackendInterface
 {
-    private PageRepositoryInterface $pageRepository;
-
-    private LocaleContextInterface $localeContext;
-
     public function __construct(
-        PageRepositoryInterface $pageRepository,
-        LocaleContextInterface $localeContext
+        private PageRepositoryInterface $pageRepository,
+        private LocaleContextInterface $localeContext,
     ) {
-        $this->pageRepository = $pageRepository;
-        $this->localeContext = $localeContext;
     }
 
     public function getSections(): iterable

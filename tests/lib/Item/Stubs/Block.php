@@ -12,7 +12,7 @@ final class Block extends BaseBlock
         int $id,
         string $code,
         string $name,
-        bool $enabled = true
+        bool $enabled = true,
     ) {
         parent::__construct();
 

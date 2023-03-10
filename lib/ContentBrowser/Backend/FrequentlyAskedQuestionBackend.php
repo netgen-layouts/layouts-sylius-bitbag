@@ -20,16 +20,10 @@ use function sprintf;
 
 final class FrequentlyAskedQuestionBackend implements BackendInterface
 {
-    private FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository;
-
-    private LocaleContextInterface $localeContext;
-
     public function __construct(
-        FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository,
-        LocaleContextInterface $localeContext
+        private FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository,
+        private LocaleContextInterface $localeContext,
     ) {
-        $this->frequentlyAskedQuestionRepository = $frequentlyAskedQuestionRepository;
-        $this->localeContext = $localeContext;
     }
 
     public function getSections(): iterable

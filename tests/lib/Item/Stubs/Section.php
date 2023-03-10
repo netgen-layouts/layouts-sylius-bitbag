@@ -11,7 +11,7 @@ final class Section extends BaseSection
     public function __construct(
         int $id,
         string $code,
-        string $name
+        string $name,
     ) {
         parent::__construct();
 

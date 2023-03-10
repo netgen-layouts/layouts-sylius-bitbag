@@ -19,7 +19,7 @@ final class PageIndexListenerTest extends TestCase
 {
     private PageIndexListener $listener;
 
-    private MockObject $sectionRepositoryMock;
+    private MockObject&SectionRepositoryInterface $sectionRepositoryMock;
 
     private RequestStack $requestStack;
 

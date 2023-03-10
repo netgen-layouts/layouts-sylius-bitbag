@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 
 final class BlockValueLoaderTest extends TestCase
 {
-    private MockObject $blockRepositoryMock;
+    private MockObject&BlockRepositoryInterface $blockRepositoryMock;
 
     private BlockValueLoader $valueLoader;
 

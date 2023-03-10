@@ -13,7 +13,7 @@ final class Media extends BaseMedia
         string $code,
         string $name,
         string $type = 'file',
-        bool $enabled = true
+        bool $enabled = true,
     ) {
         parent::__construct();
 

@@ -11,22 +11,13 @@ use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
 
 final class BitBagRuntime
 {
-    private PageRepositoryInterface $pageRepository;
-
-    private SectionRepositoryInterface $sectionRepository;
-
     public function __construct(
-        PageRepositoryInterface $pageRepository,
-        SectionRepositoryInterface $sectionRepository
+        private PageRepositoryInterface $pageRepository,
+        private SectionRepositoryInterface $sectionRepository,
     ) {
-        $this->pageRepository = $pageRepository;
-        $this->sectionRepository = $sectionRepository;
     }
 
-    /**
-     * @param int|string $pageId
-     */
-    public function getPageName($pageId): ?string
+    public function getPageName(int|string $pageId): ?string
     {
         $page = $this->pageRepository->find($pageId);
         if (!$page instanceof PageInterface) {
@@ -36,10 +27,7 @@ final class BitBagRuntime
         return $page->getName();
     }
 
-    /**
-     * @param int|string $sectionId
-     */
-    public function getSectionName($sectionId): ?string
+    public function getSectionName(int|string $sectionId): ?string
     {
         $section = $this->sectionRepository->find($sectionId);
         if (!$section instanceof SectionInterface) {

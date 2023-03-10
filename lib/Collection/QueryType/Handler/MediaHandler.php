@@ -26,12 +26,6 @@ final class MediaHandler implements QueryTypeHandlerInterface
     use SyliusChannelFilterTrait;
     use SyliusProductTrait;
 
-    private MediaRepositoryInterface $mediaRepository;
-
-    private LocaleContextInterface $localeContext;
-
-    private RequestStack $requestStack;
-
     /** @var array<string, string> */
     private array $sortingOptions = [
         'Name' => 'translations.name',
@@ -39,13 +33,10 @@ final class MediaHandler implements QueryTypeHandlerInterface
     ];
 
     public function __construct(
-        MediaRepositoryInterface $mediaRepository,
-        LocaleContextInterface $localeContext,
-        RequestStack $requestStack
+        private MediaRepositoryInterface $mediaRepository,
+        private LocaleContextInterface $localeContext,
+        private RequestStack $requestStack,
     ) {
-        $this->mediaRepository = $mediaRepository;
-        $this->localeContext = $localeContext;
-        $this->requestStack = $requestStack;
     }
 
     public function buildParameters(ParameterBuilderInterface $builder): void

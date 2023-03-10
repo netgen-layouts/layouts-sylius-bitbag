@@ -13,7 +13,7 @@ final class FrequentlyAskedQuestion extends BaseFrequentlyAskedQuestion
         string $code,
         ?string $question = null,
         ?string $answer = null,
-        bool $enabled = true
+        bool $enabled = true,
     ) {
         parent::__construct();
 

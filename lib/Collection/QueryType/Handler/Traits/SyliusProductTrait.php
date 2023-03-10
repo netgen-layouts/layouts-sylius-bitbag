@@ -53,7 +53,7 @@ trait SyliusProductTrait
     private function addSyliusProductCriterion(
         ParameterCollectionInterface $parameterCollection,
         QueryBuilder $queryBuilder,
-        ?Request $request
+        ?Request $request,
     ): void {
         $useCurrentProduct = $parameterCollection->getParameter('use_current_product')->getValue() === true;
         $syliusProductId = $parameterCollection->getParameter('sylius_product_id')->getValue();

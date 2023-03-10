@@ -9,11 +9,8 @@ use Netgen\ContentBrowser\Item\ItemInterface;
 
 final class Item implements ItemInterface, FrequentlyAskedQuestionInterface
 {
-    private BitBagFrequentlyAskedQuestionInterface $frequentlyAskedQuestion;
-
-    public function __construct(BitBagFrequentlyAskedQuestionInterface $frequentlyAskedQuestion)
+    public function __construct(private BitBagFrequentlyAskedQuestionInterface $frequentlyAskedQuestion)
     {
-        $this->frequentlyAskedQuestion = $frequentlyAskedQuestion;
     }
 
     public function getValue(): int

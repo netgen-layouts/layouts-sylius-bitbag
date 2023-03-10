@@ -12,11 +12,8 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
  */
 final class PageValueUrlGenerator implements ValueUrlGeneratorInterface
 {
-    private UrlGeneratorInterface $urlGenerator;
-
-    public function __construct(UrlGeneratorInterface $urlGenerator)
+    public function __construct(private UrlGeneratorInterface $urlGenerator)
     {
-        $this->urlGenerator = $urlGenerator;
     }
 
     public function generate(object $object): ?string

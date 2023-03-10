@@ -21,10 +21,6 @@ final class FrequentlyAskedQuestionHandler implements QueryTypeHandlerInterface
     use BitBagSortingTrait;
     use SyliusChannelFilterTrait;
 
-    private FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository;
-
-    private LocaleContextInterface $localeContext;
-
     /** @var array<string, string> */
     private array $sortingOptions = [
         'Position' => 'position',
@@ -34,11 +30,9 @@ final class FrequentlyAskedQuestionHandler implements QueryTypeHandlerInterface
     ];
 
     public function __construct(
-        FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository,
-        LocaleContextInterface $localeContext
+        private FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository,
+        private LocaleContextInterface $localeContext,
     ) {
-        $this->frequentlyAskedQuestionRepository = $frequentlyAskedQuestionRepository;
-        $this->localeContext = $localeContext;
     }
 
     public function buildParameters(ParameterBuilderInterface $builder): void

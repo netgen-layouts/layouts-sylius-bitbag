@@ -26,12 +26,6 @@ final class PageHandler implements QueryTypeHandlerInterface
     use SyliusChannelFilterTrait;
     use SyliusProductTrait;
 
-    private PageRepositoryInterface $pageRepository;
-
-    private LocaleContextInterface $localeContext;
-
-    private RequestStack $requestStack;
-
     /** @var array<string, string> */
     private array $sortingOptions = [
         'Name' => 'translations.name',
@@ -42,13 +36,10 @@ final class PageHandler implements QueryTypeHandlerInterface
     ];
 
     public function __construct(
-        PageRepositoryInterface $pageRepository,
-        LocaleContextInterface $localeContext,
-        RequestStack $requestStack
+        private PageRepositoryInterface $pageRepository,
+        private LocaleContextInterface $localeContext,
+        private RequestStack $requestStack,
     ) {
-        $this->pageRepository = $pageRepository;
-        $this->localeContext = $localeContext;
-        $this->requestStack = $requestStack;
     }
 
     public function buildParameters(ParameterBuilderInterface $builder): void

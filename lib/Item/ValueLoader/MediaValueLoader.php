@@ -11,18 +11,15 @@ use Throwable;
 
 final class MediaValueLoader implements ValueLoaderInterface
 {
-    private MediaRepositoryInterface $mediaRepository;
-
-    public function __construct(MediaRepositoryInterface $mediaRepository)
+    public function __construct(private MediaRepositoryInterface $mediaRepository)
     {
-        $this->mediaRepository = $mediaRepository;
     }
 
     public function load($id): ?MediaInterface
     {
         try {
             $media = $this->mediaRepository->find($id);
-        } catch (Throwable $t) {
+        } catch (Throwable) {
             return null;
         }
 

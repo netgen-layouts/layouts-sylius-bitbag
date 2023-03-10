@@ -20,7 +20,7 @@ use Sylius\Component\Locale\Context\LocaleContextInterface;
 
 final class PageBackendTest extends TestCase
 {
-    private MockObject $pageRepositoryMock;
+    private MockObject&PageRepositoryInterface $pageRepositoryMock;
 
     private PageBackend $backend;
 

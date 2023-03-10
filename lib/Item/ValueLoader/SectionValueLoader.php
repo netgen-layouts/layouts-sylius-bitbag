@@ -11,18 +11,15 @@ use Throwable;
 
 final class SectionValueLoader implements ValueLoaderInterface
 {
-    private SectionRepositoryInterface $sectionRepository;
-
-    public function __construct(SectionRepositoryInterface $sectionRepository)
+    public function __construct(private SectionRepositoryInterface $sectionRepository)
     {
-        $this->sectionRepository = $sectionRepository;
     }
 
     public function load($id): ?SectionInterface
     {
         try {
             $section = $this->sectionRepository->find($id);
-        } catch (Throwable $t) {
+        } catch (Throwable) {
             return null;
         }
 

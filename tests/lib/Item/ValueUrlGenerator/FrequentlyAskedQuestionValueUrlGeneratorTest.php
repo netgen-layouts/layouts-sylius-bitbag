@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 final class FrequentlyAskedQuestionValueUrlGeneratorTest extends TestCase
 {
-    private MockObject $urlGeneratorMock;
+    private MockObject&UrlGeneratorInterface $urlGeneratorMock;
 
     private FrequentlyAskedQuestionValueUrlGenerator $urlGenerator;
 

@@ -28,55 +28,9 @@ final class BitBagEntityField
 
     private string $type;
 
-    /**
-     * @var mixed
-     */
-    private $value;
-
-    /**
-     * @param mixed $value
-     */
-    private function __construct($value)
+    private function __construct(private mixed $value)
     {
-        $this->value = $value;
-
-        if ($value instanceof DateTimeInterface) {
-            $this->type = self::TYPE_DATETIME;
-
-            return;
-        }
-
-        if (is_string($value)) {
-            $this->type = self::TYPE_STRING;
-
-            return;
-        }
-
-        if (is_numeric($value)) {
-            $this->type = self::TYPE_NUMBER;
-
-            return;
-        }
-
-        if (is_bool($value)) {
-            $this->type = self::TYPE_BOOLEAN;
-
-            return;
-        }
-
-        if ($value instanceof MediaInterface) {
-            $this->type = self::TYPE_MEDIA;
-
-            return;
-        }
-
-        if ($value instanceof ContentableInterface) {
-            $this->type = self::TYPE_CONTENT;
-
-            return;
-        }
-
-        $this->type = self::TYPE_OTHER;
+        $this->setType($this->value);
     }
 
     public static function fromBitBagEntity(ResourceInterface $resource, string $fieldIdentifier): self
@@ -104,10 +58,7 @@ final class BitBagEntityField
         return new self(null);
     }
 
-    /**
-     * @return mixed
-     */
-    public function getValue()
+    public function getValue(): mixed
     {
         return $this->value;
     }
@@ -120,5 +71,18 @@ final class BitBagEntityField
     public function isEmpty(): bool
     {
         return $this->value === null;
+    }
+
+    private function setType(mixed $value): void
+    {
+        $this->type = match ($value) {
+            $value instanceof ContentableInterface => self::TYPE_CONTENT,
+            $value instanceof DateTimeInterface => self::TYPE_DATETIME,
+            $value instanceof MediaInterface => self::TYPE_MEDIA,
+            is_numeric($value) => self::TYPE_NUMBER,
+            is_string($value) => self::TYPE_STRING,
+            is_bool($value) => self::TYPE_BOOLEAN,
+            default => self::TYPE_OTHER,
+        };
     }
 }

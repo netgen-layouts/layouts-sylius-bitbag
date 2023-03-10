@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 final class EntityFieldHandlerTest extends TestCase
 {
-    private MockObject $requestStackMock;
+    private MockObject&RequestStack $requestStackMock;
 
     private EntityFieldHandler $handler;
 

@@ -19,10 +19,7 @@ final class SectionTypeTest extends TestCase
 {
     use ParameterTypeTestTrait;
 
-    /**
-     * @var \PHPUnit\Framework\MockObject\MockObject&\BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface
-     */
-    private MockObject $repositoryMock;
+    private MockObject&SectionRepositoryInterface $repositoryMock;
 
     protected function setUp(): void
     {
@@ -157,13 +154,11 @@ final class SectionTypeTest extends TestCase
     }
 
     /**
-     * @param mixed $value
-     *
      * @covers \Netgen\Layouts\Sylius\BitBag\Parameters\ParameterType\SectionType::isValueEmpty
      *
      * @dataProvider emptyDataProvider
      */
-    public function testIsValueEmpty($value, bool $isEmpty): void
+    public function testIsValueEmpty(mixed $value, bool $isEmpty): void
     {
         self::assertSame($isEmpty, $this->type->isValueEmpty(new ParameterDefinition(), $value));
     }

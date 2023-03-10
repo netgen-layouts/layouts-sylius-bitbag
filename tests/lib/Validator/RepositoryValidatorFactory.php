@@ -16,13 +16,10 @@ use Symfony\Component\Validator\ConstraintValidatorInterface;
 
 final class RepositoryValidatorFactory implements ConstraintValidatorFactoryInterface
 {
-    private RepositoryInterface $repository;
-
     private ConstraintValidatorFactory $baseValidatorFactory;
 
-    public function __construct(RepositoryInterface $repository)
+    public function __construct(private RepositoryInterface $repository)
     {
-        $this->repository = $repository;
         $this->baseValidatorFactory = new ConstraintValidatorFactory();
     }
 

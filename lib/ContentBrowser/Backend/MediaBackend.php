@@ -20,16 +20,10 @@ use function sprintf;
 
 final class MediaBackend implements BackendInterface
 {
-    private MediaRepositoryInterface $mediaRepository;
-
-    private LocaleContextInterface $localeContext;
-
     public function __construct(
-        MediaRepositoryInterface $mediaRepository,
-        LocaleContextInterface $localeContext
+        private MediaRepositoryInterface $mediaRepository,
+        private LocaleContextInterface $localeContext,
     ) {
-        $this->mediaRepository = $mediaRepository;
-        $this->localeContext = $localeContext;
     }
 
     public function getSections(): iterable

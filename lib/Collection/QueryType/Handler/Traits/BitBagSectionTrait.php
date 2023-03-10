@@ -53,7 +53,7 @@ trait BitBagSectionTrait
     private function addBitBagSectionCriterion(
         ParameterCollectionInterface $parameterCollection,
         QueryBuilder $queryBuilder,
-        ?Request $request
+        ?Request $request,
     ): void {
         $useCurrentSection = $parameterCollection->getParameter('use_current_section')->getValue();
         $bitBagSectionId = $parameterCollection->getParameter('bitbag_section_id')->getValue();

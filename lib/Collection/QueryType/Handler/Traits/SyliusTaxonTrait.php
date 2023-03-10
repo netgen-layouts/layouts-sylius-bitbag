@@ -53,7 +53,7 @@ trait SyliusTaxonTrait
     private function addSyliusTaxonCriterion(
         ParameterCollectionInterface $parameterCollection,
         QueryBuilder $queryBuilder,
-        ?Request $request
+        ?Request $request,
     ): void {
         $useCurrentTaxon = $parameterCollection->getParameter('use_current_taxon')->getValue();
         $syliusTaxonId = $parameterCollection->getParameter('sylius_taxon_id')->getValue();

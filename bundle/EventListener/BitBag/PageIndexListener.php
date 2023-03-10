@@ -15,24 +15,12 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 final class PageIndexListener implements EventSubscriberInterface
 {
-    private SectionRepositoryInterface $sectionRepository;
-
-    private LocaleContextInterface $localeContext;
-
-    private RequestStack $requestStack;
-
-    private Context $context;
-
     public function __construct(
-        SectionRepositoryInterface $sectionRepository,
-        LocaleContextInterface $localeContext,
-        RequestStack $requestStack,
-        Context $context
+        private SectionRepositoryInterface $sectionRepository,
+        private LocaleContextInterface $localeContext,
+        private RequestStack $requestStack,
+        private Context $context,
     ) {
-        $this->sectionRepository = $sectionRepository;
-        $this->localeContext = $localeContext;
-        $this->requestStack = $requestStack;
-        $this->context = $context;
     }
 
     public static function getSubscribedEvents(): array

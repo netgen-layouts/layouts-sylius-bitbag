@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 
 final class PageValueLoaderTest extends TestCase
 {
-    private MockObject $pageRepositoryMock;
+    private MockObject&PageRepositoryInterface $pageRepositoryMock;
 
     private PageValueLoader $valueLoader;
 

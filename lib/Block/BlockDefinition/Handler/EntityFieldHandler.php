@@ -17,11 +17,8 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 final class EntityFieldHandler extends BlockDefinitionHandler
 {
-    private RequestStack $requestStack;
-
-    public function __construct(RequestStack $requestStack)
+    public function __construct(private RequestStack $requestStack)
     {
-        $this->requestStack = $requestStack;
     }
 
     public function buildParameters(ParameterBuilderInterface $builder): void

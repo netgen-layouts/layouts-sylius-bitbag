@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 
 final class MediaValueLoaderTest extends TestCase
 {
-    private MockObject $mediaRepositoryMock;
+    private MockObject&MediaRepositoryInterface $mediaRepositoryMock;
 
     private MediaValueLoader $valueLoader;
 

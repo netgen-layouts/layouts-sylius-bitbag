@@ -20,16 +20,10 @@ use function sprintf;
 
 final class SectionBackend implements BackendInterface
 {
-    private SectionRepositoryInterface $sectionRepository;
-
-    private LocaleContextInterface $localeContext;
-
     public function __construct(
-        SectionRepositoryInterface $sectionRepository,
-        LocaleContextInterface $localeContext
+        private SectionRepositoryInterface $sectionRepository,
+        private LocaleContextInterface $localeContext,
     ) {
-        $this->sectionRepository = $sectionRepository;
-        $this->localeContext = $localeContext;
     }
 
     public function getSections(): iterable

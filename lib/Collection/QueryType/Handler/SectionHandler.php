@@ -19,10 +19,6 @@ final class SectionHandler implements QueryTypeHandlerInterface
     use BitBagSortingTrait;
     use SyliusChannelFilterTrait;
 
-    private SectionRepositoryInterface $sectionRepository;
-
-    private LocaleContextInterface $localeContext;
-
     /** @var array<string, string> */
     private array $sortingOptions = [
         'Name' => 'translations.name',
@@ -30,11 +26,9 @@ final class SectionHandler implements QueryTypeHandlerInterface
     ];
 
     public function __construct(
-        SectionRepositoryInterface $sectionRepository,
-        LocaleContextInterface $localeContext
+        private SectionRepositoryInterface $sectionRepository,
+        private LocaleContextInterface $localeContext,
     ) {
-        $this->sectionRepository = $sectionRepository;
-        $this->localeContext = $localeContext;
     }
 
     public function buildParameters(ParameterBuilderInterface $builder): void

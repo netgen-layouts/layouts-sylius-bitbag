@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 
 final class SectionValueLoaderTest extends TestCase
 {
-    private MockObject $sectionRepositoryMock;
+    private MockObject&SectionRepositoryInterface $sectionRepositoryMock;
 
     private SectionValueLoader $valueLoader;
 
