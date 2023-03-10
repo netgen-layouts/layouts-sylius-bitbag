@@ -17,16 +17,9 @@ use function ucfirst;
 
 final class BitBagEntityField
 {
-    public const TYPE_STRING = 'string';
-    public const TYPE_NUMBER = 'number';
-    public const TYPE_MEDIA = 'media';
-    public const TYPE_DATETIME = 'datetime';
-    public const TYPE_BOOLEAN = 'boolean';
-    public const TYPE_OTHER = 'other';
-    public const TYPE_CONTENT = 'content';
     private const CONTENT_FIELD_IDENTIFIER = 'content';
 
-    private string $type;
+    private BitBagEntityFieldType $type;
 
     private function __construct(private mixed $value)
     {
@@ -63,7 +56,7 @@ final class BitBagEntityField
         return $this->value;
     }
 
-    public function getType(): string
+    public function getType(): BitBagEntityFieldType
     {
         return $this->type;
     }
@@ -76,13 +69,13 @@ final class BitBagEntityField
     private function setType(mixed $value): void
     {
         $this->type = match ($value) {
-            $value instanceof ContentableInterface => self::TYPE_CONTENT,
-            $value instanceof DateTimeInterface => self::TYPE_DATETIME,
-            $value instanceof MediaInterface => self::TYPE_MEDIA,
-            is_numeric($value) => self::TYPE_NUMBER,
-            is_string($value) => self::TYPE_STRING,
-            is_bool($value) => self::TYPE_BOOLEAN,
-            default => self::TYPE_OTHER,
+            $value instanceof ContentableInterface => BitBagEntityFieldType::CONTENT,
+            $value instanceof DateTimeInterface => BitBagEntityFieldType::DATETIME,
+            $value instanceof MediaInterface => BitBagEntityFieldType::MEDIA,
+            is_numeric($value) => BitBagEntityFieldType::NUMBER,
+            is_string($value) => BitBagEntityFieldType::STRING,
+            is_bool($value) => BitBagEntityFieldType::BOOLEAN,
+            default => BitBagEntityFieldType::OTHER,
         };
     }
 }

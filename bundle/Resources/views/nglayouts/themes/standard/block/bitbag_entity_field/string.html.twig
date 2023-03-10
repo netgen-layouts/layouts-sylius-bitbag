@@ -7,7 +7,7 @@
 
     {% block bitbag_entity_field %}
         {% if field is not empty %}
-            {% if field.type is constant('TYPE_STRING', field) %}
+            {% if field.type is constant('STRING', field.type) %}
                 <{{ html_element }} class="field field-{{ field.type }} field-{{ field_identifier }}">
                     {{ field.value }}
                 </{{ html_element }}>
