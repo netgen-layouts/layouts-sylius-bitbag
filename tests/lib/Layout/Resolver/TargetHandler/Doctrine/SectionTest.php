@@ -8,9 +8,9 @@ use Netgen\Layouts\Persistence\Doctrine\QueryHandler\TargetHandlerInterface;
 use Netgen\Layouts\Persistence\Values\LayoutResolver\RuleGroup;
 use Netgen\Layouts\Persistence\Values\Value;
 use Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetHandler\Doctrine\Page;
-use Netgen\Layouts\Tests\Layout\Resolver\TargetHandler\Doctrine\AbstractTargetHandlerTest;
+use Netgen\Layouts\Tests\Layout\Resolver\TargetHandler\Doctrine\TargetHandlerTestBase;
 
-final class SectionTest extends AbstractTargetHandlerTest
+final class SectionTest extends TargetHandlerTestBase
 {
     /**
      * @covers \Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetHandler\Doctrine\Page::handleQuery
