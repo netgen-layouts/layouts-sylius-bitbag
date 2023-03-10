@@ -11,7 +11,7 @@
     ],
     "require": {
         "bitbag/cms-plugin": "^3.2",
-        "netgen/layouts-sylius": "~1.4.0"
+        "netgen/layouts-sylius": "~1.4.3"
     },
     "require-dev": {
         "netgen/layouts-coding-standard": "^2.0",
