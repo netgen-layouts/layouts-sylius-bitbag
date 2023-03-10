@@ -6,10 +6,12 @@ namespace Netgen\Layouts\Sylius\BitBag\Tests\Item\ValueUrlGenerator;
 
 use Netgen\Layouts\Sylius\BitBag\Item\ValueUrlGenerator\PageValueUrlGenerator;
 use Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs\Page;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
+#[CoversClass(PageValueUrlGenerator::class)]
 final class PageValueUrlGeneratorTest extends TestCase
 {
     private MockObject&UrlGeneratorInterface $urlGeneratorMock;
@@ -23,10 +25,6 @@ final class PageValueUrlGeneratorTest extends TestCase
         $this->urlGenerator = new PageValueUrlGenerator($this->urlGeneratorMock);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueUrlGenerator\PageValueUrlGenerator::__construct
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueUrlGenerator\PageValueUrlGenerator::generate
-     */
     public function testGenerate(): void
     {
         $this->urlGeneratorMock

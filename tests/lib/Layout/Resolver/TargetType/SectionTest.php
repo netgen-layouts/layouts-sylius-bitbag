@@ -8,11 +8,13 @@ use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
 use Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\Section;
 use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Section as SectionStub;
 use Netgen\Layouts\Sylius\BitBag\Tests\Validator\RepositoryValidatorFactory;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validation;
 
+#[CoversClass(Section::class)]
 final class SectionTest extends TestCase
 {
     private MockObject&SectionRepositoryInterface $repositoryMock;
@@ -26,17 +28,11 @@ final class SectionTest extends TestCase
         $this->targetType = new Section();
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\Section::getType
-     */
     public function testGetType(): void
     {
         self::assertSame('bitbag_section', $this->targetType::getType());
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\Section::getConstraints
-     */
     public function testValidationValid(): void
     {
         $this->repositoryMock
@@ -53,9 +49,6 @@ final class SectionTest extends TestCase
         self::assertCount(0, $errors);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\Section::getConstraints
-     */
     public function testValidationInvalid(): void
     {
         $this->repositoryMock
@@ -72,9 +65,6 @@ final class SectionTest extends TestCase
         self::assertNotCount(0, $errors);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\Section::provideValue
-     */
     public function testProvideValue(): void
     {
         $section = new SectionStub(42, 'blog');
@@ -85,9 +75,6 @@ final class SectionTest extends TestCase
         self::assertSame(42, $this->targetType->provideValue($request));
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\Section::provideValue
-     */
     public function testProvideValueWithNoSection(): void
     {
         $request = Request::create('/');

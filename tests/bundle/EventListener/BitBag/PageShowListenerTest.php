@@ -8,11 +8,13 @@ use Netgen\Bundle\LayoutsSyliusBitBagBundle\EventListener\BitBag\PageShowListene
 use Netgen\Layouts\Context\Context;
 use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Page;
 use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Section;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
+#[CoversClass(PageShowListener::class)]
 final class PageShowListenerTest extends TestCase
 {
     private PageShowListener $listener;
@@ -29,10 +31,6 @@ final class PageShowListenerTest extends TestCase
         $this->listener = new PageShowListener($this->requestStack, $this->context);
     }
 
-    /**
-     * @covers \Netgen\Bundle\LayoutsSyliusBitBagBundle\EventListener\BitBag\PageShowListener::__construct
-     * @covers \Netgen\Bundle\LayoutsSyliusBitBagBundle\EventListener\BitBag\PageShowListener::getSubscribedEvents
-     */
     public function testGetSubscribedEvents(): void
     {
         self::assertSame(
@@ -41,9 +39,6 @@ final class PageShowListenerTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Bundle\LayoutsSyliusBitBagBundle\EventListener\BitBag\PageShowListener::onPageShow
-     */
     public function testOnPageShow(): void
     {
         $request = Request::create('/');
@@ -59,9 +54,6 @@ final class PageShowListenerTest extends TestCase
         self::assertSame(42, $this->context->get('bitbag_page_id'));
     }
 
-    /**
-     * @covers \Netgen\Bundle\LayoutsSyliusBitBagBundle\EventListener\BitBag\PageShowListener::onPageShow
-     */
     public function testOnPageShowWithoutPage(): void
     {
         $request = Request::create('/');

@@ -8,9 +8,11 @@ use Exception;
 use Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\FrequentlyAskedQuestionValueLoader;
 use Netgen\Layouts\Sylius\BitBag\Repository\FrequentlyAskedQuestionRepositoryInterface;
 use Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs\FrequentlyAskedQuestion;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(FrequentlyAskedQuestionValueLoader::class)]
 final class FrequentlyAskedQuestionValueLoaderTest extends TestCase
 {
     private MockObject&FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepositoryMock;
@@ -23,10 +25,6 @@ final class FrequentlyAskedQuestionValueLoaderTest extends TestCase
         $this->valueLoader = new FrequentlyAskedQuestionValueLoader($this->frequentlyAskedQuestionRepositoryMock);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\FrequentlyAskedQuestionValueLoader::__construct
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\FrequentlyAskedQuestionValueLoader::load
-     */
     public function testLoad(): void
     {
         $frequentlyAskedQuestion = new FrequentlyAskedQuestion(42, 'TEST_QUESTION');
@@ -40,9 +38,6 @@ final class FrequentlyAskedQuestionValueLoaderTest extends TestCase
         self::assertSame($frequentlyAskedQuestion, $this->valueLoader->load(42));
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\FrequentlyAskedQuestionValueLoader::load
-     */
     public function testLoadWithNoFrequentlyAskedQuestion(): void
     {
         $this->frequentlyAskedQuestionRepositoryMock
@@ -54,9 +49,6 @@ final class FrequentlyAskedQuestionValueLoaderTest extends TestCase
         self::assertNull($this->valueLoader->load(42));
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\FrequentlyAskedQuestionValueLoader::load
-     */
     public function testLoadWithRepositoryException(): void
     {
         $this->frequentlyAskedQuestionRepositoryMock
@@ -68,9 +60,6 @@ final class FrequentlyAskedQuestionValueLoaderTest extends TestCase
         self::assertNull($this->valueLoader->load(42));
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\FrequentlyAskedQuestionValueLoader::loadByRemoteId
-     */
     public function testLoadByRemoteId(): void
     {
         $frequentlyAskedQuestion = new FrequentlyAskedQuestion(42, 'TEST_QUESTION');
@@ -84,9 +73,6 @@ final class FrequentlyAskedQuestionValueLoaderTest extends TestCase
         self::assertSame($frequentlyAskedQuestion, $this->valueLoader->loadByRemoteId(42));
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\FrequentlyAskedQuestionValueLoader::loadByRemoteId
-     */
     public function testLoadByRemoteIdWithNoFrequentlyAskedQuestion(): void
     {
         $this->frequentlyAskedQuestionRepositoryMock
@@ -98,9 +84,6 @@ final class FrequentlyAskedQuestionValueLoaderTest extends TestCase
         self::assertNull($this->valueLoader->loadByRemoteId(42));
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\FrequentlyAskedQuestionValueLoader::loadByRemoteId
-     */
     public function testLoadByRemoteIdWithRepositoryException(): void
     {
         $this->frequentlyAskedQuestionRepositoryMock

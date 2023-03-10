@@ -9,12 +9,11 @@ use Netgen\Layouts\Persistence\Values\LayoutResolver\RuleGroup;
 use Netgen\Layouts\Persistence\Values\Value;
 use Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetHandler\Doctrine\Page;
 use Netgen\Layouts\Tests\Layout\Resolver\TargetHandler\Doctrine\TargetHandlerTestBase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
+#[CoversClass(Page::class)]
 final class SectionTest extends TargetHandlerTestBase
 {
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetHandler\Doctrine\Page::handleQuery
-     */
     public function testMatchRules(): void
     {
         $rules = $this->handler->matchRules(

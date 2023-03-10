@@ -8,11 +8,13 @@ use BitBag\SyliusCmsPlugin\Repository\PageRepositoryInterface;
 use Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\Page;
 use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Page as PageStub;
 use Netgen\Layouts\Sylius\BitBag\Tests\Validator\RepositoryValidatorFactory;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validation;
 
+#[CoversClass(Page::class)]
 final class PageTest extends TestCase
 {
     private MockObject&PageRepositoryInterface $repositoryMock;
@@ -26,17 +28,11 @@ final class PageTest extends TestCase
         $this->targetType = new Page();
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\Page::getType
-     */
     public function testGetType(): void
     {
         self::assertSame('bitbag_page', $this->targetType::getType());
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\Page::getConstraints
-     */
     public function testValidationValid(): void
     {
         $this->repositoryMock
@@ -53,9 +49,6 @@ final class PageTest extends TestCase
         self::assertCount(0, $errors);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\Page::getConstraints
-     */
     public function testValidationInvalid(): void
     {
         $this->repositoryMock
@@ -72,9 +65,6 @@ final class PageTest extends TestCase
         self::assertNotCount(0, $errors);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\Page::provideValue
-     */
     public function testProvideValue(): void
     {
         $page = new PageStub(42, 'contact-us');
@@ -85,9 +75,6 @@ final class PageTest extends TestCase
         self::assertSame(42, $this->targetType->provideValue($request));
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\Page::provideValue
-     */
     public function testProvideValueWithNoPage(): void
     {
         $request = Request::create('/');

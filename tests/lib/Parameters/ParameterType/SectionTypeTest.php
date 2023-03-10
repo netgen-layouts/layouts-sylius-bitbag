@@ -10,11 +10,14 @@ use Netgen\Layouts\Sylius\BitBag\Parameters\ParameterType\SectionType;
 use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Section as SectionStub;
 use Netgen\Layouts\Sylius\BitBag\Tests\Validator\RepositoryValidatorFactory;
 use Netgen\Layouts\Tests\Parameters\ParameterType\ParameterTypeTestTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\OptionsResolver\Exception\InvalidArgumentException;
 use Symfony\Component\Validator\Validation;
 
+#[CoversClass(SectionType::class)]
 final class SectionTypeTest extends TestCase
 {
     use ParameterTypeTestTrait;
@@ -28,9 +31,6 @@ final class SectionTypeTest extends TestCase
         $this->type = new SectionType();
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Parameters\ParameterType\SectionType::getIdentifier
-     */
     public function testGetIdentifier(): void
     {
         self::assertSame('bitbag_section', $this->type::getIdentifier());
@@ -39,11 +39,8 @@ final class SectionTypeTest extends TestCase
     /**
      * @param mixed[] $options
      * @param mixed[] $resolvedOptions
-     *
-     * @covers \Netgen\Layouts\Sylius\BitBag\Parameters\ParameterType\SectionType::configureOptions
-     *
-     * @dataProvider validOptionsDataProvider
      */
+    #[DataProvider('validOptionsDataProvider')]
     public function testValidOptions(array $options, array $resolvedOptions): void
     {
         $parameter = $this->getParameterDefinition($options);
@@ -52,11 +49,8 @@ final class SectionTypeTest extends TestCase
 
     /**
      * @param mixed[] $options
-     *
-     * @covers \Netgen\Layouts\Sylius\BitBag\Parameters\ParameterType\SectionType::configureOptions
-     *
-     * @dataProvider invalidOptionsDataProvider
      */
+    #[DataProvider('invalidOptionsDataProvider')]
     public function testInvalidOptions(array $options): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -95,9 +89,6 @@ final class SectionTypeTest extends TestCase
         ];
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Parameters\ParameterType\SectionType::getValueConstraints
-     */
     public function testValidationValid(): void
     {
         $this->repositoryMock
@@ -115,9 +106,6 @@ final class SectionTypeTest extends TestCase
         self::assertCount(0, $errors);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Parameters\ParameterType\SectionType::getValueConstraints
-     */
     public function testValidationValidWithNonRequiredValue(): void
     {
         $this->repositoryMock
@@ -133,9 +121,6 @@ final class SectionTypeTest extends TestCase
         self::assertCount(0, $errors);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Parameters\ParameterType\SectionType::getValueConstraints
-     */
     public function testValidationInvalid(): void
     {
         $this->repositoryMock
@@ -153,11 +138,7 @@ final class SectionTypeTest extends TestCase
         self::assertNotCount(0, $errors);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Parameters\ParameterType\SectionType::isValueEmpty
-     *
-     * @dataProvider emptyDataProvider
-     */
+    #[DataProvider('emptyDataProvider')]
     public function testIsValueEmpty(mixed $value, bool $isEmpty): void
     {
         self::assertSame($isEmpty, $this->type->isValueEmpty(new ParameterDefinition(), $value));

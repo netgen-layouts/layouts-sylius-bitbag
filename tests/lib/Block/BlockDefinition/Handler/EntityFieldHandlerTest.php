@@ -11,11 +11,13 @@ use Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\BitBagEntityField
 use Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\EntityFieldHandler;
 use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Page as PageStub;
 use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Section as SectionStub;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
+#[CoversClass(EntityFieldHandler::class)]
 final class EntityFieldHandlerTest extends TestCase
 {
     private MockObject&RequestStack $requestStackMock;
@@ -29,19 +31,11 @@ final class EntityFieldHandlerTest extends TestCase
         $this->handler = new EntityFieldHandler($this->requestStackMock);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\EntityFieldHandler::isContextual
-     */
     public function testIsContextual(): void
     {
         self::assertTrue($this->handler->isContextual(new Block()));
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\EntityFieldHandler::__construct
-     * @covers \Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\EntityFieldHandler::getCurrentBitBagEntity
-     * @covers \Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\EntityFieldHandler::getDynamicParameters
-     */
     public function testGetDynamicParametersWithPage(): void
     {
         $page = new PageStub(5, 'about-us');
@@ -74,11 +68,6 @@ final class EntityFieldHandlerTest extends TestCase
         self::assertSame($field->getValue(), $params['field']->getValue());
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\EntityFieldHandler::__construct
-     * @covers \Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\EntityFieldHandler::getCurrentBitBagEntity
-     * @covers \Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\EntityFieldHandler::getDynamicParameters
-     */
     public function testGetDynamicParametersWithSection(): void
     {
         $section = new SectionStub(5, 'blog');
@@ -109,11 +98,6 @@ final class EntityFieldHandlerTest extends TestCase
         self::assertSame($field->getValue(), $params['field']->getValue());
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\EntityFieldHandler::__construct
-     * @covers \Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\EntityFieldHandler::getCurrentBitBagEntity
-     * @covers \Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\EntityFieldHandler::getDynamicParameters
-     */
     public function testGetDynamicParametersWithoutRequest(): void
     {
         $this->requestStackMock

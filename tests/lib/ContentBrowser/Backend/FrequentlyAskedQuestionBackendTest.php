@@ -14,10 +14,12 @@ use Netgen\Layouts\Sylius\BitBag\Repository\FrequentlyAskedQuestionRepositoryInt
 use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\FrequentlyAskedQuestion;
 use Pagerfanta\Adapter\AdapterInterface;
 use Pagerfanta\Pagerfanta;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 
+#[CoversClass(FrequentlyAskedQuestionBackend::class)]
 final class FrequentlyAskedQuestionBackendTest extends TestCase
 {
     private MockObject&FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepositoryMock;
@@ -40,10 +42,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\FrequentlyAskedQuestionBackend::__construct
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\FrequentlyAskedQuestionBackend::getSections
-     */
     public function testGetSections(): void
     {
         $locations = $this->backend->getSections();
@@ -52,10 +50,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
         self::assertContainsOnlyInstancesOf(RootLocation::class, $locations);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\FrequentlyAskedQuestionBackend::buildItem
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\FrequentlyAskedQuestionBackend::loadItem
-     */
     public function testLoadItem(): void
     {
         $this->frequentlyAskedQuestionRepositoryMock
@@ -69,9 +63,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
         self::assertSame(1, $item->getValue());
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\FrequentlyAskedQuestionBackend::loadItem
-     */
     public function testLoadItemThrowsNotFoundException(): void
     {
         $this->expectException(NotFoundException::class);
@@ -86,9 +77,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
         $this->backend->loadItem(1);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\FrequentlyAskedQuestionBackend::getSubLocations
-     */
     public function testGetSubLocations(): void
     {
         $locations = $this->backend->getSubLocations(new RootLocation());
@@ -96,9 +84,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
         self::assertCount(0, $locations);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\FrequentlyAskedQuestionBackend::getSubLocationsCount
-     */
     public function testGetSubLocationsCount(): void
     {
         $count = $this->backend->getSubLocationsCount(new RootLocation());
@@ -106,11 +91,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
         self::assertSame(0, $count);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\FrequentlyAskedQuestionBackend::buildItem
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\FrequentlyAskedQuestionBackend::buildItems
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\FrequentlyAskedQuestionBackend::getSubItems
-     */
     public function testGetSubItems(): void
     {
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
@@ -137,11 +117,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
         self::assertContainsOnlyInstancesOf(Item::class, $items);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\FrequentlyAskedQuestionBackend::buildItem
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\FrequentlyAskedQuestionBackend::buildItems
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\FrequentlyAskedQuestionBackend::getSubItems
-     */
     public function testGetSubItemsWithOffsetAndLimit(): void
     {
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
@@ -176,9 +151,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
         self::assertContainsOnlyInstancesOf(Item::class, $items);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\FrequentlyAskedQuestionBackend::getSubItemsCount
-     */
     public function testGetSubItemsCount(): void
     {
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
@@ -200,11 +172,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
         self::assertSame(2, $count);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\FrequentlyAskedQuestionBackend::buildItem
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\FrequentlyAskedQuestionBackend::buildItems
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\FrequentlyAskedQuestionBackend::searchItems
-     */
     public function testSearchItems(): void
     {
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
@@ -229,11 +196,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
         self::assertContainsOnlyInstancesOf(Item::class, $searchResult->getResults());
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\FrequentlyAskedQuestionBackend::buildItem
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\FrequentlyAskedQuestionBackend::buildItems
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\FrequentlyAskedQuestionBackend::searchItems
-     */
     public function testSearchItemsWithOffsetAndLimit(): void
     {
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
@@ -268,9 +230,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
         self::assertContainsOnlyInstancesOf(Item::class, $searchResult->getResults());
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\FrequentlyAskedQuestionBackend::searchItemsCount
-     */
     public function testSearchItemsCount(): void
     {
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
@@ -290,11 +249,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
         self::assertSame(2, $count);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\FrequentlyAskedQuestionBackend::buildItem
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\FrequentlyAskedQuestionBackend::buildItems
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\FrequentlyAskedQuestionBackend::search
-     */
     public function testSearch(): void
     {
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
@@ -319,11 +273,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
         self::assertContainsOnlyInstancesOf(Item::class, $items);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\FrequentlyAskedQuestionBackend::buildItem
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\FrequentlyAskedQuestionBackend::buildItems
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\FrequentlyAskedQuestionBackend::search
-     */
     public function testSearchWithOffsetAndLimit(): void
     {
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
@@ -354,9 +303,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
         self::assertContainsOnlyInstancesOf(Item::class, $items);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\FrequentlyAskedQuestionBackend::searchCount
-     */
     public function testSearchCount(): void
     {
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);

@@ -5,27 +5,26 @@ declare(strict_types=1);
 namespace Netgen\Layouts\Sylius\BitBag\Tests\Item\ColumnProvider\Media;
 
 use Netgen\Layouts\Sylius\BitBag\ContentBrowser\Item\Media\Item as MediaItem;
-use Netgen\Layouts\Sylius\BitBag\Item\ColumnProvider\Media\Type;
+use Netgen\Layouts\Sylius\BitBag\Item\ColumnProvider\Media\MimeType;
 use Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs\Media as MediaStub;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(MimeType::class)]
 final class MimeTypeTest extends TestCase
 {
-    private Type $typeColumn;
+    private MimeType $mimeTypeColumn;
 
     protected function setUp(): void
     {
-        $this->typeColumn = new Type();
+        $this->mimeTypeColumn = new MimeType();
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ColumnProvider\Media\Type::getValue
-     */
     public function testGetValue(): void
     {
-        $media = new MediaStub(5, 'LOGO', 'Logo image', 'image');
+        $media = new MediaStub(5, 'LOGO', 'Logo image', 'image', 'image/png');
         $item = new MediaItem($media);
 
-        self::assertSame('image', $this->typeColumn->getValue($item));
+        self::assertSame('image/png', $this->mimeTypeColumn->getValue($item));
     }
 }

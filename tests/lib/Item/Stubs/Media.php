@@ -13,6 +13,7 @@ final class Media extends BaseMedia
         string $code,
         string $name,
         string $type = 'file',
+        string $mimeType = '',
         bool $enabled = true,
     ) {
         parent::__construct();
@@ -24,5 +25,6 @@ final class Media extends BaseMedia
         $this->currentLocale = 'en';
         $this->setName($name);
         $this->setType($type);
+        $this->setMimeType($mimeType);
     }
 }

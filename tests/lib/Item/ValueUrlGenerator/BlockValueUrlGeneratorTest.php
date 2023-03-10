@@ -6,10 +6,12 @@ namespace Netgen\Layouts\Sylius\BitBag\Tests\Item\ValueUrlGenerator;
 
 use Netgen\Layouts\Sylius\BitBag\Item\ValueUrlGenerator\BlockValueUrlGenerator;
 use Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs\Block;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
+#[CoversClass(BlockValueUrlGenerator::class)]
 final class BlockValueUrlGeneratorTest extends TestCase
 {
     private MockObject&UrlGeneratorInterface $urlGeneratorMock;
@@ -23,10 +25,6 @@ final class BlockValueUrlGeneratorTest extends TestCase
         $this->urlGenerator = new BlockValueUrlGenerator($this->urlGeneratorMock);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueUrlGenerator\BlockValueUrlGenerator::__construct
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueUrlGenerator\BlockValueUrlGenerator::generate
-     */
     public function testGenerate(): void
     {
         $this->urlGeneratorMock

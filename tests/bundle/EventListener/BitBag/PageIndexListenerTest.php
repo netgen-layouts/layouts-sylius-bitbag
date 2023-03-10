@@ -8,6 +8,7 @@ use BitBag\SyliusCmsPlugin\Repository\SectionRepositoryInterface;
 use Netgen\Bundle\LayoutsSyliusBitBagBundle\EventListener\BitBag\PageIndexListener;
 use Netgen\Layouts\Context\Context;
 use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Section;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
@@ -15,6 +16,7 @@ use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
+#[CoversClass(PageIndexListener::class)]
 final class PageIndexListenerTest extends TestCase
 {
     private PageIndexListener $listener;
@@ -45,10 +47,6 @@ final class PageIndexListenerTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Bundle\LayoutsSyliusBitBagBundle\EventListener\BitBag\PageIndexListener::__construct
-     * @covers \Netgen\Bundle\LayoutsSyliusBitBagBundle\EventListener\BitBag\PageIndexListener::getSubscribedEvents
-     */
     public function testGetSubscribedEvents(): void
     {
         self::assertSame(
@@ -57,9 +55,6 @@ final class PageIndexListenerTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Bundle\LayoutsSyliusBitBagBundle\EventListener\BitBag\PageIndexListener::onPageIndex
-     */
     public function testOnPageIndex(): void
     {
         $request = Request::create('/');
@@ -84,9 +79,6 @@ final class PageIndexListenerTest extends TestCase
         self::assertSame(42, $this->context->get('bitbag_section_id'));
     }
 
-    /**
-     * @covers \Netgen\Bundle\LayoutsSyliusBitBagBundle\EventListener\BitBag\PageIndexListener::onPageIndex
-     */
     public function testOnPageIndexWithoutRequest(): void
     {
         $this->sectionRepositoryMock
@@ -99,9 +91,6 @@ final class PageIndexListenerTest extends TestCase
         self::assertFalse($this->context->has('bitbag_section_id'));
     }
 
-    /**
-     * @covers \Netgen\Bundle\LayoutsSyliusBitBagBundle\EventListener\BitBag\PageIndexListener::onPageIndex
-     */
     public function testOnPageIndexWithoutSectionCode(): void
     {
         $request = Request::create('/');
@@ -118,9 +107,6 @@ final class PageIndexListenerTest extends TestCase
         self::assertFalse($this->context->has('bitbag_section_id'));
     }
 
-    /**
-     * @covers \Netgen\Bundle\LayoutsSyliusBitBagBundle\EventListener\BitBag\PageIndexListener::onPageIndex
-     */
     public function testOnPageIndexWithNonExistingSection(): void
     {
         $request = Request::create('/');

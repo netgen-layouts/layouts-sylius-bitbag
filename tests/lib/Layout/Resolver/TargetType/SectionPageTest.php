@@ -9,11 +9,13 @@ use Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\SectionPage;
 use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Page as PageStub;
 use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Section as SectionStub;
 use Netgen\Layouts\Sylius\BitBag\Tests\Validator\RepositoryValidatorFactory;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validation;
 
+#[CoversClass(SectionPage::class)]
 final class SectionPageTest extends TestCase
 {
     private MockObject&SectionRepositoryInterface $repositoryMock;
@@ -27,17 +29,11 @@ final class SectionPageTest extends TestCase
         $this->targetType = new SectionPage();
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\SectionPage::getType
-     */
     public function testGetType(): void
     {
         self::assertSame('bitbag_section_page', $this->targetType::getType());
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\SectionPage::getConstraints
-     */
     public function testValidationValid(): void
     {
         $this->repositoryMock
@@ -54,9 +50,6 @@ final class SectionPageTest extends TestCase
         self::assertCount(0, $errors);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\SectionPage::getConstraints
-     */
     public function testValidationInvalid(): void
     {
         $this->repositoryMock
@@ -73,9 +66,6 @@ final class SectionPageTest extends TestCase
         self::assertNotCount(0, $errors);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\SectionPage::provideValue
-     */
     public function testProvideValue(): void
     {
         $page = new PageStub(42, 'about');
@@ -89,9 +79,6 @@ final class SectionPageTest extends TestCase
         self::assertSame([12, 13], $this->targetType->provideValue($request));
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Layout\Resolver\TargetType\SectionPage::provideValue
-     */
     public function testProvideValueWithNoSection(): void
     {
         $request = Request::create('/');

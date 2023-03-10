@@ -8,8 +8,10 @@ use BitBag\SyliusCmsPlugin\Entity\Media;
 use BitBag\SyliusCmsPlugin\Entity\Section;
 use Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\MediaValueConverter;
 use Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs\Media as MediaStub;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(MediaValueConverter::class)]
 final class MediaValueConverterTest extends TestCase
 {
     private MediaValueConverter $valueConverter;
@@ -19,18 +21,12 @@ final class MediaValueConverterTest extends TestCase
         $this->valueConverter = new MediaValueConverter();
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\MediaValueConverter::supports
-     */
     public function testSupports(): void
     {
         self::assertTrue($this->valueConverter->supports(new Media()));
         self::assertFalse($this->valueConverter->supports(new Section()));
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\MediaValueConverter::getValueType
-     */
     public function testGetValueType(): void
     {
         self::assertSame(
@@ -41,9 +37,6 @@ final class MediaValueConverterTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\MediaValueConverter::getId
-     */
     public function testGetId(): void
     {
         self::assertSame(
@@ -54,9 +47,6 @@ final class MediaValueConverterTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\MediaValueConverter::getRemoteId
-     */
     public function testGetRemoteId(): void
     {
         self::assertSame(
@@ -67,9 +57,6 @@ final class MediaValueConverterTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\MediaValueConverter::getName
-     */
     public function testGetName(): void
     {
         self::assertSame(
@@ -80,9 +67,6 @@ final class MediaValueConverterTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\MediaValueConverter::getIsVisible
-     */
     public function testGetIsVisible(): void
     {
         self::assertTrue(
@@ -93,14 +77,11 @@ final class MediaValueConverterTest extends TestCase
 
         self::assertFalse(
             $this->valueConverter->getIsVisible(
-                new MediaStub(42, 'logo-image', 'Logo image', 'file', false),
+                new MediaStub(42, 'logo-image', 'Logo image', 'file', 'image/png', false),
             ),
         );
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\MediaValueConverter::getObject
-     */
     public function testGetObject(): void
     {
         $media = new MediaStub(42, 'logo-image', 'Logo image');

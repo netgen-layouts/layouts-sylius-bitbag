@@ -9,11 +9,13 @@ use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Section as SectionStub;
 use Netgen\Layouts\Sylius\BitBag\Validator\Constraint\Section;
 use Netgen\Layouts\Sylius\BitBag\Validator\SectionValidator;
 use Netgen\Layouts\Tests\TestCase\ValidatorTestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\ConstraintValidatorInterface;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
+#[CoversClass(SectionValidator::class)]
 final class SectionValidatorTest extends ValidatorTestCase
 {
     private MockObject&SectionRepositoryInterface $repositoryMock;
@@ -32,10 +34,6 @@ final class SectionValidatorTest extends ValidatorTestCase
         return new SectionValidator($this->repositoryMock);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Validator\SectionValidator::__construct
-     * @covers \Netgen\Layouts\Sylius\BitBag\Validator\SectionValidator::validate
-     */
     public function testValidateValid(): void
     {
         $this->repositoryMock
@@ -47,10 +45,6 @@ final class SectionValidatorTest extends ValidatorTestCase
         $this->assertValid(true, 42);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Validator\SectionValidator::__construct
-     * @covers \Netgen\Layouts\Sylius\BitBag\Validator\SectionValidator::validate
-     */
     public function testValidateNull(): void
     {
         $this->repositoryMock
@@ -60,10 +54,6 @@ final class SectionValidatorTest extends ValidatorTestCase
         $this->assertValid(true, null);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Validator\SectionValidator::__construct
-     * @covers \Netgen\Layouts\Sylius\BitBag\Validator\SectionValidator::validate
-     */
     public function testValidateInvalid(): void
     {
         $this->repositoryMock
@@ -75,9 +65,6 @@ final class SectionValidatorTest extends ValidatorTestCase
         $this->assertValid(false, 42);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Validator\SectionValidator::validate
-     */
     public function testValidateThrowsUnexpectedTypeExceptionWithInvalidConstraint(): void
     {
         $this->expectException(UnexpectedTypeException::class);
@@ -87,9 +74,6 @@ final class SectionValidatorTest extends ValidatorTestCase
         $this->assertValid(true, 'value');
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Validator\SectionValidator::validate
-     */
     public function testValidateThrowsUnexpectedTypeExceptionWithInvalidValue(): void
     {
         $this->expectException(UnexpectedTypeException::class);

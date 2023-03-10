@@ -9,11 +9,13 @@ use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Page as PageStub;
 use Netgen\Layouts\Sylius\BitBag\Validator\Constraint\Page;
 use Netgen\Layouts\Sylius\BitBag\Validator\PageValidator;
 use Netgen\Layouts\Tests\TestCase\ValidatorTestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\ConstraintValidatorInterface;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
+#[CoversClass(PageValidator::class)]
 final class PageValidatorTest extends ValidatorTestCase
 {
     private MockObject&PageRepositoryInterface $repositoryMock;
@@ -32,10 +34,6 @@ final class PageValidatorTest extends ValidatorTestCase
         return new PageValidator($this->repositoryMock);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Validator\PageValidator::__construct
-     * @covers \Netgen\Layouts\Sylius\BitBag\Validator\PageValidator::validate
-     */
     public function testValidateValid(): void
     {
         $this->repositoryMock
@@ -47,10 +45,6 @@ final class PageValidatorTest extends ValidatorTestCase
         $this->assertValid(true, 42);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Validator\PageValidator::__construct
-     * @covers \Netgen\Layouts\Sylius\BitBag\Validator\PageValidator::validate
-     */
     public function testValidateNull(): void
     {
         $this->repositoryMock
@@ -60,10 +54,6 @@ final class PageValidatorTest extends ValidatorTestCase
         $this->assertValid(true, null);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Validator\PageValidator::__construct
-     * @covers \Netgen\Layouts\Sylius\BitBag\Validator\PageValidator::validate
-     */
     public function testValidateInvalid(): void
     {
         $this->repositoryMock
@@ -75,9 +65,6 @@ final class PageValidatorTest extends ValidatorTestCase
         $this->assertValid(false, 42);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Validator\PageValidator::validate
-     */
     public function testValidateThrowsUnexpectedTypeExceptionWithInvalidConstraint(): void
     {
         $this->expectException(UnexpectedTypeException::class);
@@ -87,9 +74,6 @@ final class PageValidatorTest extends ValidatorTestCase
         $this->assertValid(true, 'value');
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Validator\PageValidator::validate
-     */
     public function testValidateThrowsUnexpectedTypeExceptionWithInvalidValue(): void
     {
         $this->expectException(UnexpectedTypeException::class);

@@ -8,8 +8,10 @@ use BitBag\SyliusCmsPlugin\Entity\Block;
 use BitBag\SyliusCmsPlugin\Entity\Section;
 use Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\BlockValueConverter;
 use Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs\Block as BlockStub;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(BlockValueConverter::class)]
 final class BlockValueConverterTest extends TestCase
 {
     private BlockValueConverter $valueConverter;
@@ -19,18 +21,12 @@ final class BlockValueConverterTest extends TestCase
         $this->valueConverter = new BlockValueConverter();
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\BlockValueConverter::supports
-     */
     public function testSupports(): void
     {
         self::assertTrue($this->valueConverter->supports(new Block()));
         self::assertFalse($this->valueConverter->supports(new Section()));
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\BlockValueConverter::getValueType
-     */
     public function testGetValueType(): void
     {
         self::assertSame(
@@ -41,9 +37,6 @@ final class BlockValueConverterTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\BlockValueConverter::getId
-     */
     public function testGetId(): void
     {
         self::assertSame(
@@ -54,9 +47,6 @@ final class BlockValueConverterTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\BlockValueConverter::getRemoteId
-     */
     public function testGetRemoteId(): void
     {
         self::assertSame(
@@ -67,9 +57,6 @@ final class BlockValueConverterTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\BlockValueConverter::getName
-     */
     public function testGetName(): void
     {
         self::assertSame(
@@ -80,9 +67,6 @@ final class BlockValueConverterTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\BlockValueConverter::getIsVisible
-     */
     public function testGetIsVisible(): void
     {
         self::assertTrue(
@@ -98,9 +82,6 @@ final class BlockValueConverterTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\BlockValueConverter::getObject
-     */
     public function testGetObject(): void
     {
         $block = new BlockStub(42, 'header', 'Header');

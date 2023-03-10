@@ -6,8 +6,10 @@ namespace Netgen\Layouts\Sylius\BitBag\Tests\Layout\Resolver\Form\TargetType\Map
 
 use Netgen\ContentBrowser\Form\Type\ContentBrowserType;
 use Netgen\Layouts\Sylius\BitBag\Layout\Resolver\Form\TargetType\Mapper\Page;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(Page::class)]
 final class PageTest extends TestCase
 {
     private Page $mapper;
@@ -17,17 +19,11 @@ final class PageTest extends TestCase
         $this->mapper = new Page();
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Layout\Resolver\Form\TargetType\Mapper\Page::getFormType
-     */
     public function testGetFormType(): void
     {
         self::assertSame(ContentBrowserType::class, $this->mapper->getFormType());
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Layout\Resolver\Form\TargetType\Mapper\Page::getFormOptions
-     */
     public function testGetFormOptions(): void
     {
         self::assertSame(

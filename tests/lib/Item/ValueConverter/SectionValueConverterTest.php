@@ -8,8 +8,10 @@ use BitBag\SyliusCmsPlugin\Entity\Page;
 use BitBag\SyliusCmsPlugin\Entity\Section;
 use Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\SectionValueConverter;
 use Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs\Section as SectionStub;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(SectionValueConverter::class)]
 final class SectionValueConverterTest extends TestCase
 {
     private SectionValueConverter $valueConverter;
@@ -19,18 +21,12 @@ final class SectionValueConverterTest extends TestCase
         $this->valueConverter = new SectionValueConverter();
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\SectionValueConverter::supports
-     */
     public function testSupports(): void
     {
         self::assertTrue($this->valueConverter->supports(new Section()));
         self::assertFalse($this->valueConverter->supports(new Page()));
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\SectionValueConverter::getValueType
-     */
     public function testGetValueType(): void
     {
         self::assertSame(
@@ -41,9 +37,6 @@ final class SectionValueConverterTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\SectionValueConverter::getId
-     */
     public function testGetId(): void
     {
         self::assertSame(
@@ -54,9 +47,6 @@ final class SectionValueConverterTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\SectionValueConverter::getRemoteId
-     */
     public function testGetRemoteId(): void
     {
         self::assertSame(
@@ -67,9 +57,6 @@ final class SectionValueConverterTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\SectionValueConverter::getName
-     */
     public function testGetName(): void
     {
         self::assertSame(
@@ -80,9 +67,6 @@ final class SectionValueConverterTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\SectionValueConverter::getIsVisible
-     */
     public function testGetIsVisible(): void
     {
         self::assertTrue(
@@ -92,9 +76,6 @@ final class SectionValueConverterTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\SectionValueConverter::getObject
-     */
     public function testGetObject(): void
     {
         $section = new SectionStub(42, 'blog', 'Blog');

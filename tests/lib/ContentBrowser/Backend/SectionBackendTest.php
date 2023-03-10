@@ -14,10 +14,12 @@ use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
 use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Section;
 use Pagerfanta\Adapter\AdapterInterface;
 use Pagerfanta\Pagerfanta;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 
+#[CoversClass(SectionBackend::class)]
 final class SectionBackendTest extends TestCase
 {
     private MockObject&SectionRepositoryInterface $sectionRepositoryMock;
@@ -40,10 +42,6 @@ final class SectionBackendTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::__construct
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::getSections
-     */
     public function testGetSections(): void
     {
         $locations = $this->backend->getSections();
@@ -52,10 +50,6 @@ final class SectionBackendTest extends TestCase
         self::assertContainsOnlyInstancesOf(RootLocation::class, $locations);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::buildItem
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::loadItem
-     */
     public function testLoadItem(): void
     {
         $this->sectionRepositoryMock
@@ -69,9 +63,6 @@ final class SectionBackendTest extends TestCase
         self::assertSame(1, $item->getValue());
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::loadItem
-     */
     public function testLoadItemThrowsNotFoundException(): void
     {
         $this->expectException(NotFoundException::class);
@@ -86,9 +77,6 @@ final class SectionBackendTest extends TestCase
         $this->backend->loadItem(1);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::getSubLocations
-     */
     public function testGetSubLocations(): void
     {
         $locations = $this->backend->getSubLocations(new RootLocation());
@@ -96,9 +84,6 @@ final class SectionBackendTest extends TestCase
         self::assertCount(0, $locations);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::getSubLocationsCount
-     */
     public function testGetSubLocationsCount(): void
     {
         $count = $this->backend->getSubLocationsCount(new RootLocation());
@@ -106,11 +91,6 @@ final class SectionBackendTest extends TestCase
         self::assertSame(0, $count);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::buildItem
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::buildItems
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::getSubItems
-     */
     public function testGetSubItems(): void
     {
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
@@ -134,11 +114,6 @@ final class SectionBackendTest extends TestCase
         self::assertContainsOnlyInstancesOf(Item::class, $items);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::buildItem
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::buildItems
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::getSubItems
-     */
     public function testGetSubItemsWithOffsetAndLimit(): void
     {
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
@@ -170,9 +145,6 @@ final class SectionBackendTest extends TestCase
         self::assertContainsOnlyInstancesOf(Item::class, $items);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::getSubItemsCount
-     */
     public function testGetSubItemsCount(): void
     {
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
@@ -194,11 +166,6 @@ final class SectionBackendTest extends TestCase
         self::assertSame(2, $count);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::buildItem
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::buildItems
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::searchItems
-     */
     public function testSearchItems(): void
     {
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
@@ -220,11 +187,6 @@ final class SectionBackendTest extends TestCase
         self::assertContainsOnlyInstancesOf(Item::class, $searchResult->getResults());
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::buildItem
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::buildItems
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::searchItems
-     */
     public function testSearchItemsWithOffsetAndLimit(): void
     {
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
@@ -256,9 +218,6 @@ final class SectionBackendTest extends TestCase
         self::assertContainsOnlyInstancesOf(Item::class, $searchResult->getResults());
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::searchItemsCount
-     */
     public function testSearchItemsCount(): void
     {
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
@@ -278,11 +237,6 @@ final class SectionBackendTest extends TestCase
         self::assertSame(2, $count);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::buildItem
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::buildItems
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::search
-     */
     public function testSearch(): void
     {
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
@@ -304,11 +258,6 @@ final class SectionBackendTest extends TestCase
         self::assertContainsOnlyInstancesOf(Item::class, $items);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::buildItem
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::buildItems
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::search
-     */
     public function testSearchWithOffsetAndLimit(): void
     {
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
@@ -336,9 +285,6 @@ final class SectionBackendTest extends TestCase
         self::assertContainsOnlyInstancesOf(Item::class, $items);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\SectionBackend::searchCount
-     */
     public function testSearchCount(): void
     {
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);

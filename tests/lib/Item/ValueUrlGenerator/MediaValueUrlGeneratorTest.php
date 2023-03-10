@@ -6,10 +6,12 @@ namespace Netgen\Layouts\Sylius\BitBag\Tests\Item\ValueUrlGenerator;
 
 use Netgen\Layouts\Sylius\BitBag\Item\ValueUrlGenerator\MediaValueUrlGenerator;
 use Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs\Media;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
+#[CoversClass(MediaValueUrlGenerator::class)]
 final class MediaValueUrlGeneratorTest extends TestCase
 {
     private MockObject&UrlGeneratorInterface $urlGeneratorMock;
@@ -23,10 +25,6 @@ final class MediaValueUrlGeneratorTest extends TestCase
         $this->urlGenerator = new MediaValueUrlGenerator($this->urlGeneratorMock);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueUrlGenerator\MediaValueUrlGenerator::__construct
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueUrlGenerator\MediaValueUrlGenerator::generate
-     */
     public function testGenerate(): void
     {
         $this->urlGeneratorMock

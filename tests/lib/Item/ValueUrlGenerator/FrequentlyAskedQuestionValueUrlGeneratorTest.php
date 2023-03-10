@@ -6,10 +6,12 @@ namespace Netgen\Layouts\Sylius\BitBag\Tests\Item\ValueUrlGenerator;
 
 use Netgen\Layouts\Sylius\BitBag\Item\ValueUrlGenerator\FrequentlyAskedQuestionValueUrlGenerator;
 use Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs\FrequentlyAskedQuestion;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
+#[CoversClass(FrequentlyAskedQuestionValueUrlGenerator::class)]
 final class FrequentlyAskedQuestionValueUrlGeneratorTest extends TestCase
 {
     private MockObject&UrlGeneratorInterface $urlGeneratorMock;
@@ -23,10 +25,6 @@ final class FrequentlyAskedQuestionValueUrlGeneratorTest extends TestCase
         $this->urlGenerator = new FrequentlyAskedQuestionValueUrlGenerator($this->urlGeneratorMock);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueUrlGenerator\FrequentlyAskedQuestionValueUrlGenerator::__construct
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueUrlGenerator\FrequentlyAskedQuestionValueUrlGenerator::generate
-     */
     public function testGenerate(): void
     {
         $this->urlGeneratorMock

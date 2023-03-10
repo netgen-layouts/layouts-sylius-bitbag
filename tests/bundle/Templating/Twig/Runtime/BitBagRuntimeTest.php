@@ -9,9 +9,11 @@ use Netgen\Layouts\Sylius\BitBag\Repository\PageRepositoryInterface;
 use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
 use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Page;
 use Netgen\Layouts\Sylius\BitBag\Tests\Stubs\Section;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(BitBagRuntime::class)]
 final class BitBagRuntimeTest extends TestCase
 {
     private MockObject&PageRepositoryInterface $pageRepositoryMock;
@@ -31,10 +33,6 @@ final class BitBagRuntimeTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Netgen\Bundle\LayoutsSyliusBitBagBundle\Templating\Twig\Runtime\BitBagRuntime::__construct
-     * @covers \Netgen\Bundle\LayoutsSyliusBitBagBundle\Templating\Twig\Runtime\BitBagRuntime::getPageName
-     */
     public function testGetPageName(): void
     {
         $page = new Page(15, 'about-us');
@@ -50,10 +48,6 @@ final class BitBagRuntimeTest extends TestCase
         self::assertSame('About us', $this->runtime->getPageName(15));
     }
 
-    /**
-     * @covers \Netgen\Bundle\LayoutsSyliusBitBagBundle\Templating\Twig\Runtime\BitBagRuntime::__construct
-     * @covers \Netgen\Bundle\LayoutsSyliusBitBagBundle\Templating\Twig\Runtime\BitBagRuntime::getSectionName
-     */
     public function testGetSectionName(): void
     {
         $section = new Section(5, 'articles');

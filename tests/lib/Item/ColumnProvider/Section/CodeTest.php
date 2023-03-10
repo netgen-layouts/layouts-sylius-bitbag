@@ -7,8 +7,10 @@ namespace Netgen\Layouts\Sylius\BitBag\Tests\Item\ColumnProvider\Section;
 use Netgen\Layouts\Sylius\BitBag\ContentBrowser\Item\Section\Item as SectionItem;
 use Netgen\Layouts\Sylius\BitBag\Item\ColumnProvider\Section\Code;
 use Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs\Section as SectionStub;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(Code::class)]
 final class CodeTest extends TestCase
 {
     private Code $codeColumn;
@@ -18,9 +20,6 @@ final class CodeTest extends TestCase
         $this->codeColumn = new Code();
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ColumnProvider\Section\Code::getValue
-     */
     public function testGetValue(): void
     {
         $section = new SectionStub(5, 'BLOG', 'Blog');

@@ -8,9 +8,11 @@ use Exception;
 use Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\BlockValueLoader;
 use Netgen\Layouts\Sylius\BitBag\Repository\BlockRepositoryInterface;
 use Netgen\Layouts\Sylius\BitBag\Tests\Item\Stubs\Block;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(BlockValueLoader::class)]
 final class BlockValueLoaderTest extends TestCase
 {
     private MockObject&BlockRepositoryInterface $blockRepositoryMock;
@@ -23,10 +25,6 @@ final class BlockValueLoaderTest extends TestCase
         $this->valueLoader = new BlockValueLoader($this->blockRepositoryMock);
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\BlockValueLoader::__construct
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\BlockValueLoader::load
-     */
     public function testLoad(): void
     {
         $block = new Block(42, 'header', 'Header');
@@ -40,9 +38,6 @@ final class BlockValueLoaderTest extends TestCase
         self::assertSame($block, $this->valueLoader->load(42));
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\BlockValueLoader::load
-     */
     public function testLoadWithNoBlock(): void
     {
         $this->blockRepositoryMock
@@ -54,9 +49,6 @@ final class BlockValueLoaderTest extends TestCase
         self::assertNull($this->valueLoader->load(42));
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\BlockValueLoader::load
-     */
     public function testLoadWithRepositoryException(): void
     {
         $this->blockRepositoryMock
@@ -68,9 +60,6 @@ final class BlockValueLoaderTest extends TestCase
         self::assertNull($this->valueLoader->load(42));
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\BlockValueLoader::loadByRemoteId
-     */
     public function testLoadByRemoteId(): void
     {
         $block = new Block(42, 'header', 'Header');
@@ -84,9 +73,6 @@ final class BlockValueLoaderTest extends TestCase
         self::assertSame($block, $this->valueLoader->loadByRemoteId(42));
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\BlockValueLoader::loadByRemoteId
-     */
     public function testLoadByRemoteIdWithNoBlock(): void
     {
         $this->blockRepositoryMock
@@ -98,9 +84,6 @@ final class BlockValueLoaderTest extends TestCase
         self::assertNull($this->valueLoader->loadByRemoteId(42));
     }
 
-    /**
-     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueLoader\BlockValueLoader::loadByRemoteId
-     */
     public function testLoadByRemoteIdWithRepositoryException(): void
     {
         $this->blockRepositoryMock
