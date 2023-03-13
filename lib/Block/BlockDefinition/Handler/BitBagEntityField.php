@@ -23,7 +23,7 @@ final class BitBagEntityField
 
     private function __construct(private mixed $value)
     {
-        $this->setType($this->value);
+        $this->type = $this->resolveType($this->value);
     }
 
     public static function fromBitBagEntity(ResourceInterface $resource, string $fieldIdentifier): self
@@ -66,15 +66,15 @@ final class BitBagEntityField
         return $this->value === null;
     }
 
-    private function setType(mixed $value): void
+    private function resolveType(mixed $value): BitBagEntityFieldType
     {
-        $this->type = match ($value) {
-            $value instanceof ContentableInterface => BitBagEntityFieldType::CONTENT,
+        return match (true) {
             $value instanceof DateTimeInterface => BitBagEntityFieldType::DATETIME,
-            $value instanceof MediaInterface => BitBagEntityFieldType::MEDIA,
-            is_numeric($value) => BitBagEntityFieldType::NUMBER,
             is_string($value) => BitBagEntityFieldType::STRING,
+            is_numeric($value) => BitBagEntityFieldType::NUMBER,
             is_bool($value) => BitBagEntityFieldType::BOOLEAN,
+            $value instanceof MediaInterface => BitBagEntityFieldType::MEDIA,
+            $value instanceof ContentableInterface => BitBagEntityFieldType::CONTENT,
             default => BitBagEntityFieldType::OTHER,
         };
     }
