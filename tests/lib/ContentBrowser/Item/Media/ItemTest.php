@@ -42,6 +42,13 @@ final class ItemTest extends TestCase
         self::assertSame('Logo', $this->item->getName());
     }
 
+    public function testGetNameWithEmptyName(): void
+    {
+        $media = new Media(42, 'logo');
+
+        self::assertSame('logo', $media->getName());
+    }
+
     /**
      * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Item\Media\Item::isVisible
      */

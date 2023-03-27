@@ -78,6 +78,13 @@ final class MediaValueConverterTest extends TestCase
                 new MediaStub(42, 'logo-image', 'Logo image'),
             ),
         );
+
+        self::assertSame(
+            'logo-image',
+            $this->valueConverter->getName(
+                new MediaStub(42, 'logo-image'),
+            ),
+        );
     }
 
     /**
