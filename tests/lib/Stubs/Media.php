@@ -8,7 +8,7 @@ use BitBag\SyliusCmsPlugin\Entity\Media as BaseMedia;
 
 final class Media extends BaseMedia
 {
-    public function __construct(int $id, string $code)
+    public function __construct(int $id, ?string $code = null)
     {
         parent::__construct();
 
