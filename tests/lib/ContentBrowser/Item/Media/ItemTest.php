@@ -54,6 +54,16 @@ final class ItemTest extends TestCase
     }
 
     /**
+     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Item\Media\Item::getName
+     */
+    public function testGetNameWithEmptyNameAndCode(): void
+    {
+        $media = new Media(42);
+
+        self::assertSame('', $media->getName());
+    }
+
+    /**
      * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Item\Media\Item::isVisible
      */
     public function testIsVisible(): void
