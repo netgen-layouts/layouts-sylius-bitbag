@@ -34,7 +34,7 @@ final class MediaValueConverter implements ValueConverterInterface
 
     public function getName(object $object): string
     {
-        return (string) ($object->getName() ?? $object->getCode());
+        return $object->getName() ?? $object->getCode();
     }
 
     public function getIsVisible(object $object): bool
