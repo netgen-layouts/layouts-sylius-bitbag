@@ -20,7 +20,7 @@ final class Item implements ItemInterface, MediaInterface
 
     public function getName(): string
     {
-        return (string) $this->media->getName();
+        return $this->media->getName() ?? $this->media->getCode() ?? '';
     }
 
     public function isVisible(): bool

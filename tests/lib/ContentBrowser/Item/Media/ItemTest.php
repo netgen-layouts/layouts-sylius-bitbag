@@ -37,6 +37,26 @@ final class ItemTest extends TestCase
         self::assertSame('Logo', $this->item->getName());
     }
 
+    public function testGetNameWithEmptyName(): void
+    {
+        $media = new Media(42, 'logo');
+        $media->setCurrentLocale('en');
+        $media->setFallbackLocale('en');
+        $item = new Item($media);
+
+        self::assertSame('logo', $item->getName());
+    }
+
+    public function testGetNameWithEmptyNameAndCode(): void
+    {
+        $media = new Media(42);
+        $media->setCurrentLocale('en');
+        $media->setFallbackLocale('en');
+        $item = new Item($media);
+
+        self::assertSame('', $item->getName());
+    }
+
     public function testIsVisible(): void
     {
         self::assertTrue($this->item->isVisible());

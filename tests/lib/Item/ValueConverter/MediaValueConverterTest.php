@@ -67,6 +67,26 @@ final class MediaValueConverterTest extends TestCase
         );
     }
 
+    public function testGetNameWithEmptyName(): void
+    {
+        self::assertSame(
+            'logo-image',
+            $this->valueConverter->getName(
+                new MediaStub(42, 'logo-image'),
+            ),
+        );
+    }
+
+    public function testGetNameWithEmptyNameAndCode(): void
+    {
+        self::assertSame(
+            '',
+            $this->valueConverter->getName(
+                new MediaStub(42),
+            ),
+        );
+    }
+
     public function testGetIsVisible(): void
     {
         self::assertTrue(
