@@ -43,6 +43,32 @@ final class ItemTest extends TestCase
     }
 
     /**
+     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Item\Media\Item::getName
+     */
+    public function testGetNameWithEmptyName(): void
+    {
+        $media = new Media(42, 'logo');
+        $media->setCurrentLocale('en');
+        $media->setFallbackLocale('en');
+        $item = new Item($media);
+
+        self::assertSame('logo', $item->getName());
+    }
+
+    /**
+     * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Item\Media\Item::getName
+     */
+    public function testGetNameWithEmptyNameAndCode(): void
+    {
+        $media = new Media(42);
+        $media->setCurrentLocale('en');
+        $media->setFallbackLocale('en');
+        $item = new Item($media);
+
+        self::assertSame('', $item->getName());
+    }
+
+    /**
      * @covers \Netgen\Layouts\Sylius\BitBag\ContentBrowser\Item\Media\Item::isVisible
      */
     public function testIsVisible(): void

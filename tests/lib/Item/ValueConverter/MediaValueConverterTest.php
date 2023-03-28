@@ -81,6 +81,32 @@ final class MediaValueConverterTest extends TestCase
     }
 
     /**
+     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\MediaValueConverter::getName
+     */
+    public function testGetNameWithEmptyName(): void
+    {
+        self::assertSame(
+            'logo-image',
+            $this->valueConverter->getName(
+                new MediaStub(42, 'logo-image'),
+            ),
+        );
+    }
+
+    /**
+     * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\MediaValueConverter::getName
+     */
+    public function testGetNameWithEmptyNameAndCode(): void
+    {
+        self::assertSame(
+            '',
+            $this->valueConverter->getName(
+                new MediaStub(42),
+            ),
+        );
+    }
+
+    /**
      * @covers \Netgen\Layouts\Sylius\BitBag\Item\ValueConverter\MediaValueConverter::getIsVisible
      */
     public function testGetIsVisible(): void

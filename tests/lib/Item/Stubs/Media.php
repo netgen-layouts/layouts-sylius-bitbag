@@ -10,8 +10,8 @@ final class Media extends BaseMedia
 {
     public function __construct(
         int $id,
-        string $code,
-        string $name,
+        ?string $code = null,
+        ?string $name = null,
         string $type = 'file',
         bool $enabled = true
     ) {
