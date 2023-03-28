@@ -48,10 +48,11 @@ final class ItemTest extends TestCase
     public function testGetNameWithEmptyName(): void
     {
         $media = new Media(42, 'logo');
-        $this->media->setCurrentLocale('en');
-        $this->media->setFallbackLocale('en');
+        $media->setCurrentLocale('en');
+        $media->setFallbackLocale('en');
+        $item = new Item($media);
 
-        self::assertSame('logo', $media->getName());
+        self::assertSame('logo', $item->getName());
     }
 
     /**
@@ -60,10 +61,11 @@ final class ItemTest extends TestCase
     public function testGetNameWithEmptyNameAndCode(): void
     {
         $media = new Media(42);
-        $this->media->setCurrentLocale('en');
-        $this->media->setFallbackLocale('en');
+        $media->setCurrentLocale('en');
+        $media->setFallbackLocale('en');
+        $item = new Item($media);
 
-        self::assertSame('', $media->getName());
+        self::assertSame('', $item->getName());
     }
 
     /**
