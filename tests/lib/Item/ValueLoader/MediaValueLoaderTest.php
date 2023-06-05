@@ -30,7 +30,6 @@ final class MediaValueLoaderTest extends TestCase
         $media = new Media(42, 'logo-image', 'Logo');
 
         $this->mediaRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn($media);
@@ -41,7 +40,6 @@ final class MediaValueLoaderTest extends TestCase
     public function testLoadWithNoMedia(): void
     {
         $this->mediaRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
@@ -52,7 +50,6 @@ final class MediaValueLoaderTest extends TestCase
     public function testLoadWithRepositoryException(): void
     {
         $this->mediaRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willThrowException(new Exception());
@@ -65,7 +62,6 @@ final class MediaValueLoaderTest extends TestCase
         $media = new Media(42, 'logo-image', 'Logo');
 
         $this->mediaRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn($media);
@@ -76,7 +72,6 @@ final class MediaValueLoaderTest extends TestCase
     public function testLoadByRemoteIdWithNoMedia(): void
     {
         $this->mediaRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
@@ -87,7 +82,6 @@ final class MediaValueLoaderTest extends TestCase
     public function testLoadByRemoteIdWithRepositoryException(): void
     {
         $this->mediaRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willThrowException(new Exception());

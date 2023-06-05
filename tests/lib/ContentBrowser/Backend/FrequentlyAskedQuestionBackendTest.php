@@ -32,7 +32,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
         $localeContextMock = $this->createMock(LocaleContextInterface::class);
 
         $localeContextMock
-            ->expects(self::any())
             ->method('getLocaleCode')
             ->willReturn('en');
 
@@ -95,7 +94,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
     {
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
         $pagerfantaAdapterMock
-            ->expects(self::any())
             ->method('getSlice')
             ->with(self::identicalTo(0), self::identicalTo(25))
             ->willReturn(new ArrayIterator([
@@ -122,12 +120,10 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
 
         $pagerfantaAdapterMock
-            ->expects(self::any())
             ->method('getNbResults')
             ->willReturn(15);
 
         $pagerfantaAdapterMock
-            ->expects(self::any())
             ->method('getSlice')
             ->with(self::identicalTo(8), self::identicalTo(2))
             ->willReturn(new ArrayIterator([
@@ -155,7 +151,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
     {
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
         $pagerfantaAdapterMock
-            ->expects(self::any())
             ->method('getNbResults')
             ->willReturn(2);
 
@@ -176,7 +171,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
     {
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
         $pagerfantaAdapterMock
-            ->expects(self::any())
             ->method('getSlice')
             ->with(self::identicalTo(0), self::identicalTo(25))
             ->willReturn(new ArrayIterator([
@@ -201,12 +195,10 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
 
         $pagerfantaAdapterMock
-            ->expects(self::any())
             ->method('getNbResults')
             ->willReturn(15);
 
         $pagerfantaAdapterMock
-            ->expects(self::any())
             ->method('getSlice')
             ->with(self::identicalTo(8), self::identicalTo(2))
             ->willReturn(new ArrayIterator([
@@ -234,7 +226,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
     {
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
         $pagerfantaAdapterMock
-            ->expects(self::any())
             ->method('getNbResults')
             ->willReturn(2);
 
@@ -253,7 +244,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
     {
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
         $pagerfantaAdapterMock
-            ->expects(self::any())
             ->method('getSlice')
             ->with(self::identicalTo(0), self::identicalTo(25))
             ->willReturn(new ArrayIterator([
@@ -278,12 +268,10 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
 
         $pagerfantaAdapterMock
-            ->expects(self::any())
             ->method('getNbResults')
             ->willReturn(15);
 
         $pagerfantaAdapterMock
-            ->expects(self::any())
             ->method('getSlice')
             ->with(self::identicalTo(8), self::identicalTo(2))
             ->willReturn(new ArrayIterator([
@@ -307,7 +295,6 @@ final class FrequentlyAskedQuestionBackendTest extends TestCase
     {
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
         $pagerfantaAdapterMock
-            ->expects(self::any())
             ->method('getNbResults')
             ->willReturn(2);
 

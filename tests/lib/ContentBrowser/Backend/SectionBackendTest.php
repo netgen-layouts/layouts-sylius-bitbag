@@ -32,7 +32,6 @@ final class SectionBackendTest extends TestCase
         $localeContextMock = $this->createMock(LocaleContextInterface::class);
 
         $localeContextMock
-            ->expects(self::any())
             ->method('getLocaleCode')
             ->willReturn('en');
 
@@ -95,7 +94,6 @@ final class SectionBackendTest extends TestCase
     {
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
         $pagerfantaAdapterMock
-            ->expects(self::any())
             ->method('getSlice')
             ->with(self::identicalTo(0), self::identicalTo(25))
             ->willReturn(new ArrayIterator([new Section(42, 'blog'), new Section(43, 'news')]));
@@ -119,12 +117,10 @@ final class SectionBackendTest extends TestCase
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
 
         $pagerfantaAdapterMock
-            ->expects(self::any())
             ->method('getNbResults')
             ->willReturn(15);
 
         $pagerfantaAdapterMock
-            ->expects(self::any())
             ->method('getSlice')
             ->with(self::identicalTo(8), self::identicalTo(2))
             ->willReturn(new ArrayIterator([new Section(42, 'blog'), new Section(43, 'news')]));
@@ -149,7 +145,6 @@ final class SectionBackendTest extends TestCase
     {
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
         $pagerfantaAdapterMock
-            ->expects(self::any())
             ->method('getNbResults')
             ->willReturn(2);
 
@@ -170,7 +165,6 @@ final class SectionBackendTest extends TestCase
     {
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
         $pagerfantaAdapterMock
-            ->expects(self::any())
             ->method('getSlice')
             ->with(self::identicalTo(0), self::identicalTo(25))
             ->willReturn(new ArrayIterator([new Section(42, 'blog'), new Section(43, 'news')]));
@@ -192,12 +186,10 @@ final class SectionBackendTest extends TestCase
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
 
         $pagerfantaAdapterMock
-            ->expects(self::any())
             ->method('getNbResults')
             ->willReturn(15);
 
         $pagerfantaAdapterMock
-            ->expects(self::any())
             ->method('getSlice')
             ->with(self::identicalTo(8), self::identicalTo(2))
             ->willReturn(new ArrayIterator([new Section(42, 'blog'), new Section(43, 'news')]));
@@ -222,7 +214,6 @@ final class SectionBackendTest extends TestCase
     {
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
         $pagerfantaAdapterMock
-            ->expects(self::any())
             ->method('getNbResults')
             ->willReturn(2);
 
@@ -241,7 +232,6 @@ final class SectionBackendTest extends TestCase
     {
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
         $pagerfantaAdapterMock
-            ->expects(self::any())
             ->method('getSlice')
             ->with(self::identicalTo(0), self::identicalTo(25))
             ->willReturn(new ArrayIterator([new Section(42, 'blog'), new Section(43, 'news')]));
@@ -263,12 +253,10 @@ final class SectionBackendTest extends TestCase
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
 
         $pagerfantaAdapterMock
-            ->expects(self::any())
             ->method('getNbResults')
             ->willReturn(15);
 
         $pagerfantaAdapterMock
-            ->expects(self::any())
             ->method('getSlice')
             ->with(self::identicalTo(8), self::identicalTo(2))
             ->willReturn(new ArrayIterator([new Section(42, 'blog'), new Section(43, 'news')]));
@@ -289,7 +277,6 @@ final class SectionBackendTest extends TestCase
     {
         $pagerfantaAdapterMock = $this->createMock(AdapterInterface::class);
         $pagerfantaAdapterMock
-            ->expects(self::any())
             ->method('getNbResults')
             ->willReturn(2);
 

@@ -30,7 +30,6 @@ final class BlockValueLoaderTest extends TestCase
         $block = new Block(42, 'header', 'Header');
 
         $this->blockRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn($block);
@@ -41,7 +40,6 @@ final class BlockValueLoaderTest extends TestCase
     public function testLoadWithNoBlock(): void
     {
         $this->blockRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
@@ -52,7 +50,6 @@ final class BlockValueLoaderTest extends TestCase
     public function testLoadWithRepositoryException(): void
     {
         $this->blockRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willThrowException(new Exception());
@@ -65,7 +62,6 @@ final class BlockValueLoaderTest extends TestCase
         $block = new Block(42, 'header', 'Header');
 
         $this->blockRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn($block);
@@ -76,7 +72,6 @@ final class BlockValueLoaderTest extends TestCase
     public function testLoadByRemoteIdWithNoBlock(): void
     {
         $this->blockRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
@@ -87,7 +82,6 @@ final class BlockValueLoaderTest extends TestCase
     public function testLoadByRemoteIdWithRepositoryException(): void
     {
         $this->blockRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willThrowException(new Exception());

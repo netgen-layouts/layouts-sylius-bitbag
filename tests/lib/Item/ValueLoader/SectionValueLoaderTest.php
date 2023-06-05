@@ -30,7 +30,6 @@ final class SectionValueLoaderTest extends TestCase
         $section = new Section(42, 'blog', 'Blog');
 
         $this->sectionRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn($section);
@@ -41,7 +40,6 @@ final class SectionValueLoaderTest extends TestCase
     public function testLoadWithNoSection(): void
     {
         $this->sectionRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
@@ -52,7 +50,6 @@ final class SectionValueLoaderTest extends TestCase
     public function testLoadWithRepositoryException(): void
     {
         $this->sectionRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willThrowException(new Exception());
@@ -65,7 +62,6 @@ final class SectionValueLoaderTest extends TestCase
         $section = new Section(42, 'blog', 'Blog');
 
         $this->sectionRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn($section);
@@ -76,7 +72,6 @@ final class SectionValueLoaderTest extends TestCase
     public function testLoadByRemoteIdWithNoSection(): void
     {
         $this->sectionRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
@@ -87,7 +82,6 @@ final class SectionValueLoaderTest extends TestCase
     public function testLoadByRemoteIdWithRepositoryException(): void
     {
         $this->sectionRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willThrowException(new Exception());

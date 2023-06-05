@@ -35,7 +35,6 @@ final class PageIndexListenerTest extends TestCase
 
         $localeContextMock = $this->createMock(LocaleContextInterface::class);
         $localeContextMock
-            ->expects(self::any())
             ->method('getLocaleCode')
             ->willReturn('en');
 

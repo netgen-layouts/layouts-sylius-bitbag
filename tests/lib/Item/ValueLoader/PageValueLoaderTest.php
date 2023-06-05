@@ -30,7 +30,6 @@ final class PageValueLoaderTest extends TestCase
         $page = new Page(42, 'about-us', 'About us');
 
         $this->pageRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn($page);
@@ -41,7 +40,6 @@ final class PageValueLoaderTest extends TestCase
     public function testLoadWithNoPage(): void
     {
         $this->pageRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
@@ -52,7 +50,6 @@ final class PageValueLoaderTest extends TestCase
     public function testLoadWithRepositoryException(): void
     {
         $this->pageRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willThrowException(new Exception());
@@ -65,7 +62,6 @@ final class PageValueLoaderTest extends TestCase
         $page = new Page(42, 'about-us', 'About us');
 
         $this->pageRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn($page);
@@ -76,7 +72,6 @@ final class PageValueLoaderTest extends TestCase
     public function testLoadByRemoteIdWithNoPage(): void
     {
         $this->pageRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
@@ -87,7 +82,6 @@ final class PageValueLoaderTest extends TestCase
     public function testLoadByRemoteIdWithRepositoryException(): void
     {
         $this->pageRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willThrowException(new Exception());

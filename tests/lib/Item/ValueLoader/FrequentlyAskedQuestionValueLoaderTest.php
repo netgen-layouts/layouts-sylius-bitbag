@@ -30,7 +30,6 @@ final class FrequentlyAskedQuestionValueLoaderTest extends TestCase
         $frequentlyAskedQuestion = new FrequentlyAskedQuestion(42, 'TEST_QUESTION');
 
         $this->frequentlyAskedQuestionRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn($frequentlyAskedQuestion);
@@ -41,7 +40,6 @@ final class FrequentlyAskedQuestionValueLoaderTest extends TestCase
     public function testLoadWithNoFrequentlyAskedQuestion(): void
     {
         $this->frequentlyAskedQuestionRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
@@ -52,7 +50,6 @@ final class FrequentlyAskedQuestionValueLoaderTest extends TestCase
     public function testLoadWithRepositoryException(): void
     {
         $this->frequentlyAskedQuestionRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willThrowException(new Exception());
@@ -65,7 +62,6 @@ final class FrequentlyAskedQuestionValueLoaderTest extends TestCase
         $frequentlyAskedQuestion = new FrequentlyAskedQuestion(42, 'TEST_QUESTION');
 
         $this->frequentlyAskedQuestionRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn($frequentlyAskedQuestion);
@@ -76,7 +72,6 @@ final class FrequentlyAskedQuestionValueLoaderTest extends TestCase
     public function testLoadByRemoteIdWithNoFrequentlyAskedQuestion(): void
     {
         $this->frequentlyAskedQuestionRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willReturn(null);
@@ -87,7 +82,6 @@ final class FrequentlyAskedQuestionValueLoaderTest extends TestCase
     public function testLoadByRemoteIdWithRepositoryException(): void
     {
         $this->frequentlyAskedQuestionRepositoryMock
-            ->expects(self::any())
             ->method('find')
             ->with(self::identicalTo(42))
             ->willThrowException(new Exception());
