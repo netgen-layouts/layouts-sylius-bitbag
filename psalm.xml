@@ -13,6 +13,16 @@
         </ignoreFiles>
     </projectFiles>
 
+    <issueHandlers>
+        <!-- Doctrine -->
+
+        <DeprecatedConstant>
+            <errorLevel type="suppress">
+                <file name="lib/Layout/Resolver/TargetHandler/Doctrine/SectionPage.php" />
+            </errorLevel>
+        </DeprecatedConstant>
+    </issueHandlers>
+
     <plugins>
         <pluginClass class="Weirdan\DoctrinePsalmPlugin\Plugin" />
         <pluginClass class="Psalm\SymfonyPsalmPlugin\Plugin" />
