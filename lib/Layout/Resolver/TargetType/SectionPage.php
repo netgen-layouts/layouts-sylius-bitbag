@@ -32,7 +32,7 @@ final class SectionPage extends TargetType
     }
 
     /**
-     * @return int[]
+     * @return int[]|null
      */
     public function provideValue(Request $request): ?array
     {
