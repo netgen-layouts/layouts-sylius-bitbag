@@ -54,6 +54,7 @@ final class PageIndexListener implements EventSubscriberInterface
         }
 
         $currentRequest->attributes->set('nglayouts_sylius_bitbag_section', $section);
+        $currentRequest->attributes->set('nglayouts_sylius_resource', $section);
         // We set context here instead in a ContextProvider, since bitbag_sylius_cms_plugin.page.index
         // event happens too late, after onKernelRequest event has already been executed
         $this->context->set('bitbag_section_id', (int) $section->getId());
