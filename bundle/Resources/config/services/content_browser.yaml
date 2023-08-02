@@ -38,3 +38,12 @@ services:
             - "@sylius.context.locale"
         tags:
             - { name: netgen_content_browser.backend, item_type: bitbag_frequently_asked_question }
+
+    netgen_layouts.sylius.bitbag.backend.component:
+        class: Netgen\Layouts\Sylius\BitBag\ContentBrowser\Backend\ComponentBackend
+        arguments:
+            - "@netgen_layouts.sylius.bitbag.component_repository"
+            - "@sylius.context.locale"
+            - "@netgen_content_browser.config.bitbag_component"
+        tags:
+            - { name: netgen_content_browser.backend, item_type: bitbag_component }
