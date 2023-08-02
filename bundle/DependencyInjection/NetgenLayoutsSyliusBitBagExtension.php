@@ -36,6 +36,19 @@ final class NetgenLayoutsSyliusBitBagExtension extends Extension implements Prep
         );
 
         $loader->load('services/**/*.yaml', 'glob');
+
+        $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $configs);
+
+        $container->setParameter(
+            'netgen_layouts.sylius.bitbag.component_create_routes',
+            $config['component_routes']['create'] ?? [],
+        );
+
+        $container->setParameter(
+            'netgen_layouts.sylius.bitbag.component_update_routes',
+            $config['component_routes']['update'] ?? [],
+        );
     }
 
     public function prepend(ContainerBuilder $container): void
