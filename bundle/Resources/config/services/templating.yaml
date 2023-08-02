@@ -9,5 +9,7 @@ services:
         arguments:
             - "@netgen_layouts.sylius.bitbag.page_repository"
             - "@netgen_layouts.sylius.bitbag.section_repository"
+            - '%netgen_layouts.sylius.bitbag.component_create_routes%'
+            - '%netgen_layouts.sylius.bitbag.component_update_routes%'
         tags:
             - { name: twig.runtime }

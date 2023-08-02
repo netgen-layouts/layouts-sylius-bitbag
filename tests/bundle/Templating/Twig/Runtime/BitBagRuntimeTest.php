@@ -27,9 +27,21 @@ final class BitBagRuntimeTest extends TestCase
         $this->pageRepositoryMock = $this->createMock(PageRepositoryInterface::class);
         $this->sectionRepositoryMock = $this->createMock(SectionRepositoryInterface::class);
 
+        $createRoutes = [
+            'banner_component' => 'app_banner_component_create',
+            'hero_component' => 'app_hero_component_create',
+        ];
+
+        $updateRoutes = [
+            'banner_component' => 'app_banner_component_update',
+            'hero_component' => 'app_hero_component_update',
+        ];
+
         $this->runtime = new BitBagRuntime(
             $this->pageRepositoryMock,
             $this->sectionRepositoryMock,
+            $createRoutes,
+            $updateRoutes,
         );
     }
 
@@ -61,5 +73,19 @@ final class BitBagRuntimeTest extends TestCase
             ->willReturn($section);
 
         self::assertSame('Articles', $this->runtime->getSectionName(5));
+    }
+
+    public function testGetComponentCreateRoute(): void
+    {
+        self::assertSame('app_banner_component_create', $this->runtime->getComponentCreateRoute('banner_component'));
+        self::assertSame('app_hero_component_create', $this->runtime->getComponentCreateRoute('hero_component'));
+        self::assertNull($this->runtime->getComponentCreateRoute('gallery_component'));
+    }
+
+    public function testGetComponentUpdateRoute(): void
+    {
+        self::assertSame('app_banner_component_update', $this->runtime->getComponentUpdateRoute('banner_component'));
+        self::assertSame('app_hero_component_update', $this->runtime->getComponentUpdateRoute('hero_component'));
+        self::assertNull($this->runtime->getComponentUpdateRoute('gallery_component'));
     }
 }
