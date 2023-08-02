@@ -24,6 +24,14 @@ final class BitBagExtension extends AbstractExtension
                 'nglayouts_sylius_bitbag_section_name',
                 [BitBagRuntime::class, 'getSectionName'],
             ),
+            new TwigFunction(
+                'nglayouts_sylius_bitbag_component_create_route',
+                [BitBagRuntime::class, 'getComponentCreateRoute'],
+            ),
+            new TwigFunction(
+                'nglayouts_sylius_bitbag_component_update_route',
+                [BitBagRuntime::class, 'getComponentUpdateRoute'],
+            ),
         ];
     }
 }

@@ -14,6 +14,8 @@ final class BitBagRuntime
     public function __construct(
         private PageRepositoryInterface $pageRepository,
         private SectionRepositoryInterface $sectionRepository,
+        private readonly array $componentCreateRoutes = [],
+        private readonly array $componentUpdateRoutes = [],
     ) {
     }
 
@@ -35,5 +37,15 @@ final class BitBagRuntime
         }
 
         return $section->getName();
+    }
+
+    public function getComponentCreateRoute(string $componentTypeIdentifier): ?string
+    {
+        return $this->componentCreateRoutes[$componentTypeIdentifier] ?? null;
+    }
+
+    public function getComponentUpdateRoute(string $componentTypeIdentifier): ?string
+    {
+        return $this->componentUpdateRoutes[$componentTypeIdentifier] ?? null;
     }
 }
