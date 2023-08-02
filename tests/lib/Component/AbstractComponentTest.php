@@ -17,7 +17,6 @@ final class AbstractComponentTest extends TestCase
     public function test(): void
     {
         $stub = new ComponentStub(2, 'Test component');
-        $stub->setCurrentLocale('en_GB');
         $translationStub = new ComponentTranslationStub(2, 'Test component');
 
         self::assertSame(2, $stub->getId());
