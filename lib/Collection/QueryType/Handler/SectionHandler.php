@@ -28,8 +28,7 @@ final class SectionHandler implements QueryTypeHandlerInterface
     public function __construct(
         private SectionRepositoryInterface $sectionRepository,
         private LocaleContextInterface $localeContext,
-    ) {
-    }
+    ) {}
 
     public function buildParameters(ParameterBuilderInterface $builder): void
     {

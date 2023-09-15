@@ -32,8 +32,7 @@ final class FrequentlyAskedQuestionHandler implements QueryTypeHandlerInterface
     public function __construct(
         private FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository,
         private LocaleContextInterface $localeContext,
-    ) {
-    }
+    ) {}
 
     public function buildParameters(ParameterBuilderInterface $builder): void
     {

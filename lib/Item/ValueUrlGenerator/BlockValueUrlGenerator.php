@@ -12,9 +12,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
  */
 final class BlockValueUrlGenerator implements ValueUrlGeneratorInterface
 {
-    public function __construct(private UrlGeneratorInterface $urlGenerator)
-    {
-    }
+    public function __construct(private UrlGeneratorInterface $urlGenerator) {}
 
     public function generate(object $object): ?string
     {

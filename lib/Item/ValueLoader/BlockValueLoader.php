@@ -11,9 +11,7 @@ use Throwable;
 
 final class BlockValueLoader implements ValueLoaderInterface
 {
-    public function __construct(private BlockRepositoryInterface $blockRepository)
-    {
-    }
+    public function __construct(private BlockRepositoryInterface $blockRepository) {}
 
     public function load($id): ?BlockInterface
     {

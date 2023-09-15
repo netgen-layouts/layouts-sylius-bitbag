@@ -23,8 +23,7 @@ final class SectionBackend implements BackendInterface
     public function __construct(
         private SectionRepositoryInterface $sectionRepository,
         private LocaleContextInterface $localeContext,
-    ) {
-    }
+    ) {}
 
     public function getSections(): iterable
     {

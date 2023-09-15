@@ -9,9 +9,7 @@ use Netgen\ContentBrowser\Item\ItemInterface;
 
 final class Item implements ItemInterface, BlockInterface
 {
-    public function __construct(private BitBagBlockInterface $block)
-    {
-    }
+    public function __construct(private BitBagBlockInterface $block) {}
 
     public function getValue(): int
     {

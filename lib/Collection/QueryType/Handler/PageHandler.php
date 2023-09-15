@@ -39,8 +39,7 @@ final class PageHandler implements QueryTypeHandlerInterface
         private PageRepositoryInterface $pageRepository,
         private LocaleContextInterface $localeContext,
         private RequestStack $requestStack,
-    ) {
-    }
+    ) {}
 
     public function buildParameters(ParameterBuilderInterface $builder): void
     {

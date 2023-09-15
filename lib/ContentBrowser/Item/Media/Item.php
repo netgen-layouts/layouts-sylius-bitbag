@@ -9,9 +9,7 @@ use Netgen\ContentBrowser\Item\ItemInterface;
 
 final class Item implements ItemInterface, MediaInterface
 {
-    public function __construct(private BitBagMediaInterface $media)
-    {
-    }
+    public function __construct(private BitBagMediaInterface $media) {}
 
     public function getValue(): int
     {

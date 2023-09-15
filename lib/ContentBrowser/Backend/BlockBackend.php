@@ -23,8 +23,7 @@ final class BlockBackend implements BackendInterface
     public function __construct(
         private BlockRepositoryInterface $blockRepository,
         private LocaleContextInterface $localeContext,
-    ) {
-    }
+    ) {}
 
     public function getSections(): iterable
     {

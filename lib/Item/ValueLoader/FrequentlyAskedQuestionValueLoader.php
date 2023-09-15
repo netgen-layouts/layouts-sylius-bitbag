@@ -11,9 +11,7 @@ use Throwable;
 
 final class FrequentlyAskedQuestionValueLoader implements ValueLoaderInterface
 {
-    public function __construct(private FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository)
-    {
-    }
+    public function __construct(private FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository) {}
 
     public function load($id): ?FrequentlyAskedQuestionInterface
     {

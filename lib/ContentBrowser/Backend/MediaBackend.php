@@ -23,8 +23,7 @@ final class MediaBackend implements BackendInterface
     public function __construct(
         private MediaRepositoryInterface $mediaRepository,
         private LocaleContextInterface $localeContext,
-    ) {
-    }
+    ) {}
 
     public function getSections(): iterable
     {

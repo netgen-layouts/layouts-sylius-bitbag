@@ -14,8 +14,7 @@ final class BitBagRuntime
     public function __construct(
         private PageRepositoryInterface $pageRepository,
         private SectionRepositoryInterface $sectionRepository,
-    ) {
-    }
+    ) {}
 
     public function getPageName(int|string $pageId): ?string
     {

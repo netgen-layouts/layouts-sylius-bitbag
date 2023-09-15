@@ -36,8 +36,7 @@ final class MediaHandler implements QueryTypeHandlerInterface
         private MediaRepositoryInterface $mediaRepository,
         private LocaleContextInterface $localeContext,
         private RequestStack $requestStack,
-    ) {
-    }
+    ) {}
 
     public function buildParameters(ParameterBuilderInterface $builder): void
     {

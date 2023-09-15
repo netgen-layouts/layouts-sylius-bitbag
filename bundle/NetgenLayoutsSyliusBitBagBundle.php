@@ -6,6 +6,4 @@ namespace Netgen\Bundle\LayoutsSyliusBitBagBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-final class NetgenLayoutsSyliusBitBagBundle extends Bundle
-{
-}
+final class NetgenLayoutsSyliusBitBagBundle extends Bundle {}

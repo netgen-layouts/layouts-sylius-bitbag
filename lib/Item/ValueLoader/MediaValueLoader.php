@@ -11,9 +11,7 @@ use Throwable;
 
 final class MediaValueLoader implements ValueLoaderInterface
 {
-    public function __construct(private MediaRepositoryInterface $mediaRepository)
-    {
-    }
+    public function __construct(private MediaRepositoryInterface $mediaRepository) {}
 
     public function load($id): ?MediaInterface
     {

@@ -23,8 +23,7 @@ final class FrequentlyAskedQuestionBackend implements BackendInterface
     public function __construct(
         private FrequentlyAskedQuestionRepositoryInterface $frequentlyAskedQuestionRepository,
         private LocaleContextInterface $localeContext,
-    ) {
-    }
+    ) {}
 
     public function getSections(): iterable
     {

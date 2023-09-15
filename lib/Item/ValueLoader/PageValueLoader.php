@@ -11,9 +11,7 @@ use Throwable;
 
 final class PageValueLoader implements ValueLoaderInterface
 {
-    public function __construct(private PageRepositoryInterface $pageRepository)
-    {
-    }
+    public function __construct(private PageRepositoryInterface $pageRepository) {}
 
     public function load($id): ?PageInterface
     {

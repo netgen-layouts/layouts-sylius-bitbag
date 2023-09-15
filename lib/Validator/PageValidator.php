@@ -15,9 +15,7 @@ use function is_scalar;
 
 final class PageValidator extends ConstraintValidator
 {
-    public function __construct(private PageRepositoryInterface $pageRepository)
-    {
-    }
+    public function __construct(private PageRepositoryInterface $pageRepository) {}
 
     public function validate(mixed $value, Constraint $constraint): void
     {

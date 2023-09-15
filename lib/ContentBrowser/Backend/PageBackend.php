@@ -23,8 +23,7 @@ final class PageBackend implements BackendInterface
     public function __construct(
         private PageRepositoryInterface $pageRepository,
         private LocaleContextInterface $localeContext,
-    ) {
-    }
+    ) {}
 
     public function getSections(): iterable
     {

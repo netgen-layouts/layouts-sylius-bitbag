@@ -11,9 +11,7 @@ use Throwable;
 
 final class SectionValueLoader implements ValueLoaderInterface
 {
-    public function __construct(private SectionRepositoryInterface $sectionRepository)
-    {
-    }
+    public function __construct(private SectionRepositoryInterface $sectionRepository) {}
 
     public function load($id): ?SectionInterface
     {

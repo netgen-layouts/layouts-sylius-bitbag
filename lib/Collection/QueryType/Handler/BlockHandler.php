@@ -38,8 +38,7 @@ final class BlockHandler implements QueryTypeHandlerInterface
         private BlockRepositoryInterface $blockRepository,
         private LocaleContextInterface $localeContext,
         private RequestStack $requestStack,
-    ) {
-    }
+    ) {}
 
     public function buildParameters(ParameterBuilderInterface $builder): void
     {
