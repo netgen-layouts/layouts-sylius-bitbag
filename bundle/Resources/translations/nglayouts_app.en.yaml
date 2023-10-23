@@ -1,2 +1,5 @@
 block.info.bitbag_entity_field: 'BitBag entity field with identifier "%field%" will be rendered here.'
 block.notice.empty_bitbag_entity_field: 'This block is not configured yet. Please define the BitBag entity field identifier which will be used to render the block.'
+
+block.bitbag_component.edit_component: 'Edit'
+block.bitbag_component.create_component: '+ Create new'

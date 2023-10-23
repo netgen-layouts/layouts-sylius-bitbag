@@ -1,4 +1,11 @@
 block_definitions:
+    bitbag_component:
+        name: 'BitBag component'
+        enabled: true
+        #config_provider: bitbag
+        view_types:
+            standard:
+                name: 'Standard'
     bitbag_entity_field:
         name: 'BitBag entity field'
         icon: '/bundles/netgenlayoutssyliusbitbag/icons/block/bitbag_entity_field.svg'
