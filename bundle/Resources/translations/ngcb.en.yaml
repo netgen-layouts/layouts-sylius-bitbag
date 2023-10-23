@@ -3,6 +3,7 @@ item_types.bitbag_section: 'BitBag section'
 item_types.bitbag_block: 'BitBag block'
 item_types.bitbag_media: 'BitBag media'
 item_types.bitbag_frequently_asked_question: 'BitBag frequently asked question'
+item_types.bitbag_component: 'BitBag component'
 
 columns.bitbag_page.code: 'Code'
 columns.bitbag_page.slug: 'Slug'
