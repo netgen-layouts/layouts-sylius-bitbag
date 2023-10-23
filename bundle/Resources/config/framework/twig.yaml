@@ -1,0 +1,2 @@
+form_themes:
+    - "@NetgenLayoutsSyliusBitBag/app/form/form_div_layout.html.twig"
