@@ -8,3 +8,13 @@ services:
         class: Netgen\Layouts\Sylius\BitBag\Parameters\Form\Mapper\SectionMapper
         tags:
             - { name: netgen_layouts.parameter_type.form_mapper, type: bitbag_section }
+
+    netgen_layouts.sylius.bitbag.parameters.parameter_type.component:
+        class: Netgen\Layouts\Sylius\BitBag\Parameters\ParameterType\ComponentType
+        tags:
+            - { name: netgen_layouts.parameter_type }
+
+    netgen_layouts.sylius.bitbag.parameters.form_mapper.component:
+        class: Netgen\Layouts\Sylius\BitBag\Parameters\Form\Mapper\ComponentMapper
+        tags:
+            - { name: netgen_layouts.parameter_type.form_mapper, type: bitbag_component }
