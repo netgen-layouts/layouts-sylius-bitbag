@@ -50,4 +50,4 @@ block.bitbag_entity_field.field_identifier: 'Field identifier'
 block.bitbag_entity_field.html_element: 'HTML element'
 block.bitbag_entity_field.datetime_format: 'Date & time format'
 
-block.bitbag_component.component: 'Component'
+block.bitbag_component.content: 'Content'
