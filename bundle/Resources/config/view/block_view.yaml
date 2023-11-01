@@ -1,6 +1,10 @@
 view:
     block_view:
         default:
+            bitbag_component:
+                template: "@nglayouts/block/bitbag_component.html.twig"
+                match:
+                    block\definition\prefix: bitbag_component
             bitbag_entity_field\string:
                 template: "@nglayouts/block/bitbag_entity_field/string.html.twig"
                 match:
@@ -27,6 +31,10 @@ view:
                     block\definition: bitbag_entity_field
                     block\view_type: media
         app:
+            bitbag_component:
+                template: "@nglayouts_admin/app/block/bitbag_component.html.twig"
+                match:
+                    block\definition\prefix: bitbag_component
             bitbag_entity_field:
                 template: "@nglayouts_admin/app/block/bitbag_entity_field.html.twig"
                 match:
