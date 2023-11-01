@@ -23,11 +23,11 @@ final class ComponentHandler extends BlockDefinitionHandler
         );
 
         $builder->add(
-            'component',
+            'content',
             ComponentType::class,
             [
                 'component_type_identifier' => 'bitbag_component',
-                'label' => 'block.bitbag_component.component',
+                'label' => 'block.bitbag_component.content',
             ],
         );
     }
