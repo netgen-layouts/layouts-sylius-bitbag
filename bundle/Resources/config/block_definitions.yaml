@@ -2,7 +2,7 @@ block_definitions:
     bitbag_component:
         name: 'BitBag component'
         enabled: true
-        #config_provider: bitbag
+        config_provider: bitbag_component
         view_types:
             standard:
                 name: 'Standard'
