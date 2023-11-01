@@ -10,3 +10,10 @@ services:
         class: Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Handler\ComponentHandler
         tags:
             - { name: netgen_layouts.block_definition_handler, identifier: bitbag_component }
+
+    netgen_layouts.sylius.bitbag.block.block_definition.config_provider.bitbag_component:
+        class: Netgen\Layouts\Sylius\BitBag\Block\BlockDefinition\Configuration\Provider\BitBagComponentConfigProvider
+        arguments:
+            - "@=service('netgen_layouts.configuration').getParameter('view')"
+        tags:
+            - { name: netgen_layouts.block_definition.config_provider, identifier: bitbag_component }
