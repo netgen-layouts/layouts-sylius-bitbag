@@ -3,3 +3,5 @@ block.notice.empty_bitbag_entity_field: 'This block is not configured yet. Pleas
 
 block.bitbag_component.edit_component: 'Edit'
 block.bitbag_component.create_component: '+ Create new'
+
+block.notice.empty_bitbag_component: 'This block is not configured yet. Please define the BitBag resource which will be used to render the block.'
