@@ -1,5 +1,9 @@
 # Netgen Layouts, Sylius eCommerce & BitBag Sylius CMS plugin integration
 
+## Installation instructions
+
+[INSTALL.md](INSTALL.md)
+
 ## Running tests
 
 Running tests requires that you have complete vendors installed, so run
