@@ -20,6 +20,7 @@ final class ComponentMapper extends Mapper
     {
         $options = [
             'item_type' => 'bitbag_component',
+            'block_prefix' => 'ngcb_bitbag_component',
             'required' => $parameterDefinition->isRequired(),
         ];
 
