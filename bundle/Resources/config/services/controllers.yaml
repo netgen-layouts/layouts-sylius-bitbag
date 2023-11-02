@@ -1,0 +1,15 @@
+services:
+    netgen_layouts.sylius.bitbag.controller.base:
+        class: Netgen\Bundle\LayoutsSyliusBitBagBundle\Controller\Admin\Controller
+        abstract: true
+        calls:
+            - [setContainer, [ "@service_container"]]
+            - [checkPermissions]
+
+    netgen_layouts.sylius.bitbag.controller.connect_component_content:
+        class: Netgen\Bundle\LayoutsSyliusBitBagBundle\Controller\Admin\ConnectComponentContent
+        public: true
+        parent: netgen_layouts.sylius.bitbag.controller.base
+        arguments:
+            - "@netgen_layouts.api.service.block"
+            - "@netgen_layouts.sylius.bitbag.component_repository"
