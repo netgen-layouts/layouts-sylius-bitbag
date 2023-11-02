@@ -16,3 +16,24 @@ services:
             - "@netgen_layouts.context"
         tags:
             - { name: kernel.event_subscriber }
+
+    netgen_layouts.sylius.bitbag.event_listener.bitbag.resource_index:
+        class: Netgen\Bundle\LayoutsSyliusBitBagBundle\EventListener\BitBag\ResourceIndexListener
+        arguments:
+            - '@request_stack'
+        tags:
+            - { name: kernel.event_subscriber }
+
+    netgen_layouts.sylius.bitbag.event_listener.bitbag.resource_show:
+        class: Netgen\Bundle\LayoutsSyliusBitBagBundle\EventListener\BitBag\ResourceShowListener
+        arguments:
+            - '@request_stack'
+        tags:
+            - { name: kernel.event_subscriber }
+
+    netgen_layouts.sylius.bitbag.event_listener.bitbag.resource_initialize_create:
+        class: Netgen\Bundle\LayoutsSyliusBitBagBundle\EventListener\BitBag\ResourceInitializeCreateListener
+        arguments:
+            - '@request_stack'
+        tags:
+            - { name: kernel.event_subscriber }
