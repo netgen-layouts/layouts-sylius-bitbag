@@ -1,4 +1,9 @@
 events:
+    sylius.admin.layout.javascripts:
+        blocks:
+            layouts_sylius_bitbag_javascripts:
+                template: "@NetgenLayoutsSyliusBitBag/admin/nglayouts/javascripts.html.twig"
+
     sylius.admin.layout.stylesheets:
         blocks:
             layouts_sylius_bitbag_meta:
