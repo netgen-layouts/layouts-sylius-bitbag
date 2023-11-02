@@ -1,0 +1,6 @@
+events:
+    sylius.admin.layout.stylesheets:
+        blocks:
+            layouts_sylius_bitbag_meta:
+                template: "@NetgenLayoutsSyliusBitBag/admin/nglayouts/meta.html.twig"
+                priority: 1000

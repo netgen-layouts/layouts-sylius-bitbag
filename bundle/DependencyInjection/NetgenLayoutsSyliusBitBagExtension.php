@@ -66,6 +66,7 @@ final class NetgenLayoutsSyliusBitBagExtension extends Extension implements Prep
             'view/rule_target_view.yaml' => 'netgen_layouts',
             'doctrine.yaml' => 'doctrine',
             'framework/twig.yaml' => 'twig',
+            'sylius_ui.yaml' => 'sylius_ui',
         ];
 
         foreach ($prependConfigs as $configFile => $prependConfig) {
