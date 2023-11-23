@@ -27,7 +27,7 @@
         "vimeo/psalm": "^5.4",
         "weirdan/doctrine-psalm-plugin": "^2.8",
         "psalm/plugin-symfony": "^5.0",
-        "matthiasnoback/symfony-dependency-injection-test": "^4.3"
+        "matthiasnoback/symfony-dependency-injection-test": "^5.0"
     },
     "config": {
         "allow-plugins": false
