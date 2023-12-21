@@ -16,6 +16,7 @@ use Netgen\Layouts\Sylius\BitBag\ContentBrowser\Item\Media\Item;
 use Netgen\Layouts\Sylius\BitBag\Repository\MediaRepositoryInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 
+use function max;
 use function sprintf;
 
 final class MediaBackend implements BackendInterface

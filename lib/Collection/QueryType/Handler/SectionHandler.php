@@ -12,6 +12,8 @@ use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\SyliusChann
 use Netgen\Layouts\Sylius\BitBag\Repository\SectionRepositoryInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 
+use function max;
+
 use const PHP_INT_MAX;
 
 final class SectionHandler implements QueryTypeHandlerInterface

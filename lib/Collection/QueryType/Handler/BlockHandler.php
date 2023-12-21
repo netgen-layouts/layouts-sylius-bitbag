@@ -17,6 +17,8 @@ use Netgen\Layouts\Sylius\BitBag\Repository\BlockRepositoryInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
+use function max;
+
 use const PHP_INT_MAX;
 
 final class BlockHandler implements QueryTypeHandlerInterface
