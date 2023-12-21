@@ -62,12 +62,13 @@ final class MediaHandler implements QueryTypeHandlerInterface
 
         $paginator = $this->mediaRepository->createFilterPaginator($queryBuilder);
 
-        $limit = $limit ?? PHP_INT_MAX;
+        $limit = $limit === null ? PHP_INT_MAX : max(0, $limit);
+        $offset = max(0, $offset);
 
         $paginator->setMaxPerPage($limit);
         $paginator->setCurrentPage((int) ($offset / $limit) + 1);
 
-        return $paginator->getCurrentPageResults();
+        return $paginator->getAdapter()->getSlice($offset, $limit);
     }
 
     public function getCount(Query $query): int

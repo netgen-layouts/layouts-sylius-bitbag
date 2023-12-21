@@ -67,12 +67,13 @@ final class FrequentlyAskedQuestionBackend implements BackendInterface
             $this->localeContext->getLocaleCode(),
         );
 
+        $limit = max(0, $limit);
+        $offset = max(0, $offset);
+
         $paginator->setMaxPerPage($limit);
         $paginator->setCurrentPage((int) ($offset / $limit) + 1);
 
-        return $this->buildItems(
-            $paginator->getCurrentPageResults(),
-        );
+        return $this->buildItems($paginator->getAdapter()->getSlice($offset, $limit));
     }
 
     public function getSubItemsCount(LocationInterface $location): int
