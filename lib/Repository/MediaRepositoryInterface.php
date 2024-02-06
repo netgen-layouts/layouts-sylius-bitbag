@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Netgen\Layouts\Sylius\BitBag\Repository;
 
 use BitBag\SyliusCmsPlugin\Repository\MediaRepositoryInterface as BaseMediaRepositoryInterface;
-use Doctrine\ORM\QueryBuilder;
 use Pagerfanta\PagerfantaInterface;
 
 interface MediaRepositoryInterface extends BaseMediaRepositoryInterface

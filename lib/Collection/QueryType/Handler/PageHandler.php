@@ -91,7 +91,7 @@ final class PageHandler implements QueryTypeHandlerInterface
         $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
         $this->addBitBagEnabledCriterion($queryBuilder);
 
-        return (int)$queryBuilder
+        return (int) $queryBuilder
             ->select('count(o.id)')
             ->getQuery()
             ->getSingleScalarResult();

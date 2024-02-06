@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Netgen\Layouts\Sylius\BitBag\Repository;
 
 use BitBag\SyliusCmsPlugin\Repository\BlockRepositoryInterface as BaseBlockRepositoryInterface;
-use Doctrine\ORM\QueryBuilder;
 use Pagerfanta\PagerfantaInterface;
 
 interface BlockRepositoryInterface extends BaseBlockRepositoryInterface

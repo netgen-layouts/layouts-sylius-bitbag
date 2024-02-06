@@ -62,7 +62,7 @@ final class SectionHandler implements QueryTypeHandlerInterface
             $this->localeContext->getLocaleCode(),
         );
 
-        return (int)$queryBuilder
+        return (int) $queryBuilder
             ->select('count(o.id)')
             ->getQuery()
             ->getSingleScalarResult();
