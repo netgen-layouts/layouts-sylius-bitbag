@@ -16,6 +16,7 @@ use Netgen\Layouts\Sylius\BitBag\ContentBrowser\Item\Block\Item;
 use Netgen\Layouts\Sylius\BitBag\Repository\BlockRepositoryInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 
+use function max;
 use function sprintf;
 
 final class BlockBackend implements BackendInterface
@@ -67,11 +68,14 @@ final class BlockBackend implements BackendInterface
             $this->localeContext->getLocaleCode(),
         );
 
+        $limit = max(0, $limit);
+        $offset = max(0, $offset);
+
         $paginator->setMaxPerPage($limit);
         $paginator->setCurrentPage((int) ($offset / $limit) + 1);
 
         return $this->buildItems(
-            $paginator->getCurrentPageResults(),
+            $paginator->getAdapter()->getSlice($offset, $limit),
         );
     }
 

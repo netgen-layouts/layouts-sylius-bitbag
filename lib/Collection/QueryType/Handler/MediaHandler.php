@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler;
 
+use BitBag\SyliusCmsPlugin\Entity\MediaInterface;
 use Netgen\Layouts\API\Values\Collection\Query;
 use Netgen\Layouts\Collection\QueryType\QueryTypeHandlerInterface;
 use Netgen\Layouts\Parameters\ParameterBuilderInterface;
@@ -15,6 +16,8 @@ use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\SyliusProdu
 use Netgen\Layouts\Sylius\BitBag\Repository\MediaRepositoryInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
+
+use function max;
 
 use const PHP_INT_MAX;
 
@@ -28,7 +31,7 @@ final class MediaHandler implements QueryTypeHandlerInterface
 
     /** @var array<string, string> */
     private array $sortingOptions = [
-        'Name' => 'translations.name',
+        'Name' => 'translation.name',
         'Code' => 'code',
     ];
 
@@ -46,7 +49,10 @@ final class MediaHandler implements QueryTypeHandlerInterface
         $this->buildBitBagSortingParameters($builder, $this->sortingOptions);
     }
 
-    public function getValues(Query $query, int $offset = 0, ?int $limit = null): iterable
+    /**
+     * @return MediaInterface[]
+     */
+    public function getValues(Query $query, int $offset = 0, ?int $limit = null): array
     {
         $queryBuilder = $this->mediaRepository->createListQueryBuilder(
             $this->localeContext->getLocaleCode(),
@@ -60,14 +66,13 @@ final class MediaHandler implements QueryTypeHandlerInterface
         $this->addBitBagEnabledCriterion($queryBuilder);
         $this->addBitBagSortingClause($query, $queryBuilder);
 
-        $paginator = $this->mediaRepository->createFilterPaginator($queryBuilder);
+        $limit = $limit === null ? PHP_INT_MAX : max(0, $limit);
+        $offset = max(0, $offset);
 
-        $limit = $limit ?? PHP_INT_MAX;
-
-        $paginator->setMaxPerPage($limit);
-        $paginator->setCurrentPage((int) ($offset / $limit) + 1);
-
-        return $paginator->getCurrentPageResults();
+        return $queryBuilder->setFirstResult($offset)
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
     }
 
     public function getCount(Query $query): int
@@ -83,9 +88,10 @@ final class MediaHandler implements QueryTypeHandlerInterface
         $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
         $this->addBitBagEnabledCriterion($queryBuilder);
 
-        $paginator = $this->mediaRepository->createFilterPaginator($queryBuilder);
-
-        return $paginator->getNbResults();
+        return (int) $queryBuilder
+            ->select('count(o.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
     }
 
     public function isContextual(Query $query): bool

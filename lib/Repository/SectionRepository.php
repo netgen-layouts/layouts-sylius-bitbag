@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Netgen\Layouts\Sylius\BitBag\Repository;
 
 use BitBag\SyliusCmsPlugin\Repository\SectionRepository as BaseSectionRepository;
-use Doctrine\ORM\QueryBuilder;
 use Pagerfanta\PagerfantaInterface;
 
 final class SectionRepository extends BaseSectionRepository implements SectionRepositoryInterface
@@ -14,11 +13,6 @@ final class SectionRepository extends BaseSectionRepository implements SectionRe
     {
         $queryBuilder = $this->createListQueryBuilder($localeCode);
 
-        return $this->getPaginator($queryBuilder);
-    }
-
-    public function createFilterPaginator(QueryBuilder $queryBuilder): PagerfantaInterface
-    {
         return $this->getPaginator($queryBuilder);
     }
 

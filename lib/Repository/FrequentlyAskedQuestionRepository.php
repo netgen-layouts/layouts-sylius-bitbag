@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Netgen\Layouts\Sylius\BitBag\Repository;
 
 use BitBag\SyliusCmsPlugin\Repository\FrequentlyAskedQuestionRepository as BaseFrequentlyAskedQuestionRepository;
-use Doctrine\ORM\QueryBuilder;
 use Pagerfanta\PagerfantaInterface;
 
 final class FrequentlyAskedQuestionRepository extends BaseFrequentlyAskedQuestionRepository implements FrequentlyAskedQuestionRepositoryInterface
@@ -14,11 +13,6 @@ final class FrequentlyAskedQuestionRepository extends BaseFrequentlyAskedQuestio
     {
         $queryBuilder = $this->createListQueryBuilder($localeCode);
 
-        return $this->getPaginator($queryBuilder);
-    }
-
-    public function createFilterPaginator(QueryBuilder $queryBuilder): PagerfantaInterface
-    {
         return $this->getPaginator($queryBuilder);
     }
 
