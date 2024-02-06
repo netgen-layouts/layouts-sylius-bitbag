@@ -18,13 +18,6 @@ interface PageRepositoryInterface extends BasePageRepositoryInterface
     public function createListPaginator(string $localeCode): PagerfantaInterface;
 
     /**
-     * Creates a paginator which is used to filter pages.
-     *
-     * @return \Pagerfanta\PagerfantaInterface<\BitBag\SyliusCmsPlugin\Entity\Page>
-     */
-    public function createFilterPaginator(QueryBuilder $queryBuilder): PagerfantaInterface;
-
-    /**
      * Creates a paginator which is used to search for pages.
      *
      * @return \Pagerfanta\PagerfantaInterface<\BitBag\SyliusCmsPlugin\Entity\Page>

@@ -17,11 +17,6 @@ final class MediaRepository extends BaseMediaRepository implements MediaReposito
         return $this->getPaginator($queryBuilder);
     }
 
-    public function createFilterPaginator(QueryBuilder $queryBuilder): PagerfantaInterface
-    {
-        return $this->getPaginator($queryBuilder);
-    }
-
     public function createSearchPaginator(string $searchText, string $localeCode): PagerfantaInterface
     {
         $queryBuilder = $this->createListQueryBuilder($localeCode);

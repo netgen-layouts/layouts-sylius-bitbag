@@ -17,11 +17,6 @@ final class SectionRepository extends BaseSectionRepository implements SectionRe
         return $this->getPaginator($queryBuilder);
     }
 
-    public function createFilterPaginator(QueryBuilder $queryBuilder): PagerfantaInterface
-    {
-        return $this->getPaginator($queryBuilder);
-    }
-
     public function createSearchPaginator(string $searchText, string $localeCode): PagerfantaInterface
     {
         $queryBuilder = $this->createListQueryBuilder($localeCode);

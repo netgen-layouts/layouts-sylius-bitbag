@@ -18,13 +18,6 @@ interface FrequentlyAskedQuestionRepositoryInterface extends BaseFrequentlyAsked
     public function createListPaginator(string $localeCode): PagerfantaInterface;
 
     /**
-     * Creates a paginator which is used to filter frequently asked questions.
-     *
-     * @return \Pagerfanta\PagerfantaInterface<\BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestion>
-     */
-    public function createFilterPaginator(QueryBuilder $queryBuilder): PagerfantaInterface;
-
-    /**
      * Creates a paginator which is used to search for frequently asked questions.
      *
      * @return \Pagerfanta\PagerfantaInterface<\BitBag\SyliusCmsPlugin\Entity\FrequentlyAskedQuestion>

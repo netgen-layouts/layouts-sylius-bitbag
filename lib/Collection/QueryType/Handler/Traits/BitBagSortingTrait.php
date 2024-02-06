@@ -56,13 +56,13 @@ trait BitBagSortingTrait
         $sortDirection = $parameterCollection->getParameter('sort_direction')->getValue();
         $rootAliases = $queryBuilder->getRootAliases();
 
-        if (!in_array('translations', $queryBuilder->getAllAliases(), true)) {
+        if (!in_array('translation', $queryBuilder->getAllAliases(), true)) {
             $join = count($rootAliases) === 0 ? 'translations' : $rootAliases[0] . '.translations';
 
-            $queryBuilder->innerJoin($join, 'translations');
+            $queryBuilder->innerJoin($join, 'translation');
         }
 
-        if (!str_starts_with($sortField, 'translations.') && count($rootAliases) !== 0) {
+        if (!str_starts_with($sortField, 'translation.') && count($rootAliases) !== 0) {
             $sortField = $rootAliases[0] . '.' . $sortField;
         }
 

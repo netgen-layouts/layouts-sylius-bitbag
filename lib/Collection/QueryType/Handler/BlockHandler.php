@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler;
 
+use BitBag\SyliusCmsPlugin\Entity\BlockInterface;
 use Netgen\Layouts\API\Values\Collection\Query;
 use Netgen\Layouts\Collection\QueryType\QueryTypeHandlerInterface;
 use Netgen\Layouts\Parameters\ParameterBuilderInterface;
@@ -32,7 +33,7 @@ final class BlockHandler implements QueryTypeHandlerInterface
 
     /** @var array<string, string> */
     private array $sortingOptions = [
-        'Name' => 'translations.name',
+        'Name' => 'translation.name',
         'Code' => 'code',
     ];
 
@@ -51,7 +52,10 @@ final class BlockHandler implements QueryTypeHandlerInterface
         $this->buildBitBagSortingParameters($builder, $this->sortingOptions);
     }
 
-    public function getValues(Query $query, int $offset = 0, ?int $limit = null): iterable
+    /**
+     * @return BlockInterface[]
+     */
+    public function getValues(Query $query, int $offset = 0, ?int $limit = null): array
     {
         $queryBuilder = $this->blockRepository->createListQueryBuilder(
             $this->localeContext->getLocaleCode(),
@@ -66,15 +70,13 @@ final class BlockHandler implements QueryTypeHandlerInterface
         $this->addBitBagEnabledCriterion($queryBuilder);
         $this->addBitBagSortingClause($query, $queryBuilder);
 
-        $paginator = $this->blockRepository->createFilterPaginator($queryBuilder);
-
         $limit = $limit === null ? PHP_INT_MAX : max(0, $limit);
         $offset = max(0, $offset);
 
-        $paginator->setMaxPerPage($limit);
-        $paginator->setCurrentPage((int) ($offset / $limit) + 1);
-
-        return $paginator->getAdapter()->getSlice($offset, $limit);
+        return $queryBuilder->setFirstResult($offset)
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
     }
 
     public function getCount(Query $query): int
@@ -91,9 +93,10 @@ final class BlockHandler implements QueryTypeHandlerInterface
         $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
         $this->addBitBagEnabledCriterion($queryBuilder);
 
-        $paginator = $this->blockRepository->createFilterPaginator($queryBuilder);
-
-        return $paginator->getNbResults();
+        return (int)$queryBuilder
+            ->select('count(o.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
     }
 
     public function isContextual(Query $query): bool
