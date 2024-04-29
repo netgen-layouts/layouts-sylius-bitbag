@@ -16,6 +16,18 @@
     <issueHandlers>
         <!-- Doctrine -->
 
+        <InvalidReturnType>
+            <errorLevel type="suppress">
+                <directory name="lib/Collection/QueryType/Handler" />
+            </errorLevel>
+        </InvalidReturnType>
+
+        <InvalidReturnStatement>
+            <errorLevel type="suppress">
+                <directory name="lib/Collection/QueryType/Handler" />
+            </errorLevel>
+        </InvalidReturnStatement>
+
         <DeprecatedConstant>
             <errorLevel type="suppress">
                 <file name="lib/Layout/Resolver/TargetHandler/Doctrine/SectionPage.php" />

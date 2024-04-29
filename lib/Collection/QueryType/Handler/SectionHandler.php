@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler;
 
-use BitBag\SyliusCmsPlugin\Entity\SectionInterface;
 use Netgen\Layouts\API\Values\Collection\Query;
 use Netgen\Layouts\Collection\QueryType\QueryTypeHandlerInterface;
 use Netgen\Layouts\Parameters\ParameterBuilderInterface;
@@ -20,7 +19,9 @@ final class SectionHandler implements QueryTypeHandlerInterface
 {
     use BitBagSortingTrait;
 
-    /** @var array<string, string> */
+    /**
+     * @var array<string, string>
+     */
     private array $sortingOptions = [
         'Name' => 'translation.name',
         'Code' => 'code',
@@ -36,10 +37,7 @@ final class SectionHandler implements QueryTypeHandlerInterface
         $this->buildBitBagSortingParameters($builder, $this->sortingOptions);
     }
 
-    /**
-     * @return SectionInterface[]
-     */
-    public function getValues(Query $query, int $offset = 0, ?int $limit = null): array
+    public function getValues(Query $query, int $offset = 0, ?int $limit = null): iterable
     {
         $queryBuilder = $this->sectionRepository->createListQueryBuilder(
             $this->localeContext->getLocaleCode(),
