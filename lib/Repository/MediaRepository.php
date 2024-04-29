@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Netgen\Layouts\Sylius\BitBag\Repository;
 
 use BitBag\SyliusCmsPlugin\Repository\MediaRepository as BaseMediaRepository;
-use Doctrine\ORM\QueryBuilder;
 use Pagerfanta\PagerfantaInterface;
 
 final class MediaRepository extends BaseMediaRepository implements MediaRepositoryInterface
@@ -14,11 +13,6 @@ final class MediaRepository extends BaseMediaRepository implements MediaReposito
     {
         $queryBuilder = $this->createListQueryBuilder($localeCode);
 
-        return $this->getPaginator($queryBuilder);
-    }
-
-    public function createFilterPaginator(QueryBuilder $queryBuilder): PagerfantaInterface
-    {
         return $this->getPaginator($queryBuilder);
     }
 

@@ -10,7 +10,7 @@ use Netgen\Layouts\Sylius\BitBag\ContentBrowser\Item\Media\MediaInterface;
 
 final class Type implements ColumnValueProviderInterface
 {
-    public function getValue(Iteminterface $item): ?string
+    public function getValue(ItemInterface $item): ?string
     {
         if (!$item instanceof MediaInterface) {
             return null;

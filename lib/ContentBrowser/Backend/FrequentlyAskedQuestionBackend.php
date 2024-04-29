@@ -16,6 +16,7 @@ use Netgen\Layouts\Sylius\BitBag\ContentBrowser\Item\FrequentlyAskedQuestion\Ite
 use Netgen\Layouts\Sylius\BitBag\Repository\FrequentlyAskedQuestionRepositoryInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 
+use function max;
 use function sprintf;
 
 final class FrequentlyAskedQuestionBackend implements BackendInterface
@@ -67,12 +68,13 @@ final class FrequentlyAskedQuestionBackend implements BackendInterface
             $this->localeContext->getLocaleCode(),
         );
 
+        $limit = max(0, $limit);
+        $offset = max(0, $offset);
+
         $paginator->setMaxPerPage($limit);
         $paginator->setCurrentPage((int) ($offset / $limit) + 1);
 
-        return $this->buildItems(
-            $paginator->getCurrentPageResults(),
-        );
+        return $this->buildItems($paginator->getAdapter()->getSlice($offset, $limit));
     }
 
     public function getSubItemsCount(LocationInterface $location): int

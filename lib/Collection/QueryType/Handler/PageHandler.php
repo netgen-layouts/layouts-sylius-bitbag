@@ -16,6 +16,8 @@ use Netgen\Layouts\Sylius\BitBag\Repository\PageRepositoryInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
+use function max;
+
 use const PHP_INT_MAX;
 
 final class PageHandler implements QueryTypeHandlerInterface
@@ -26,9 +28,11 @@ final class PageHandler implements QueryTypeHandlerInterface
     use SyliusChannelFilterTrait;
     use SyliusProductTrait;
 
-    /** @var array<string, string> */
+    /**
+     * @var array<string, string>
+     */
     private array $sortingOptions = [
-        'Name' => 'translations.name',
+        'Name' => 'translation.name',
         'Code' => 'code',
         'Published' => 'publishAt',
         'Created' => 'createdAt',
@@ -63,14 +67,13 @@ final class PageHandler implements QueryTypeHandlerInterface
         $this->addBitBagEnabledCriterion($queryBuilder);
         $this->addBitBagSortingClause($query, $queryBuilder);
 
-        $paginator = $this->pageRepository->createFilterPaginator($queryBuilder);
+        $limit = $limit === null ? PHP_INT_MAX : max(0, $limit);
+        $offset = max(0, $offset);
 
-        $limit = $limit ?? PHP_INT_MAX;
-
-        $paginator->setMaxPerPage($limit);
-        $paginator->setCurrentPage((int) ($offset / $limit) + 1);
-
-        return $paginator->getCurrentPageResults();
+        return $queryBuilder->setFirstResult($offset)
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
     }
 
     public function getCount(Query $query): int
@@ -86,9 +89,10 @@ final class PageHandler implements QueryTypeHandlerInterface
         $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
         $this->addBitBagEnabledCriterion($queryBuilder);
 
-        $paginator = $this->pageRepository->createFilterPaginator($queryBuilder);
-
-        return $paginator->getNbResults();
+        return (int) $queryBuilder
+            ->select('count(o.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
     }
 
     public function isContextual(Query $query): bool

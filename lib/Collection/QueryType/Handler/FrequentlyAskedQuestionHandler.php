@@ -13,6 +13,8 @@ use Netgen\Layouts\Sylius\BitBag\Collection\QueryType\Handler\Traits\SyliusChann
 use Netgen\Layouts\Sylius\BitBag\Repository\FrequentlyAskedQuestionRepositoryInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
 
+use function max;
+
 use const PHP_INT_MAX;
 
 final class FrequentlyAskedQuestionHandler implements QueryTypeHandlerInterface
@@ -21,11 +23,13 @@ final class FrequentlyAskedQuestionHandler implements QueryTypeHandlerInterface
     use BitBagSortingTrait;
     use SyliusChannelFilterTrait;
 
-    /** @var array<string, string> */
+    /**
+     * @var array<string, string>
+     */
     private array $sortingOptions = [
         'Position' => 'position',
-        'Question' => 'translations.question',
-        'Answer' => 'translations.answer',
+        'Question' => 'translation.question',
+        'Answer' => 'translation.answer',
         'Code' => 'code',
     ];
 
@@ -50,14 +54,13 @@ final class FrequentlyAskedQuestionHandler implements QueryTypeHandlerInterface
         $this->addBitBagEnabledCriterion($queryBuilder);
         $this->addBitBagSortingClause($query, $queryBuilder);
 
-        $paginator = $this->frequentlyAskedQuestionRepository->createFilterPaginator($queryBuilder);
+        $limit = $limit === null ? PHP_INT_MAX : max(0, $limit);
+        $offset = max(0, $offset);
 
-        $limit = $limit ?? PHP_INT_MAX;
-
-        $paginator->setMaxPerPage($limit);
-        $paginator->setCurrentPage((int) ($offset / $limit) + 1);
-
-        return $paginator->getCurrentPageResults();
+        return $queryBuilder->setFirstResult($offset)
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
     }
 
     public function getCount(Query $query): int
@@ -69,9 +72,10 @@ final class FrequentlyAskedQuestionHandler implements QueryTypeHandlerInterface
         $this->addSyliusChannelFilterCriterion($query, $queryBuilder);
         $this->addBitBagEnabledCriterion($queryBuilder);
 
-        $paginator = $this->frequentlyAskedQuestionRepository->createFilterPaginator($queryBuilder);
-
-        return $paginator->getNbResults();
+        return (int) $queryBuilder
+            ->select('count(o.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
     }
 
     public function isContextual(Query $query): bool
