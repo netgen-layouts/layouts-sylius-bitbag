@@ -84,7 +84,7 @@ trait SyliusTaxonTrait
             return null;
         }
 
-        $taxon = $request->attributes->get('nglayouts_sylius_taxon');
+        $taxon = $request->attributes->get('nglayouts_sylius_resource');
 
         if (!$taxon instanceof TaxonInterface) {
             return null;
