@@ -25,7 +25,24 @@ final class SectionValueUrlGeneratorTest extends TestCase
         $this->urlGenerator = new SectionValueUrlGenerator($this->urlGeneratorMock);
     }
 
-    public function testGenerate(): void
+    public function testGenerateDefaultUrl(): void
+    {
+        $this->urlGeneratorMock
+            ->expects(self::once())
+            ->method('generate')
+            ->with(
+                self::identicalTo('bitbag_sylius_cms_plugin_shop_page_index_by_section_code'),
+                self::identicalTo(['sectionCode' => 'blog']),
+            )
+            ->willReturn('/en_GB/pages/blog');
+
+        self::assertSame(
+            '/en_GB/pages/blog',
+            $this->urlGenerator->generateDefaultUrl(new Section(42, 'blog', 'Blog')),
+        );
+    }
+
+    public function testGenerateAdminUrl(): void
     {
         $this->urlGeneratorMock
             ->expects(self::once())
@@ -34,10 +51,27 @@ final class SectionValueUrlGeneratorTest extends TestCase
                 self::identicalTo('bitbag_sylius_cms_plugin_admin_section_update'),
                 self::identicalTo(['id' => 42]),
             )
-            ->willReturn('/sections/42/edit');
+            ->willReturn('/admin/sections/42/edit');
 
         self::assertSame(
-            '/sections/42/edit',
+            '/admin/sections/42/edit',
+            $this->urlGenerator->generateAdminUrl(new Section(42, 'blog', 'Blog')),
+        );
+    }
+
+    public function testGenerate(): void
+    {
+        $this->urlGeneratorMock
+            ->expects(self::once())
+            ->method('generate')
+            ->with(
+                self::identicalTo('bitbag_sylius_cms_plugin_shop_page_index_by_section_code'),
+                self::identicalTo(['sectionCode' => 'blog']),
+            )
+            ->willReturn('/en_GB/pages/blog');
+
+        self::assertSame(
+            '/en_GB/pages/blog',
             $this->urlGenerator->generate(new Section(42, 'blog', 'Blog')),
         );
     }

@@ -25,7 +25,12 @@ final class BlockValueUrlGeneratorTest extends TestCase
         $this->urlGenerator = new BlockValueUrlGenerator($this->urlGeneratorMock);
     }
 
-    public function testGenerate(): void
+    public function testGenerateDefaultUrl(): void
+    {
+        self::assertNull($this->urlGenerator->generateDefaultUrl(new Block(42, 'header', 'Header')));
+    }
+
+    public function testGenerateAdminUrl(): void
     {
         $this->urlGeneratorMock
             ->expects(self::once())
@@ -38,7 +43,12 @@ final class BlockValueUrlGeneratorTest extends TestCase
 
         self::assertSame(
             '/blocks/42/edit',
-            $this->urlGenerator->generate(new Block(42, 'header', 'Header')),
+            $this->urlGenerator->generateAdminUrl(new Block(42, 'header', 'Header')),
         );
+    }
+
+    public function testGenerate(): void
+    {
+        self::assertNull($this->urlGenerator->generate(new Block(42, 'header', 'Header')));
     }
 }

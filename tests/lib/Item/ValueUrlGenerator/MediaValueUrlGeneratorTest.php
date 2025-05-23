@@ -25,7 +25,12 @@ final class MediaValueUrlGeneratorTest extends TestCase
         $this->urlGenerator = new MediaValueUrlGenerator($this->urlGeneratorMock);
     }
 
-    public function testGenerate(): void
+    public function testGenerateDefaultUrl(): void
+    {
+        self::assertNull($this->urlGenerator->generateDefaultUrl(new Media(42, 'logo-image', 'Logo')));
+    }
+
+    public function testGenerateAdminUrl(): void
     {
         $this->urlGeneratorMock
             ->expects(self::once())
@@ -34,11 +39,16 @@ final class MediaValueUrlGeneratorTest extends TestCase
                 self::identicalTo('bitbag_sylius_cms_plugin_admin_media_update'),
                 self::identicalTo(['id' => 42]),
             )
-            ->willReturn('/media/42/edit');
+            ->willReturn('/admin/media/42/edit');
 
         self::assertSame(
-            '/media/42/edit',
-            $this->urlGenerator->generate(new Media(42, 'logo-image', 'Logo')),
+            '/admin/media/42/edit',
+            $this->urlGenerator->generateAdminUrl(new Media(42, 'logo-image', 'Logo')),
         );
+    }
+
+    public function testGenerate(): void
+    {
+        self::assertNull($this->urlGenerator->generate(new Media(42, 'logo-image', 'Logo')));
     }
 }
