@@ -68,7 +68,7 @@ final class SectionValidatorTest extends ValidatorTestCase
     public function testValidateThrowsUnexpectedTypeExceptionWithInvalidConstraint(): void
     {
         $this->expectException(UnexpectedTypeException::class);
-        $this->expectExceptionMessage('Expected argument of type "Netgen\\Layouts\\Sylius\\BitBag\\Validator\\Constraint\\Section", "Symfony\\Component\\Validator\\Constraints\\NotBlank" given');
+        $this->expectExceptionMessage('Expected argument of type "Netgen\Layouts\Sylius\BitBag\Validator\Constraint\Section", "Symfony\Component\Validator\Constraints\NotBlank" given');
 
         $this->constraint = new NotBlank();
         $this->assertValid(true, 'value');

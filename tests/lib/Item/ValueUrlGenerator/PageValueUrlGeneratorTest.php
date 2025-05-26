@@ -25,7 +25,24 @@ final class PageValueUrlGeneratorTest extends TestCase
         $this->urlGenerator = new PageValueUrlGenerator($this->urlGeneratorMock);
     }
 
-    public function testGenerate(): void
+    public function testGenerateDefaultUrl(): void
+    {
+        $this->urlGeneratorMock
+            ->expects(self::once())
+            ->method('generate')
+            ->with(
+                self::identicalTo('bitbag_sylius_cms_plugin_shop_page_show'),
+                self::identicalTo(['slug' => 'about-us']),
+            )
+            ->willReturn('/en_GB/page/about-us');
+
+        self::assertSame(
+            '/en_GB/page/about-us',
+            $this->urlGenerator->generateDefaultUrl(new Page(42, 'about-us', 'About us', 'about-us')),
+        );
+    }
+
+    public function testGenerateAdminUrl(): void
     {
         $this->urlGeneratorMock
             ->expects(self::once())
@@ -34,11 +51,28 @@ final class PageValueUrlGeneratorTest extends TestCase
                 self::identicalTo('bitbag_sylius_cms_plugin_admin_page_update'),
                 self::identicalTo(['id' => 42]),
             )
-            ->willReturn('/pages/42/edit');
+            ->willReturn('/admin/pages/42/edit');
 
         self::assertSame(
-            '/pages/42/edit',
-            $this->urlGenerator->generate(new Page(42, 'about-us', 'About us')),
+            '/admin/pages/42/edit',
+            $this->urlGenerator->generateAdminUrl(new Page(42, 'about-us', 'About us', 'about-us')),
+        );
+    }
+
+    public function testGenerate(): void
+    {
+        $this->urlGeneratorMock
+            ->expects(self::once())
+            ->method('generate')
+            ->with(
+                self::identicalTo('bitbag_sylius_cms_plugin_shop_page_show'),
+                self::identicalTo(['slug' => 'about-us']),
+            )
+            ->willReturn('/en_GB/page/about-us');
+
+        self::assertSame(
+            '/en_GB/page/about-us',
+            $this->urlGenerator->generate(new Page(42, 'about-us', 'About us', 'about-us')),
         );
     }
 }
