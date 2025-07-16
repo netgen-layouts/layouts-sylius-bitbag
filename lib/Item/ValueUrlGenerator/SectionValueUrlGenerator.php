@@ -14,7 +14,7 @@ final class SectionValueUrlGenerator implements ExtendedValueUrlGeneratorInterfa
 {
     public function __construct(private UrlGeneratorInterface $urlGenerator) {}
 
-    public function generateDefaultUrl(object $object): ?string
+    public function generateDefaultUrl(object $object): string
     {
         return $this->urlGenerator->generate(
             'bitbag_sylius_cms_plugin_shop_page_index_by_section_code',
@@ -24,7 +24,7 @@ final class SectionValueUrlGenerator implements ExtendedValueUrlGeneratorInterfa
         );
     }
 
-    public function generateAdminUrl(object $object): ?string
+    public function generateAdminUrl(object $object): string
     {
         return $this->urlGenerator->generate(
             'bitbag_sylius_cms_plugin_admin_section_update',
@@ -34,7 +34,7 @@ final class SectionValueUrlGenerator implements ExtendedValueUrlGeneratorInterfa
         );
     }
 
-    public function generate(object $object): ?string
+    public function generate(object $object): string
     {
         return $this->generateDefaultUrl($object);
     }

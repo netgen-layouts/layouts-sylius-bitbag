@@ -14,7 +14,7 @@ final class PageValueUrlGenerator implements ExtendedValueUrlGeneratorInterface
 {
     public function __construct(private UrlGeneratorInterface $urlGenerator) {}
 
-    public function generateDefaultUrl(object $object): ?string
+    public function generateDefaultUrl(object $object): string
     {
         return $this->urlGenerator->generate(
             'bitbag_sylius_cms_plugin_shop_page_show',
@@ -24,7 +24,7 @@ final class PageValueUrlGenerator implements ExtendedValueUrlGeneratorInterface
         );
     }
 
-    public function generateAdminUrl(object $object): ?string
+    public function generateAdminUrl(object $object): string
     {
         return $this->urlGenerator->generate(
             'bitbag_sylius_cms_plugin_admin_page_update',
@@ -34,7 +34,7 @@ final class PageValueUrlGenerator implements ExtendedValueUrlGeneratorInterface
         );
     }
 
-    public function generate(object $object): ?string
+    public function generate(object $object): string
     {
         return $this->generateDefaultUrl($object);
     }

@@ -19,7 +19,7 @@ final class MediaValueUrlGenerator implements ExtendedValueUrlGeneratorInterface
         return null;
     }
 
-    public function generateAdminUrl(object $object): ?string
+    public function generateAdminUrl(object $object): string
     {
         return $this->urlGenerator->generate(
             'bitbag_sylius_cms_plugin_admin_media_update',
